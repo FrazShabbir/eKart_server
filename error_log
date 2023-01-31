@@ -1,0 +1,18 @@
+[27-Jan-2023 09:39:40 UTC] PHP Warning:  require(/home/ekart22/public_html/byreddy/vendor/composer/../symfony/polyfill-php80/bootstrap.php): Failed to open stream: No such file or directory in /home/ekart22/public_html/byreddy/vendor/composer/autoload_real.php on line 55
+[27-Jan-2023 09:39:40 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ekart22/public_html/byreddy/vendor/composer/../symfony/polyfill-php80/bootstrap.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ekart22/public_html/byreddy/vendor/composer/autoload_real.php:55
+Stack trace:
+#0 /home/ekart22/public_html/byreddy/vendor/composer/autoload_real.php(38): composerRequire8d7a518ecbe24309d597b62095bf1072('a4a119a56e50fbb...', '/home/ekart22/p...')
+#1 /home/ekart22/public_html/byreddy/vendor/autoload.php(12): ComposerAutoloaderInit8d7a518ecbe24309d597b62095bf1072::getLoader()
+#2 /home/ekart22/public_html/byreddy/index.php(34): require('/home/ekart22/p...')
+#3 {main}
+  thrown in /home/ekart22/public_html/byreddy/vendor/composer/autoload_real.php on line 55
+[27-Jan-2023 09:39:43 UTC] PHP Warning:  require(/home/ekart22/public_html/byreddy/vendor/composer/../symfony/polyfill-php80/bootstrap.php): Failed to open stream: No such file or directory in /home/ekart22/public_html/byreddy/vendor/composer/autoload_real.php on line 55
+[27-Jan-2023 09:39:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ekart22/public_html/byreddy/vendor/composer/../symfony/polyfill-php80/bootstrap.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ekart22/public_html/byreddy/vendor/composer/autoload_real.php:55
+Stack trace:
+#0 /home/ekart22/public_html/byreddy/vendor/composer/autoload_real.php(38): composerRequire8d7a518ecbe24309d597b62095bf1072('a4a119a56e50fbb...', '/home/ekart22/p...')
+#1 /home/ekart22/public_html/byreddy/vendor/autoload.php(12): ComposerAutoloaderInit8d7a518ecbe24309d597b62095bf1072::getLoader()
+#2 /home/ekart22/public_html/byreddy/index.php(34): require('/home/ekart22/p...')
+#3 {main}
+  thrown in /home/ekart22/public_html/byreddy/vendor/composer/autoload_real.php on line 55
+[27-Jan-2023 12:27:43 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 8.0.27. in /home/ekart22/public_html/byreddy/vendor/composer/platform_check.php on line 24
+[27-Jan-2023 12:27:45 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 8.0.27. in /home/ekart22/public_html/byreddy/vendor/composer/platform_check.php on line 24

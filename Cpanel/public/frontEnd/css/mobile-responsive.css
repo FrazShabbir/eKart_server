@@ -1,0 +1,73 @@
+@media screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait){
+    .header {
+        position: relative;
+    }
+    .breadcrumb-option {
+    background: #2e7bbc36;
+    padding: 20px 0px 20px 0px;
+}
+    .owl-carousel .owl-item img {
+        height: auto;
+    }
+    .as-min {
+        display: block;
+    }
+    .footer__copyright__text {
+    display: block;
+}
+    .footer__copyright__text p {
+    font-size: 14px;
+    text-align: center !important;
+}
+    .serv-part-2 {
+    padding: 0px 0px 60px 0px;
+}
+.header__logo img {
+    width: 75%;
+}
+    form.modal-content.modal-body.border-0.p-0 {
+    margin-top: 0px;
+}
+    .offcanvas__nav__option {
+    display: flex;
+}
+    .offcanvas__nav__option a {
+    margin-right: -75px;
+}
+    .mobile-cart-icon {
+    width: 35%;
+}
+    .mobile-cart-icon1 {
+    width: 26%;
+    margin-top: 6px;
+}
+    .serv-part {
+        display: block;
+        margin: 0px 10px 0px 10px;
+    }
+    .serv-part1 {
+        display: block;
+        margin: 30px 10px 30px 10px;
+    }
+    .hero {
+    height: 670px;
+    padding: 50px 0px 100px 0px;
+}
+    .owl-dots {
+    display: none;
+}
+    .owl-nav {
+    display: none;
+}
+    .banner-text h2 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+}
+    .card-body {
+    padding: 15px 10px 15px 10px;
+}
+    .service-img1 {
+    float: left;
+}
+}
