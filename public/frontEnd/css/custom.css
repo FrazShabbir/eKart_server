@@ -70,10 +70,10 @@ h4.menu-title a {
     -moz-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    -webkit-transition: all .3s ease-in-out;    
-    -ms-transition: all .3s ease-in-out;    
-    -moz-transition: all .3s ease-in-out;    
-    -o-transition: all .3s ease-in-out;    
+    -webkit-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     padding: 5px;
     z-index: 22222222;
@@ -100,10 +100,10 @@ span#right-arrow {
     -moz-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    -webkit-transition: all .3s ease-in-out;    
-    -ms-transition: all .3s ease-in-out;    
-    -moz-transition: all .3s ease-in-out;    
-    -o-transition: all .3s ease-in-out;    
+    -webkit-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     padding: 5px;
     z-index: 22222222;
@@ -136,10 +136,10 @@ span#right-arrow {
     border: 1px solid #eee;
     margin: 0 10px;
     cursor: pointer;
-    -webkit-transition: all .5s ease-in-out;    
-    -ms-transition: all .5s ease-in-out;    
-    -moz-transition: all .5s ease-in-out;    
-    -o-transition: all .5s ease-in-out;    
+    -webkit-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
     position: relative;
 }
@@ -151,13 +151,13 @@ span#right-arrow {
 }
 
 .testim .dots .dot.active {
-    -webkit-animation: testim-scale .5s ease-in-out forwards;   
-    -moz-animation: testim-scale .5s ease-in-out forwards;   
-    -ms-animation: testim-scale .5s ease-in-out forwards;   
-    -o-animation: testim-scale .5s ease-in-out forwards;   
-    animation: testim-scale .5s ease-in-out forwards;   
+    -webkit-animation: testim-scale .5s ease-in-out forwards;
+    -moz-animation: testim-scale .5s ease-in-out forwards;
+    -ms-animation: testim-scale .5s ease-in-out forwards;
+    -o-animation: testim-scale .5s ease-in-out forwards;
+    animation: testim-scale .5s ease-in-out forwards;
 }
-    
+
 .testim .cont {
     position: relative;
     overflow: hidden;
@@ -176,13 +176,13 @@ span#right-arrow {
 .testim .cont > div.inactive {
     opacity: 1;
 }
-    
+
 
 .testim .cont > div.active {
     position: relative;
     opacity: 1;
 }
-    
+
 
 .testim .cont div .img img {
     display: block;
@@ -207,51 +207,51 @@ span#right-arrow {
 }
 
 .testim .cont div.active .img img {
-    -webkit-animation: testim-show .5s ease-in-out forwards;            
-    -moz-animation: testim-show .5s ease-in-out forwards;            
-    -ms-animation: testim-show .5s ease-in-out forwards;            
-    -o-animation: testim-show .5s ease-in-out forwards;            
-    animation: testim-show .5s ease-in-out forwards;            
+    -webkit-animation: testim-show .5s ease-in-out forwards;
+    -moz-animation: testim-show .5s ease-in-out forwards;
+    -ms-animation: testim-show .5s ease-in-out forwards;
+    -o-animation: testim-show .5s ease-in-out forwards;
+    animation: testim-show .5s ease-in-out forwards;
 }
 
 .testim .cont div.active .h4 {
-    -webkit-animation: testim-content-in .4s ease-in-out forwards;    
-    -moz-animation: testim-content-in .4s ease-in-out forwards;    
-    -ms-animation: testim-content-in .4s ease-in-out forwards;    
-    -o-animation: testim-content-in .4s ease-in-out forwards;    
-    animation: testim-content-in .4s ease-in-out forwards;    
+    -webkit-animation: testim-content-in .4s ease-in-out forwards;
+    -moz-animation: testim-content-in .4s ease-in-out forwards;
+    -ms-animation: testim-content-in .4s ease-in-out forwards;
+    -o-animation: testim-content-in .4s ease-in-out forwards;
+    animation: testim-content-in .4s ease-in-out forwards;
 }
 
 .testim .cont div.active p {
-    -webkit-animation: testim-content-in .5s ease-in-out forwards;    
-    -moz-animation: testim-content-in .5s ease-in-out forwards;    
-    -ms-animation: testim-content-in .5s ease-in-out forwards;    
-    -o-animation: testim-content-in .5s ease-in-out forwards;    
-    animation: testim-content-in .5s ease-in-out forwards;    
+    -webkit-animation: testim-content-in .5s ease-in-out forwards;
+    -moz-animation: testim-content-in .5s ease-in-out forwards;
+    -ms-animation: testim-content-in .5s ease-in-out forwards;
+    -o-animation: testim-content-in .5s ease-in-out forwards;
+    animation: testim-content-in .5s ease-in-out forwards;
 }
 
 .testim .cont div.inactive .img img {
-    -webkit-animation: testim-hide .5s ease-in-out forwards;            
-    -moz-animation: testim-hide .5s ease-in-out forwards;            
-    -ms-animation: testim-hide .5s ease-in-out forwards;            
-    -o-animation: testim-hide .5s ease-in-out forwards;            
-    animation: testim-hide .5s ease-in-out forwards;            
+    -webkit-animation: testim-hide .5s ease-in-out forwards;
+    -moz-animation: testim-hide .5s ease-in-out forwards;
+    -ms-animation: testim-hide .5s ease-in-out forwards;
+    -o-animation: testim-hide .5s ease-in-out forwards;
+    animation: testim-hide .5s ease-in-out forwards;
 }
 
 .testim .cont div.inactive .h4 {
-    -webkit-animation: testim-content-out .4s ease-in-out forwards;        
-    -moz-animation: testim-content-out .4s ease-in-out forwards;        
-    -ms-animation: testim-content-out .4s ease-in-out forwards;        
-    -o-animation: testim-content-out .4s ease-in-out forwards;        
-    animation: testim-content-out .4s ease-in-out forwards;        
+    -webkit-animation: testim-content-out .4s ease-in-out forwards;
+    -moz-animation: testim-content-out .4s ease-in-out forwards;
+    -ms-animation: testim-content-out .4s ease-in-out forwards;
+    -o-animation: testim-content-out .4s ease-in-out forwards;
+    animation: testim-content-out .4s ease-in-out forwards;
 }
 
 .testim .cont div.inactive p {
-    -webkit-animation: testim-content-out .5s ease-in-out forwards;    
-    -moz-animation: testim-content-out .5s ease-in-out forwards;    
-    -ms-animation: testim-content-out .5s ease-in-out forwards;    
-    -o-animation: testim-content-out .5s ease-in-out forwards;    
-    animation: testim-content-out .5s ease-in-out forwards;    
+    -webkit-animation: testim-content-out .5s ease-in-out forwards;
+    -moz-animation: testim-content-out .5s ease-in-out forwards;
+    -ms-animation: testim-content-out .5s ease-in-out forwards;
+    -o-animation: testim-content-out .5s ease-in-out forwards;
+    animation: testim-content-out .5s ease-in-out forwards;
 }
 
 @-webkit-keyframes testim-scale {
@@ -261,18 +261,18 @@ span#right-arrow {
     }
 
     35% {
-        -webkit-box-shadow: 0px 0px 10px 5px #eee;        
-        box-shadow: 0px 0px 10px 5px #eee;        
+        -webkit-box-shadow: 0px 0px 10px 5px #eee;
+        box-shadow: 0px 0px 10px 5px #eee;
     }
 
     70% {
-        -webkit-box-shadow: 0px 0px 10px 5px #ea830e;        
-        box-shadow: 0px 0px 10px 5px #ea830e;        
+        -webkit-box-shadow: 0px 0px 10px 5px #ea830e;
+        box-shadow: 0px 0px 10px 5px #ea830e;
     }
 
     100% {
-        -webkit-box-shadow: 0px 0px 0px 0px #ea830e;        
-        box-shadow: 0px 0px 0px 0px #ea830e;        
+        -webkit-box-shadow: 0px 0px 0px 0px #ea830e;
+        box-shadow: 0px 0px 0px 0px #ea830e;
     }
 }
 
@@ -283,18 +283,18 @@ span#right-arrow {
     }
 
     35% {
-        -moz-box-shadow: 0px 0px 10px 5px #eee;        
-        box-shadow: 0px 0px 10px 5px #eee;        
+        -moz-box-shadow: 0px 0px 10px 5px #eee;
+        box-shadow: 0px 0px 10px 5px #eee;
     }
 
     70% {
-        -moz-box-shadow: 0px 0px 10px 5px #ea830e;        
-        box-shadow: 0px 0px 10px 5px #ea830e;        
+        -moz-box-shadow: 0px 0px 10px 5px #ea830e;
+        box-shadow: 0px 0px 10px 5px #ea830e;
     }
 
     100% {
-        -moz-box-shadow: 0px 0px 0px 0px #ea830e;        
-        box-shadow: 0px 0px 0px 0px #ea830e;        
+        -moz-box-shadow: 0px 0px 0px 0px #ea830e;
+        box-shadow: 0px 0px 0px 0px #ea830e;
     }
 }
 
@@ -305,18 +305,18 @@ span#right-arrow {
     }
 
     35% {
-        -ms-box-shadow: 0px 0px 10px 5px #eee;        
-        box-shadow: 0px 0px 10px 5px #eee;        
+        -ms-box-shadow: 0px 0px 10px 5px #eee;
+        box-shadow: 0px 0px 10px 5px #eee;
     }
 
     70% {
-        -ms-box-shadow: 0px 0px 10px 5px #ea830e;        
-        box-shadow: 0px 0px 10px 5px #ea830e;        
+        -ms-box-shadow: 0px 0px 10px 5px #ea830e;
+        box-shadow: 0px 0px 10px 5px #ea830e;
     }
 
     100% {
-        -ms-box-shadow: 0px 0px 0px 0px #ea830e;        
-        box-shadow: 0px 0px 0px 0px #ea830e;        
+        -ms-box-shadow: 0px 0px 0px 0px #ea830e;
+        box-shadow: 0px 0px 0px 0px #ea830e;
     }
 }
 
@@ -327,18 +327,18 @@ span#right-arrow {
     }
 
     35% {
-        -o-box-shadow: 0px 0px 10px 5px #eee;        
-        box-shadow: 0px 0px 10px 5px #eee;        
+        -o-box-shadow: 0px 0px 10px 5px #eee;
+        box-shadow: 0px 0px 10px 5px #eee;
     }
 
     70% {
-        -o-box-shadow: 0px 0px 10px 5px #ea830e;        
-        box-shadow: 0px 0px 10px 5px #ea830e;        
+        -o-box-shadow: 0px 0px 10px 5px #ea830e;
+        box-shadow: 0px 0px 10px 5px #ea830e;
     }
 
     100% {
-        -o-box-shadow: 0px 0px 0px 0px #ea830e;        
-        box-shadow: 0px 0px 0px 0px #ea830e;        
+        -o-box-shadow: 0px 0px 0px 0px #ea830e;
+        box-shadow: 0px 0px 0px 0px #ea830e;
     }
 }
 
@@ -348,15 +348,15 @@ span#right-arrow {
     }
 
     35% {
-        box-shadow: 0px 0px 10px 5px #eee;        
+        box-shadow: 0px 0px 10px 5px #eee;
     }
 
     70% {
-        box-shadow: 0px 0px 10px 5px #ea830e;        
+        box-shadow: 0px 0px 10px 5px #ea830e;
     }
 
     100% {
-        box-shadow: 0px 0px 0px 0px #ea830e;        
+        box-shadow: 0px 0px 0px 0px #ea830e;
     }
 }
 
@@ -366,11 +366,11 @@ span#right-arrow {
         -webkit-transform: translateY(100%);
         transform: translateY(100%);
     }
-    
+
     to {
         opacity: 1;
-        -webkit-transform: translateY(0);        
-        transform: translateY(0);        
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -380,11 +380,11 @@ span#right-arrow {
         -moz-transform: translateY(100%);
         transform: translateY(100%);
     }
-    
+
     to {
         opacity: 1;
-        -moz-transform: translateY(0);        
-        transform: translateY(0);        
+        -moz-transform: translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -394,11 +394,11 @@ span#right-arrow {
         -ms-transform: translateY(100%);
         transform: translateY(100%);
     }
-    
+
     to {
         opacity: 1;
-        -ms-transform: translateY(0);        
-        transform: translateY(0);        
+        -ms-transform: translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -408,11 +408,11 @@ span#right-arrow {
         -o-transform: translateY(100%);
         transform: translateY(100%);
     }
-    
+
     to {
         opacity: 1;
-        -o-transform: translateY(0);        
-        transform: translateY(0);        
+        -o-transform: translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -421,10 +421,10 @@ span#right-arrow {
         opacity: 0;
         transform: translateY(100%);
     }
-    
+
     to {
         opacity: 1;
-        transform: translateY(0);        
+        transform: translateY(0);
     }
 }
 
@@ -434,11 +434,11 @@ span#right-arrow {
         -webkit-transform: translateY(0);
         transform: translateY(0);
     }
-    
+
     to {
         opacity: 0;
-        -webkit-transform: translateY(-100%);        
-        transform: translateY(-100%);        
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
     }
 }
 
@@ -448,11 +448,11 @@ span#right-arrow {
         -moz-transform: translateY(0);
         transform: translateY(0);
     }
-    
+
     to {
         opacity: 0;
-        -moz-transform: translateY(-100%);        
-        transform: translateY(-100%);        
+        -moz-transform: translateY(-100%);
+        transform: translateY(-100%);
     }
 }
 
@@ -462,11 +462,11 @@ span#right-arrow {
         -ms-transform: translateY(0);
         transform: translateY(0);
     }
-    
+
     to {
         opacity: 0;
-        -ms-transform: translateY(-100%);        
-        transform: translateY(-100%);        
+        -ms-transform: translateY(-100%);
+        transform: translateY(-100%);
     }
 }
 
@@ -476,11 +476,11 @@ span#right-arrow {
         -o-transform: translateY(0);
         transform: translateY(0);
     }
-    
+
     to {
         opacity: 0;
-        transform: translateY(-100%);        
-        transform: translateY(-100%);        
+        transform: translateY(-100%);
+        transform: translateY(-100%);
     }
 }
 
@@ -489,10 +489,10 @@ span#right-arrow {
         opacity: 1;
         transform: translateY(0);
     }
-    
+
     to {
         opacity: 0;
-        transform: translateY(-100%);        
+        transform: translateY(-100%);
     }
 }
 
@@ -502,11 +502,11 @@ span#right-arrow {
         -webkit-transform: scale(0);
         transform: scale(0);
     }
-    
+
     to {
         opacity: 1;
-        -webkit-transform: scale(1);       
-        transform: scale(1);       
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -516,11 +516,11 @@ span#right-arrow {
         -moz-transform: scale(0);
         transform: scale(0);
     }
-    
+
     to {
         opacity: 1;
-        -moz-transform: scale(1);       
-        transform: scale(1);       
+        -moz-transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -530,11 +530,11 @@ span#right-arrow {
         -ms-transform: scale(0);
         transform: scale(0);
     }
-    
+
     to {
         opacity: 1;
-        -ms-transform: scale(1);       
-        transform: scale(1);       
+        -ms-transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -544,11 +544,11 @@ span#right-arrow {
         -o-transform: scale(0);
         transform: scale(0);
     }
-    
+
     to {
         opacity: 1;
-        -o-transform: scale(1);       
-        transform: scale(1);       
+        -o-transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -557,20 +557,20 @@ span#right-arrow {
         opacity: 0;
         transform: scale(0);
     }
-    
+
     to {
         opacity: 1;
-        transform: scale(1);       
+        transform: scale(1);
     }
 }
 
 @-webkit-keyframes testim-hide {
     from {
         opacity: 1;
-        -webkit-transform: scale(1);       
-        transform: scale(1);       
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
-    
+
     to {
         opacity: 0;
         -webkit-transform: scale(0);
@@ -581,10 +581,10 @@ span#right-arrow {
 @-moz-keyframes testim-hide {
     from {
         opacity: 1;
-        -moz-transform: scale(1);       
-        transform: scale(1);       
+        -moz-transform: scale(1);
+        transform: scale(1);
     }
-    
+
     to {
         opacity: 0;
         -moz-transform: scale(0);
@@ -595,10 +595,10 @@ span#right-arrow {
 @-ms-keyframes testim-hide {
     from {
         opacity: 1;
-        -ms-transform: scale(1);       
-        transform: scale(1);       
+        -ms-transform: scale(1);
+        transform: scale(1);
     }
-    
+
     to {
         opacity: 0;
         -ms-transform: scale(0);
@@ -609,10 +609,10 @@ span#right-arrow {
 @-o-keyframes testim-hide {
     from {
         opacity: 1;
-        -o-transform: scale(1);       
-        transform: scale(1);       
+        -o-transform: scale(1);
+        transform: scale(1);
     }
-    
+
     to {
         opacity: 0;
         -o-transform: scale(0);
@@ -623,9 +623,9 @@ span#right-arrow {
 @keyframes testim-hide {
     from {
         opacity: 1;
-        transform: scale(1);       
+        transform: scale(1);
     }
-    
+
     to {
         opacity: 0;
         transform: scale(0);
@@ -667,9 +667,10 @@ ul.expe-list li {
     margin: 10px 10px 10px 10px;
 }
 .indu-clogos {
-    display: flex;
+    display: block;
     align-items: center;
     padding: 0px;
+    text-align: center;
 }
 .industry-client-logos {
     display: flex;

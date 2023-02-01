@@ -32,19 +32,21 @@
                           <th scope="col">S.No</th>
                           <th scope="col">Order #</th>
                           <th scope="col">Total</th>
+                          <th scope="col">Order Type</th>
                           <th scope="col">Purchase Date</th>
                           <th scope="col"></th>
                           <th scope="col"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        
+
 
                         @foreach($orders as $order)
                         <tr>
                             <td> {{ $loop->iteration}} </td>
                             <td> #{{ $order->orderNumber}}	</td>
                              <td> {{ $order->total}}</td>
+                             <td>Bulk Order</td>
                             <td> {{ $order->orderDate}} </td>
                             <td class="view-details-button">
                                     <a href="{{ route('customer.orderDetail', $order->id) }}">
