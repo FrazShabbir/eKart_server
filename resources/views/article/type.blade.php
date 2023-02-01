@@ -19,7 +19,7 @@
                         <div class="breadcrumb__links">
                             <a href="{{ route('homePage') }}"> Home </a> /
                             <a href="{{ route('articles') }}"> Article Template </a> /
-                            <span> {{ $type}} </span> 
+                            <span> {{ $type}} </span>
                         </div>
                     </div>
                 </div>

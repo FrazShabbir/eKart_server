@@ -35,7 +35,7 @@
                     <h2 class="artl-heading indu-heading">Country</h2>
                     <div class="clear row marginbtm30">
                         <div class="col-sm-9 col-md-9 hidden-xs catg-icon-img">
-                            <img class="img-responsive catg-icon"
+                            <img class="img-responsive set-image-for-banner catg-icon"
                                 src="{{asset('storage/data/reports/'.$regionTemplate->banner) }}" alt="">
 
                             {!! $regionTemplate->description !!}

@@ -248,13 +248,13 @@
                             <ul>
                                 <li> By {{ $article->author }} </li>
                                 <li> {{ \Carbon\Carbon::parse($article->created_at)->format('D-m-Y') }} </li>
-                                
+
                             </ul>
                         </div>
                         <div class="blog__hero__text">
                             <ul>
                               <li>
-                                <a href="{{ route('articles') }}" class="text-primary" >  Articles </a> 
+                                <a href="{{ route('articles') }}" class="text-primary" >  Articles </a>
                               </li>
                               <li>
                                 {{ $article->category->title }}
