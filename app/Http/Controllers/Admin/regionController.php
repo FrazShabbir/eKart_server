@@ -107,6 +107,7 @@ class regionController extends Controller
 
     public function update(Request $request)
     {
+        
         $request->validate([
             'regionId' => 'required',
         ]);

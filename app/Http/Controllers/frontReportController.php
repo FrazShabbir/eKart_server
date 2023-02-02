@@ -49,6 +49,7 @@ class frontReportController extends Controller
     }
     public function countryTemplateReport($id)
     {
+      
               $country = Country::with('region')->findorfail($id);
              $reports = Report::where('country_id',$id)->where('approve',2)->get();
             return view('front.country.reports',compact('reports','country'));
@@ -117,11 +118,13 @@ class frontReportController extends Controller
 
     public function countryTemplate($id)
     {
+ 
             $regionTemplate = RegionTemplate::first();
               $region = Region::findorfail($id);
              $countries = Country::where('region_id',$id)->get();
             $clients =RegionClient::get();
             $testimonials = RegionTestimonial::get();
+        //     dd($regionTemplate);
             return view('front.countryTemplate',compact('regionTemplate','countries','clients','testimonials','region'));
     }
 
