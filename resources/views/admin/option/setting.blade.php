@@ -24,7 +24,7 @@
                             <label for=""> <strong>Scource</strong> </label> <br>
 
                             
-                            <img src="{{ $option->getFirstMediaUrl('company_logo', 'thumb')  }}" class="img-thumbnail" style="width: 200px;height:100px" >
+                            <img src="{{ asset($option->logo)  }}" class="img-thumbnail" style="width: 200px;height:100px" >
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
 
                         <div class="col-lg-3 form-group">
                             <label for=""> <strong>Scource</strong> </label> <br>
-                            <img src="{{ $option->getFirstMediaUrl('fave_icon', 'thumb')  }}" class="img-thumbnail" style="width: 50px;height:50px" >
+                            <img src="{{ asset($option->faveIcon)   }}" class="img-thumbnail" style="width: 50px;height:50px" >
                         </div>
 
                         <div class="col-lg-12 form-group">

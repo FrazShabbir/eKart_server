@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontController;
 Route::get('/',[frontController::class,'index'])->name('homePage');
 
+
 Route::group(['namespace' => 'App\Http\Controllers'], function(){
         Route::post('customerLogin', [App\Http\Controllers\Admin\userController::class, 'customerLogin'])->name('customerLogin');
         Route::get('requirements',['as' => 'requirements', 'uses' => 'frontController@requirements']);

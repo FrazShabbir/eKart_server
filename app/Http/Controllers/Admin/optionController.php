@@ -9,13 +9,13 @@ class optionController extends Controller
 {
     public function index()
     {
-      
          $option = Option::first();
         return view('admin.option.setting',compact('option'));
     }
 
     public function update(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'id' => 'required',
         ]);
@@ -29,16 +29,40 @@ class optionController extends Controller
         $option->twitter = $request->twitter;
         $option->pinterest = $request->pinterest;
         $option->insta = $request->insta;
-        $option ->save();
+  
+
+        // if ($request->hasFile('logo')) {
+        //     $option->clearMediaCollection('company_logo');
+        //     $option->addMediaFromRequest('logo')->toMediaCollection('company_logo');
+        // }
+
         if ($request->hasFile('logo')) {
-            $option->clearMediaCollection('company_logo');
-            $option->addMediaFromRequest('logo')->toMediaCollection('company_logo');
+            $request->validate([
+                'logo' => 'image|mimes:jpeg,png,jpg|max:1024',
+            ]);
+            $file = $request->file('logo');
+            $extension = $file->getClientOriginalExtension();
+            $filename = rand(11,999999).'-'.time() . '.' . $extension;
+            $file->move('uploads/logo', $filename);
+            $option->logo = 'uploads/logo/'.$filename;
         }
 
         if ($request->hasFile('faveIcon')) {
-            $option->clearMediaCollection('fave_icon');
-            $option->addMediaFromRequest('faveIcon')->toMediaCollection('fave_icon');
+            $request->validate([
+                'faveIcon' => 'image|mimes:jpeg,png,jpg|max:1024',
+            ]);
+            $file = $request->file('faveIcon');
+            $extension = $file->getClientOriginalExtension();
+            $filename = rand(11,999999).'-'.time() . '.' . $extension;
+            $file->move('uploads/faveIcon', $filename);
+            $option->faveIcon = 'uploads/faveIcon/'.$filename;
         }
+        $option ->save();
+        // if ($request->hasFile('faveIcon')) {
+        //     $option->clearMediaCollection('fave_icon');
+        //     $option->addMediaFromRequest('faveIcon')->toMediaCollection('fave_icon');
+        // }
+        // dd($option);
         return redirect()->back()->with('success','Setting Updated');
     }
 }
