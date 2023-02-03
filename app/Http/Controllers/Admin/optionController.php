@@ -35,7 +35,8 @@ class optionController extends Controller
             $option->clearMediaCollection('company_logo');
             $option->addMediaFromRequest('logo')->toMediaCollection('company_logo');
         }
-
+        
+        $option ->save();
         // if ($request->hasFile('logo')) {
         //     $request->validate([
         //         'logo' => 'image|mimes:jpeg,png,jpg|max:1024',
@@ -57,7 +58,7 @@ class optionController extends Controller
         //     $file->move('uploads/faveIcon', $filename);
         //     $option->faveIcon = 'uploads/faveIcon/'.$filename;
         // }
-        $option ->save();
+       
         if ($request->hasFile('faveIcon')) {
             $option->clearMediaCollection('fave_icon');
             $option->addMediaFromRequest('faveIcon')->toMediaCollection('fave_icon');

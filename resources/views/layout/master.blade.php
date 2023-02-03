@@ -12,7 +12,7 @@
     <title>
         @yield('title') | ByReddy Consulting
     </title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset($option->faveIcon)  }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ $option->getFirstMediaUrl('fave_icon', 'thumb')  }}">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -78,8 +78,8 @@
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
                         <a href="{{ route('homePage') }}">
-                            @if($option->logo)
-                                <img src="{{ asset($option->logo) }}" alt="" style="max-height: 100px">
+                            @if($option->getFirstMediaUrl('company_logo', 'thumb') !='')
+                                <img src="{{ $option->getFirstMediaUrl('company_logo', 'thumb') }}" alt="" style="max-height: 100px">
                             @else
                                 <img src="https://rebank.cc/wp-content/uploads/2019/04/dummylogo-300x107@2x.jpg" alt="">
                             @endif
