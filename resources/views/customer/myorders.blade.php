@@ -46,7 +46,7 @@
                             <td> {{ $loop->iteration}} </td>
                             <td> #{{ $order->orderNumber}}	</td>
                              <td> {{ $order->total}}</td>
-                             <td>Bulk Order</td>
+                             <td>{{$order->details->count()>1?'Bulk Order':'Single Order'}}</td>
                             <td> {{ $order->orderDate}} </td>
                             <td class="view-details-button">
                                     <a href="{{ route('customer.orderDetail', $order->id) }}">

@@ -14,6 +14,7 @@ class CartController extends Controller
 
     public function index()
     {
+        // dd(Auth::user());
         if(Auth::user()){
             $id = Auth::user()->id;
         }else{
@@ -25,6 +26,7 @@ class CartController extends Controller
     }
     public function addCart(Request $request)
     {
+        // dd($request->all());
       // dd($request->subindustry_id);
           $subindustry_id = $request->subindustry_id;
           $report_id = $request->report_id;
@@ -73,6 +75,8 @@ class CartController extends Controller
     }
     public function checkout(Request $request)
     {
+        // dd($request->all());
+        //  dd(Auth::user());
         $carts = MyCart::where('user_id',Auth::user()->id)->get();
         $cart_total = $carts->sum('total');
         $check_order = Order::orderBy('id','desc')->first();
@@ -110,7 +114,7 @@ class CartController extends Controller
                 $cart->delete();
             }
              
-            return redirect()->route('homePage')->with('success','Order has been completed');
+            return redirect()->route('customer.orders')->with('success','Order has been completed');
         }else{
             return redirect()->back()->with('error','Order Not Completed');
         }

@@ -46,58 +46,61 @@
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
+    <!-- Header Section Begin -->
     <header class="header">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3 col-md-3">
+                  <div class="header__logo">
+                      <a href="{{ route('homePage') }}">
+                          @if($option->getFirstMediaUrl('company_logo', 'thumb') !='')
+                              <img src="{{ $option->getFirstMediaUrl('company_logo', 'thumb') }}" alt="" style="max-height: 100px">
+                          @else
+                              <img src="https://rebank.cc/wp-content/uploads/2019/04/dummylogo-300x107@2x.jpg" alt="">
+                          @endif
+                      </a>
+                  </div>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                      <div class="input-group mb-2">
+                          <input type="text" class="form-control" id="inputModalSearch" name="q"
+                              placeholder="Search ...">
+                          <button type="submit" class="input-group-text bg-success text-light">
+                              <i class="fa fa-fw fa-search text-white"></i>
+                          </button>
+                      </div>
+                  </form>
+              </div>
+              <div class="col-lg-2 col-md-2">
+                  <div class="header__nav__option">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="{{ route('homePage') }}">
+                      <a href="{{ route('cart.index')}}">
+                          @if(Cart::count()>0)
+                          <sup style="font-size:10px;color:#000"> {{ Cart::count() }}</sup>
+                          @endif
+                          <img src="{{asset('frontEnd/img/add.png')}}" class="img-responsive account-iocn"
+                              alt="">
+                      </a>
+                      @if (Auth::user())
+                          <a href="{{ route('customer.dashboard') }}">
 
-                            <img src="{{asset('storage/app/public/data/'.$option->logo) }}" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-7">
-                    <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                        <div class="input-group mb-2">
-                            <input type="text" class="form-control" id="inputModalSearch" name="q"
-                                placeholder="Search ...">
-                            <button type="submit" class="input-group-text bg-success text-light">
-                                <i class="fa fa-fw fa-search text-white"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-2 col-md-2">
-                    <div class="header__nav__option">
+                              <img src="{{asset('frontEnd/img/dashbaord.png')}}"class="img-responsive account-iocn1" alt="" title="View Dashboard">
+                          </a>
+                      @else
+                          <a href="{{ route('login') }}">
+                              <img src="{{asset('frontEnd/img/user-1.png')}}"class="img-responsive account-iocn1" alt="">
+                          </a>
+                      @endif
 
-                        <a href="{{ route('cart.index')}}">
-                            @if(Cart::count()>0)
-                            <sup style="font-size:10px;color:#000"> {{ Cart::count() }}</sup>
-                            @endif
-                            <img src="{{asset('public/frontEnd/img/add.png')}}" class="img-responsive account-iocn"
-                                alt="">
-                        </a>
-                        @if (Auth::user())
-                            <a href="{{ route('customer.dashboard') }}">
-
-                                <img src="{{asset('public/frontEnd/img/dashbaord.png')}}"class="img-responsive account-iocn1" alt="">
-                            </a>
-                        @else
-                            <a href="{{ route('login') }}">
-                                <img src="{{asset('public/frontEnd/img/user-1.png')}}"class="img-responsive account-iocn1" alt="">
-                            </a>
-                        @endif
-
-                        <a href="#" class="search-switch"><img src="{{asset('public/frontEnd/img/bar-icon-1.png')}}"
-                                alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
-        </div>
-    </header>
+                      <a href="#" class="search-switch"><img src="{{asset('frontEnd/img/bar-icon-1.png')}}"
+                              alt=""></a>
+                  </div>
+              </div>
+          </div>
+          <div class="canvas__open"><i class="fa fa-bars"></i></div>
+      </div>
+  </header>
 
     <section class="breadcrumb-option">
         <div class="container">

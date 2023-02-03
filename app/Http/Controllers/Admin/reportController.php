@@ -67,7 +67,7 @@ class reportController extends Controller
     }
 
     public function save(Request $request){
-
+// dd($request->all());
         $request->validate([
             'projectType' => 'required',
             'serviceType' => 'required',
@@ -105,6 +105,7 @@ class reportController extends Controller
         $report->price = $request->price;
         $report->photo = $projectPhoto;
         $report->approve = 0;
+
         if($report->save()){
             if ($request->hasFile('contentFile')) {
                 $filenameWithExt = $request->file('contentFile')->getClientOriginalName();

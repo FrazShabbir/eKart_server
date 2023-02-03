@@ -144,17 +144,36 @@
                             <span>Single User License: <strong>${{ $report->price }} </strong></span><br>
                             <span class="margintp">Member Price: <strong>FREE</strong></span>
                             @if(Auth::user())
-                                <form method="post" action="{{ route('add.to.cart') }}">
-                                    @csrf
-                                    <input type="hidden" name="report_id" value="{{ $report->id }}">  
-                                    <input type="hidden" name="price" value="{{ $report->price }}">
-                                    <input type="hidden" name="qty" value="1">
-                                    <input type="hidden" name="type" value="single">
-                                    <button type="submit" class="btn btn-default btn-gold margintp15" title="Buy Now">
-                                        <i class="fa fa-shopping-cart fa-lg marginrt" aria-hidden="true"></i>
-                                        Buy Now
-                                    </button>
-                                </form>
+                            @php
+                                $orders = App\Models\Order::with('user')->where('user_id',Auth::user()->id)->get();
+                                $reports = [];
+                                foreach($orders as $order){
+                                    $orders_details = App\Models\OrderDetail::where('order_id',$order->id)->get();
+                                    foreach($orders_details as $order_detail){
+                                        $reports[] = $order_detail->report_id;
+                                    }
+                                }
+                                //  dd(!in_array($report->id, $reports));
+                            @endphp
+                            @if (!in_array($report->id, $reports))
+                            <form method="post" action="{{ route('add.to.cart') }}">
+                                @csrf
+                                <input type="hidden" name="report_id" value="{{ $report->id }}">  
+                                <input type="hidden" name="price" value="{{ $report->price }}">
+                                <input type="hidden" name="qty" value="1">
+                                <input type="hidden" name="type" value="single">
+                                <button type="submit" class="btn btn-default btn-gold margintp15" title="Buy Now">
+                                    <i class="fa fa-shopping-cart fa-lg marginrt" aria-hidden="true"></i>
+                                    Buy Now
+                                </button>
+                            </form>
+                            @else
+                                <button disabled type="button" class="btn btn-default btn-gold margintp15" title="Already Purchased">
+                                    <i class="fa fa-shopping-cart fa-lg marginrt" aria-hidden="true"></i>
+                                    Already Purchased
+                                </button>
+                            @endif
+                                
                             @else
                                 <button disabled type="button" class="btn btn-default btn-gold margintp15" title="Login to Buy">
                                     <i class="fa fa-shopping-cart fa-lg marginrt" aria-hidden="true"></i>

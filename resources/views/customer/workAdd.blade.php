@@ -100,7 +100,9 @@
                                 <label>Select Country <span class="text-danger"> * </span></label>
                                 <select class="form-control" name="country"   id="countries" >
                                     <option value="" disabled selected> Select  Country</option>
-
+                                    @foreach ($countries as $region )
+                                    <option value="{{ $region->id }}"> {{ $region->country }} </option>
+                                @endforeach
                                 </select>
                             </div>
 
@@ -157,6 +159,7 @@
                                 <textarea class="form-control report-txt summernote2"  placeholder="" name="faq"   ></textarea>
                             </div>
                         </div>
+                        <button type="submit">Update</button>
                     </form>
                 </div>
 

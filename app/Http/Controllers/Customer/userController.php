@@ -105,11 +105,13 @@ class userController extends Controller
         $countries          = Country::select('id','country')->get();
         $managers = User::where('role','manager')->get();
         $employees = User::where('role','employee')->get();
+        // dd($countries);
         return view('customer.workAdd',compact('projects','services','industries','subindustries','regions','countries','managers','employees'));
     }
 
     public function orders()
     {
+        // dd(Auth::user()->id);
         $orders = Order::with('user')->where('user_id',Auth::user()->id)->get();
         return view('customer.myorders',compact('orders'));
     }
