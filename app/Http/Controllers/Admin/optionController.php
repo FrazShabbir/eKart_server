@@ -31,37 +31,37 @@ class optionController extends Controller
         $option->insta = $request->insta;
   
 
-        // if ($request->hasFile('logo')) {
-        //     $option->clearMediaCollection('company_logo');
-        //     $option->addMediaFromRequest('logo')->toMediaCollection('company_logo');
-        // }
-
         if ($request->hasFile('logo')) {
-            $request->validate([
-                'logo' => 'image|mimes:jpeg,png,jpg|max:1024',
-            ]);
-            $file = $request->file('logo');
-            $extension = $file->getClientOriginalExtension();
-            $filename = rand(11,999999).'-'.time() . '.' . $extension;
-            $file->move('uploads/logo', $filename);
-            $option->logo = 'uploads/logo/'.$filename;
+            $option->clearMediaCollection('company_logo');
+            $option->addMediaFromRequest('logo')->toMediaCollection('company_logo');
         }
 
-        if ($request->hasFile('faveIcon')) {
-            $request->validate([
-                'faveIcon' => 'image|mimes:jpeg,png,jpg|max:1024',
-            ]);
-            $file = $request->file('faveIcon');
-            $extension = $file->getClientOriginalExtension();
-            $filename = rand(11,999999).'-'.time() . '.' . $extension;
-            $file->move('uploads/faveIcon', $filename);
-            $option->faveIcon = 'uploads/faveIcon/'.$filename;
-        }
-        $option ->save();
-        // if ($request->hasFile('faveIcon')) {
-        //     $option->clearMediaCollection('fave_icon');
-        //     $option->addMediaFromRequest('faveIcon')->toMediaCollection('fave_icon');
+        // if ($request->hasFile('logo')) {
+        //     $request->validate([
+        //         'logo' => 'image|mimes:jpeg,png,jpg|max:1024',
+        //     ]);
+        //     $file = $request->file('logo');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = rand(11,999999).'-'.time() . '.' . $extension;
+        //     $file->move('uploads/logo', $filename);
+        //     $option->logo = 'uploads/logo/'.$filename;
         // }
+
+        // if ($request->hasFile('faveIcon')) {
+        //     $request->validate([
+        //         'faveIcon' => 'image|mimes:jpeg,png,jpg|max:1024',
+        //     ]);
+        //     $file = $request->file('faveIcon');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = rand(11,999999).'-'.time() . '.' . $extension;
+        //     $file->move('uploads/faveIcon', $filename);
+        //     $option->faveIcon = 'uploads/faveIcon/'.$filename;
+        // }
+        $option ->save();
+        if ($request->hasFile('faveIcon')) {
+            $option->clearMediaCollection('fave_icon');
+            $option->addMediaFromRequest('faveIcon')->toMediaCollection('fave_icon');
+        }
         // dd($option);
         return redirect()->back()->with('success','Setting Updated');
     }
