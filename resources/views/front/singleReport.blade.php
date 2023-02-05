@@ -130,7 +130,9 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-
+{{-- @php
+    dd($report);
+@endphp --}}
     <!-- Shop Section Begin -->
     <section class="shop spad">
         <div class="container-fluid">
