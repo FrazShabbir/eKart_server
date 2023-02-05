@@ -10,8 +10,6 @@ use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\ArticleTemplate;
 use App\Models\Contact;
-use App\Models\Order;
-use App\Models\OrderDetail;
 use App\Models\Disclaimer;
 use App\Models\Event;
 use App\Models\HomeText;
@@ -19,6 +17,8 @@ use App\Models\Industry;
 use App\Models\Legal;
 use App\Models\News;
 use App\Models\Option;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\OurClient;
 use App\Models\Press;
 use App\Models\Privacy;
@@ -63,27 +63,29 @@ class frontController extends Controller
     public function articleDetails($id)
     {
         $article = Article::findOrFail($id);
-
+        $full = false;
         //  dd($article->subindustry_id);
-        $orders = Order::with('user')->where('user_id', Auth::user()->id)->get();
-        $reports = [];
-        foreach ($orders as $order) {
-            $orders_details = OrderDetail::where('order_id', $order->id)->get();
-            foreach ($orders_details as $order_detail) {
-                $reports[] = $order_detail->subindustry_id;
+        if (Auth::user()) {
+
+            $orders = Order::with('user')->where('user_id', Auth::user()->id)->get();
+            $reports = [];
+            foreach ($orders as $order) {
+                $orders_details = OrderDetail::where('order_id', $order->id)->get();
+                foreach ($orders_details as $order_detail) {
+                    $reports[] = $order_detail->subindustry_id;
+                }
+            }
+
+            // dd($article->subindustry_id,$reports);
+            if (in_array($article->subindustry_id, $reports)) {
+                $full = true;
+            } else {
+                $full = false;
             }
         }
-        $full = false;
-        // dd($article->subindustry_id,$reports);
-        if (in_array($article->subindustry_id, $reports)){
-            $full =  true;
-        }else{
-            $full = false;
-        }
-
 // return $full;
         $latest = Article::where('id', '!=', $article->id)->orderBy('id', 'desc')->take(5)->get();
-        return view('article.details', compact('article', 'latest','full'));
+        return view('article.details', compact('article', 'latest', 'full'));
     }
 
     public function forgotPassword()

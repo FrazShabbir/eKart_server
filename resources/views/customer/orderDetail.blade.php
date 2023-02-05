@@ -36,16 +36,19 @@
                                             <table class="table table-striped ">
                                                 <thead>
                                                     <tr class="tab-content">
-                                                        <th scope="col"> S# </th>
+                                                    <th scope="col"> S# </th>
                                                       <th scope="col">Title / Chapter Name</th>
                                                       <th scope="col">Pages</th>
                                                       <th scope="col">Type</th>
+                                                      <th scope="col">Subindustry</th>
+                                                      <th scope="col">Industry</th>
                                                       <th scope="col">Action</th>
                                                       <th scope="col">Issues</th>
                                                     </tr>
                                                   </thead>
-
+                                                  <tbody>
                                                   @foreach ($orders->details as $order )
+
                                                         <tr>
                                                             <td>
                                                                 {{ $loop->iteration}}
@@ -59,19 +62,27 @@
                                                                 @elseif($order->subIndustry)
                                                                     
                                                                     {{ $order->subIndustry->subindustry }}
-                                                                
+                                                                @else
+                                                                --
                                                                 @endif
+                                                            </td>
+                                                            <td>
+                                                                @if($order->report) 
+                                                                {{ $order->report->totalPages }}
+                                                            @else
+                                                                -- 
+                                                            @endif
                                                             </td>
                                                             <td>
                                                                 {{  ucfirst($order->type) }}
                                                             </td>
                                                             <td>
-                                                                @if($order->report) 
-                                                                    {{ $order->report->totalPages }}
-                                                                @else
-                                                                    -- 
-                                                                @endif
+                                                                {{  $order->subIndustry->subindustry??'--' }}
                                                             </td>
+                                                            <td>
+                                                                {{  $order->subIndustry->industry->industryType??'--' }}
+                                                            </td>
+
                                                             <td>
                                                                 @if($order->report) 
                                                                 <a href="{{ route('customer.report.info',$order->report->id)}}"   style="color:#3078BF"> 
@@ -95,6 +106,7 @@
                                                            
                                                         </tr>
                                                 @endforeach
+                                                </tbody>
                                             </table>
 
                                         </div>
