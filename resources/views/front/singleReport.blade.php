@@ -175,10 +175,11 @@
                             @endif
                                 
                             @else
-                                <button disabled type="button" class="btn btn-default btn-gold margintp15" title="Login to Buy">
+
+                                <a href="{{route('login')}}" type="button" class="btn btn-default btn-gold margintp15" title="Login to Buy">
                                     <i class="fa fa-shopping-cart fa-lg marginrt" aria-hidden="true"></i>
                                     Buy Now
-                                </button>
+                                </a>
                             @endif
 
 

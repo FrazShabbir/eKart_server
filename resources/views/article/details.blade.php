@@ -253,32 +253,41 @@
                         </div>
                         <div class="blog__hero__text">
                             <ul>
-                              <li>
-                                <a href="{{ route('articles') }}" class="text-primary" >  Articles </a>
-                              </li>
-                              <li>
-                                {{ $article->category->title }}
-                              </li>
-                              <li>
-                                {{ $article->title }}
-                              </li>
+                                <li>
+                                    <a href="{{ route('articles') }}" class="text-primary"> Articles </a>
+                                </li>
+                                <li>
+                                    {{ $article->category->title }}
+                                </li>
+                                <li>
+                                    {{ $article->title }}
+                                </li>
                             </ul>
                         </div>
                         <div class="clear row marginbtm30">
                             <div class="col-sm-12 col-md-12 hidden-xs catg-icon-img">
                                 <img class="img-responsive catg-icon"
                                     src="{{ $article->getFirstMediaUrl('article_main_photo', 'thumb') }}" alt="">
-
+                                @if ($full == false)
+                                    <p class="adv-para">
+                                        {!! substr($article->long_description, 0, 300) !!} <small> <a href="" class="text-primary"> Read More
+                                            </a> </small>
+                                    </p>
+                                @endif
+                                @if ($full == true)
                                 <p class="adv-para">
-                                    {!! substr($article->long_description,0,300)  !!} <small>  <a href="" class="text-primary"> Read More </a> </small>
+                                    {!! $article->long_description !!} 
                                 </p>
-
-                                <p>
-                                    <button class="btn btn-info btn-sm">
-                                        PURCHASE PACKAGE TO CONTINUE TO READ
-                                    </button>
-                                </p>
+                                @endif
+                                @if ($full == false)
+                                    <p>
+                                        <button class="btn btn-info btn-sm">
+                                            PURCHASE PACKAGE TO CONTINUE TO READ
+                                        </button>
+                                    </p>
+                                @endif
                             </div>
+
                             <div class="clear row marginbtm30">
                                 <div class="col-xs-6 col-sm-6 col-md-6 previous-btn">
                                     <a href="" class="blog__details__btns__item">
@@ -399,15 +408,15 @@
                     <div class="view-more-block">
                         <h5 class="view-text">Latest Trade News</h5>
                         <ul class="art-links">
-                            @foreach($latest as $i)
-                            <li><a href="{{route('article.detail',$i->id)}}">{{$i->title}}</a></li>
-                           @endforeach
+                            @foreach ($latest as $i)
+                                <li><a href="{{ route('article.detail', $i->id) }}">{{ $i->title }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
-                </div>
-
             </div>
+
+        </div>
     </section>
 
 
