@@ -12,7 +12,8 @@
                     <div class="breadcrumb__text">
                         <div class="breadcrumb__links">
                             <a href="{{ route('homePage') }}">Home</a> /
-                            <a href="{{ route('sub.industry.template',$subindustry->industry->id ) }}"> {{ $subindustry->industry->industryType }} </a> /
+                            <a href="{{ route('sub.industry.template', $subindustry->industry->id) }}">
+                                {{ $subindustry->industry->industryType }} </a> /
                             <span> {{ $subindustry->subindustry }} </span>
                         </div>
                     </div>
@@ -26,13 +27,12 @@
             <div class="row">
                 <div class="col-lg-12 content-wrap content-reponsive">
                     <div class="content-main pdbtm-none">
-                        <h2 class="artl-heading">  {{ $subindustry->subindustry }} </h2>
+                        <h2 class="artl-heading"> {{ $subindustry->subindustry }} </h2>
                         <div class="clear row marginbtm30">
                             <div class="col-sm-9 col-md-9 hidden-xs catg-icon-img">
                                 <img class="img-responsive catg-icon"
-                                src="{{asset('storage/data/'.$subindustry->banner) }}"
-                                alt="">
-                                <h4 class="indus-title">  {{ $subindustry->subindustry }}  </h4>
+                                    src="{{ asset('storage/data/' . $subindustry->banner) }}" alt="">
+                                <h4 class="indus-title"> {{ $subindustry->subindustry }} </h4>
                                 <p class="discr-text"> {{ $subindustry->description }} </p>
                                 <p class="margintp15"><a class="read-info" href="#">Read for More Information</a>
                                 </p>
@@ -59,30 +59,51 @@
                             </div>
                         </div>
                         <div class=" ">
-                            @if(Auth::user())
-                            @if($subindustry->category_price > 0 )
-                                <form method="post" action="{{route('add.to.cart')}}">
-                                    @csrf
-                                    <input type="hidden" name="subindustry_id" value="{{ $subindustry->id }}"> 
-                                    <input type="hidden" name="price" value="{{ $subindustry->category_price }}">
-                                    <input type="hidden" name="qty" value="1">
-                                    <input type="hidden" name="order_type" value="bulk">
-                                    <ul class="nav nav-tabs"  style="border-bottom: none">
-                                        <li class="nav-item">
-                                            <button type="submit" class="btn btn-default btn-gold  " title="Buy Now">
-                                                <i class="fa fa-shopping-cart fa-lg  " aria-hidden="true"></i>
-                                                Buy Category ${{ $subindustry->category_price }}
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </form>
-                                <br>
-                            @endif
+                            @if (Auth::user())
+                                @if ($subindustry->category_price > 0)
+                                    @php
+                                        $orders = App\Models\Order::with('user')
+                                            ->where('user_id', Auth::user()->id)
+                                            ->get();
+                                        $reportss = [];
+                                        foreach ($orders as $order) {
+                                            $orders_details = App\Models\OrderDetail::where('order_id', $order->id)->get();
+                                            foreach ($orders_details as $order_detail) {
+                                                $reportss[] = $order_detail->subindustry_id;
+                                            }
+                                        }
+                                        //  dd(!in_array($report->id, $reportss));
+                                    @endphp
+                                    @if (!in_array($subindustry->id, $reportss))
+                                    <form method="post" action="{{ route('add.to.cart') }}">
+                                        @csrf
+                                        <input type="hidden" name="subindustry_id" value="{{ $subindustry->id }}">
+                                        <input type="hidden" name="price" value="{{ $subindustry->category_price }}">
+                                        <input type="hidden" name="qty" value="1">
+                                        <input type="hidden" name="order_type" value="bulk">
+                                        <ul class="nav nav-tabs" style="border-bottom: none">
+                                            <li class="nav-item">
+                                                <button type="submit" class="btn btn-default btn-gold  " title="Buy Now">
+                                                    <i class="fa fa-shopping-cart fa-lg  " aria-hidden="true"></i>
+                                                    Buy Category ${{ $subindustry->category_price }}
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                    @else
+                                    <button disabled type="button" class="btn btn-default btn-gold margintp15" title="Already Purchased">
+                                        <i class="fa fa-shopping-cart fa-lg marginrt" aria-hidden="true"></i>
+                                        Already Purchased
+                                    </button>
+                                    @endif
+                                    <br>
+                                @endif
                             @else
-                                <a href="{{route('login')}}" disabled type="button" class="btn btn-default btn-gold" title="Login to Buy">
+                                <a href="{{ route('login') }}" disabled type="button" class="btn btn-default btn-gold"
+                                    title="Login to Buy">
                                     <i class="fa fa-shopping-cart fa-lg  " aria-hidden="true"></i>
-                                    Buy Now  $ {{ $subindustry->category_price }}
-                                </a> 
+                                    Buy Now $ {{ $subindustry->category_price }}
+                                </a>
                             @endif
                         </div>
                         <div class="product__details__tab">
@@ -125,54 +146,56 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                    @if($reports->count() > 0)
-                                    @foreach ($reports as $report)
-                                        <div class="product__details__tab__content">
-                                            <div class="product__details__tab__content__item">
-                                                <div class="col-md-12 as-min">
-                                                    <div class="col-sm-9 col-md-9 as-mi storeLog">
-                                                        {{--  --}}
-                                                        <h5> <a href="{{ route('report-details',$report->id) }}"  data-report_id={{ $report->id}} >   {{ $report->title }} </a></h5>
+                                    @if ($reports->count() > 0)
+                                        @foreach ($reports as $report)
+                                            <div class="product__details__tab__content">
+                                                <div class="product__details__tab__content__item">
+                                                    <div class="col-md-12 as-min">
+                                                        <div class="col-sm-9 col-md-9 as-mi storeLog">
+                                                            {{--  --}}
+                                                            <h5> <a href="{{ route('report-details', $report->id) }}"
+                                                                    data-report_id={{ $report->id }}>
+                                                                    {{ $report->title }} </a></h5>
                                                             <p class="card-text">
-                                                            @if($report->overview)
-                                                                @php
-                                                                        $data = substr($report->overview->overview,0, 1520);
-                                                                @endphp
+                                                                @if ($report->overview)
+                                                                    @php
+                                                                        $data = substr($report->overview->overview, 0, 1520);
+                                                                    @endphp
 
-                                                                {{ strip_tags($data) }}...
-
-                                                            @endif
+                                                                    {{ strip_tags($data) }}...
+                                                                @endif
                                                             </p>
-                                                    </div>
+                                                        </div>
 
-                                                    <div class="col-sm-3 col-md-3 hidden-xs as-mi1">
-                                                        <img src="{{asset('storage/data/reports/'.$report->photo)}}"
-                                                            class="img-reponsive mining-img">
+                                                        <div class="col-sm-3 col-md-3 hidden-xs as-mi1">
+                                                            <img src="{{ asset('storage/data/reports/' . $report->photo) }}"
+                                                                class="img-reponsive mining-img">
+                                                        </div>
                                                     </div>
+                                                    <div class="author-text">
+                                                        <p><strong>Authors:</strong> {{ $report->author }} <strong>Publish
+                                                                Date:</strong> {{ $report->created_at }} </p>
+                                                    </div>
+                                                    <div class="tags">
+                                                        <a href="#">Overview</a> <a href="#">Contents</a>
+                                                        <a href="#">Project Code</a> <a href="#">Downloads</a>
+                                                        <span class="share-links"> <a href="#"> Share</a> / <a
+                                                                href="#">Follow</a> / <a
+                                                                href="#">Recommends</a> / <a
+                                                                href="#">Suggest</a></span>
+                                                    </div>
+                                                    <p class="report-block"></p>
                                                 </div>
-                                                <div class="author-text">
-                                                    <p><strong>Authors:</strong> {{ $report->author }}  <strong>Publish
-                                                            Date:</strong>  {{ $report->created_at }} </p>
-                                                </div>
-                                                <div class="tags">
-                                                    <a href="#">Overview</a> <a href="#">Contents</a>
-                                                    <a href="#">Project Code</a> <a href="#">Downloads</a>
-                                                    <span class="share-links"> <a href="#"> Share</a> / <a
-                                                            href="#">Follow</a> / <a href="#">Recommends</a> / <a
-                                                            href="#">Suggest</a></span>
-                                                </div>
-                                                <p class="report-block"></p>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
                                     @else
-                                    <div class="author-text text-center" >
-                                        <br>
+                                        <div class="author-text text-center">
+                                            <br>
                                             <p class="text-danger">
-                                                    <strong> No reports against "{{ $subindustry->subindustry }}"  </strong>
+                                                <strong> No reports against "{{ $subindustry->subindustry }}" </strong>
 
                                             </p>
-                                    </div>
+                                        </div>
                                     @endif
 
                                 </div>
@@ -189,22 +212,23 @@
 
 @section('customJs')
     <script>
-
-        $(document).ready(function(){
+        $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-                $(".storeLog a").click(function() {
+            $(".storeLog a").click(function() {
                 var report_id = $(this).data('report_id');
-               @if (Auth::check())
+                @if (Auth::check())
                     $.ajax({
-                        type:'POST',
-                        url:"{{ route('store.log') }}",
-                        data:{report_id:report_id,},
-                        success:function(data){
-                        console.log(data);
+                        type: 'POST',
+                        url: "{{ route('store.log') }}",
+                        data: {
+                            report_id: report_id,
+                        },
+                        success: function(data) {
+                            console.log(data);
                         }
                     });
                 @endif
