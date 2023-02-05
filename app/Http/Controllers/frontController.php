@@ -60,7 +60,8 @@ class frontController extends Controller
 
     public function articleDetails($id){
         $article = Article::findOrFail($id);
-        return view('article.details',compact('article'));
+        $latest= Article::where('id','!=',$article->id)->orderBy('id','desc')->take(5)->get();
+        return view('article.details',compact('article','latest'));
     }
 
 

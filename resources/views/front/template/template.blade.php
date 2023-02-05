@@ -31,10 +31,10 @@
         <div class="row">
             <div class="col-lg-12 content-wrap content-reponsive">
                 <div class="content-main pdbtm-none">
-                    <h2 class="artl-heading indu-heading">  {{ $industry->industryType}} </h2>
+                    <h2 class="artl-heading indu-heading">  {{ $industry->industryType}}</h2>
                     <div class="clear row marginbtm30">
                         <div class="col-sm-9 col-md-9 hidden-xs catg-icon-img">
-                            <img class="img-responsive catg-icon img-thumbnail"  src="{{asset('storage/data/reports/'.$industryTemplate->banner) }}" alt="">
+                            <img class="img-responsive catg-icon img-thumbnail"  src="{{asset('storage/data/industry/'.$industry->banner) }}" alt="dasd">
                             <br> <hr>
                             {!! $industryTemplate->description !!}
 

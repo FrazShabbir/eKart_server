@@ -159,7 +159,12 @@
                                 <textarea class="form-control report-txt summernote2"  placeholder="" name="faq"   ></textarea>
                             </div>
                         </div>
-                        <button type="submit">Update</button>
+                        <div class="row" >
+<div class="col-12 text-right">
+    <button type="submit" class="btn btn-primary">Add Work</button>
+
+</div>
+                        </div>
                     </form>
                 </div>
 

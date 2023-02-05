@@ -399,11 +399,9 @@
                     <div class="view-more-block">
                         <h5 class="view-text">Latest Trade News</h5>
                         <ul class="art-links">
-                            <li><a href="#">Technical Articles</a></li>
-                            <li><a href="#">Market Forecasts</a></li>
-                            <li><a href="#">Upcomming Research</a></li>
-                            <li><a href="#">Working Papers</a></li>
-                            <li><a href="#">Industry Insights</a></li>
+                            @foreach($latest as $i)
+                            <li><a href="{{route('article.detail',$i->id)}}">{{$i->title}}</a></li>
+                           @endforeach
                         </ul>
                     </div>
                 </div>

@@ -97,7 +97,6 @@ class frontReportController extends Controller
 
     public function subIndustryTemplate($id)
     {
-
             $industryTemplate = IndustryTemplate::first();
             $industry = Industry::where('id',$id)->first();
             $subindustry = Subindustry::where('industry_id',$id)->get();

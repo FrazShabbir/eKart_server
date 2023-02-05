@@ -171,7 +171,9 @@ class reportController extends Controller
             $overview->uploadDoc = $docFile;
             $overview->uploadPpt = $pptFile;
             if($overview->save()){
+                if($request->contentTitle){
                 $contentsTitle = count($request->contentTitle);
+
                 for ($i = 0; $i < $contentsTitle; $i++) {
                     $content = new Content;
                     $content->report_id = $report->id;
@@ -181,6 +183,8 @@ class reportController extends Controller
                     $content->pages =  $request['contentPages'][$i];
                     $content->save();
                 }
+            }
+
                 if($request->action == 'customer'){
                     return redirect()->route('admin.my_reports')->with('success','Report Created');
                 }else{
