@@ -28,7 +28,7 @@ class reportController extends Controller
     public function index()
     {
        
-        
+        dd('ss');
              $reports = Report::with('project')->get();
             return view('admin.reports.index',compact('reports'));
     }

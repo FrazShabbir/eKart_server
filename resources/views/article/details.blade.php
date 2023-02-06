@@ -275,16 +275,40 @@
                                     </p>
                                 @endif
                                 @if ($full == true)
-                                <p class="adv-para">
-                                    {!! $article->long_description !!} 
-                                </p>
+                                    <p class="adv-para">
+                                        {!! $article->long_description !!}
+                                    </p>
                                 @endif
                                 @if ($full == false)
-                                    <p>
-                                        <button class="btn btn-info btn-sm">
-                                            PURCHASE PACKAGE TO CONTINUE TO READ
-                                        </button>
-                                    </p>
+                                    @php
+                                        $orders = App\Models\Order::with('user')
+                                            ->where('user_id', Auth::user()->id)
+                                            ->get();
+                                        $reportss = [];
+                                        foreach ($orders as $order) {
+                                            $orders_details = App\Models\OrderDetail::where('order_id', $order->id)->get();
+                                            foreach ($orders_details as $order_detail) {
+                                                $reportss[] = $order_detail->article_id;
+                                            }
+                                        }
+                                        
+                                    @endphp
+                                    @if (!in_array($article->id, $reportss))
+                                        <form method="post" action="{{ route('add.to.cart') }}">
+                                            @csrf
+                                            <input type="hidden" name="subindustry_id" value="">
+                                            <input type="hidden" name="article_id" value="{{ $article->id }}">
+                                            <input type="hidden" name="price" value="{{ $article->price }}">
+                                            <input type="hidden" name="qty" value="1">
+                                            <input type="hidden" name="order_type" value="single">
+                                            <button type="submit" class="btn btn-default btn-gold margintp15"
+                                                title="Buy Now">
+                                                <i class="fa fa-shopping-cart fa-lg marginrt" aria-hidden="true"></i>
+                                                Buy Now
+                                            </button>
+                                        </form>
+                                   
+                                    @endif
                                 @endif
                             </div>
 

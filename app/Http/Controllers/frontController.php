@@ -75,14 +75,22 @@ class frontController extends Controller
                     $reports[] = $order_detail->subindustry_id;
                 }
             }
+            $reports_2 = [];
+            foreach ($orders as $order) {
+                $orders_details_2 = OrderDetail::where('order_id', $order->id)->get();
+                foreach ($orders_details_2 as $order_detail) {
+                    $reports_2[] = $order_detail->article_id;
+                }
+            }
 
             // dd($article->subindustry_id,$reports);
-            if (in_array($article->subindustry_id, $reports)) {
+            if (in_array($article->subindustry_id, $reports) or  in_array($article->id, $reports_2)) {
                 $full = true;
             } else {
                 $full = false;
             }
         }
+
 // return $full;
         $latest = Article::where('id', '!=', $article->id)->orderBy('id', 'desc')->take(5)->get();
         return view('article.details', compact('article', 'latest', 'full'));

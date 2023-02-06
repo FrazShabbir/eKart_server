@@ -72,7 +72,7 @@
                                                 $reportss[] = $order_detail->subindustry_id;
                                             }
                                         }
-                                        //  dd(!in_array($report->id, $reportss));
+                                      
                                     @endphp
                                     @if (!in_array($subindustry->id, $reportss))
                                     <form method="post" action="{{ route('add.to.cart') }}">

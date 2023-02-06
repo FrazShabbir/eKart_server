@@ -45,6 +45,24 @@ class CartController extends Controller
 
         }
 
+        if ($request->article_id) {
+            $orders = Order::with('user')->where('user_id', Auth::user()->id)->get();
+            $reports = [];
+            foreach ($orders as $order) {
+                $orders_details = OrderDetail::where('order_id', $order->id)->get();
+                foreach ($orders_details as $order_detail) {
+                    $reports[] = $order_detail->article_id;
+                }
+            }
+            // dd($reports, $request->article_id);
+            if (in_array($request->article_id, $reports)){
+            //   dd('You have already purchased this report');
+                // alert()->info('You have already purchased this report', 'Info');
+                return redirect()->back()->with('error', 'You have already purchased this report');
+            }
+
+        }
+        
         if ($request->subindustry_id) {
             $orders = Order::with('user')->where('user_id', Auth::user()->id)->get();
             $reportss = [];
@@ -67,14 +85,20 @@ class CartController extends Controller
         // dd($request->subindustry_id);
         $subindustry_id = $request->subindustry_id;
         $report_id = $request->report_id;
+        $article_id = $request->article_id;
         if ($subindustry_id == null) {
             $subindustry_id = 0;
         }
         if ($report_id == null) {
             $report_id = 0;
         }
+        if ($article_id == null) {
+            $article_id = 0;
+        }
+
         $check_cart_item = MyCart::where('subindustry_id', $subindustry_id)->where('user_id', Auth::user()->id)->first();
         $check_cart_report = MyCart::where('report_id', $report_id)->where('user_id', Auth::user()->id)->first();
+        $check_cart_article = MyCart::where('article_id', $article_id)->where('user_id', Auth::user()->id)->first();
 
         if ($check_cart_item) {
             $new_qty = ($check_cart_item->qty + 1);
@@ -87,11 +111,19 @@ class CartController extends Controller
             $check_cart_report->qty = $new_qty_2;
             $check_cart_report->total = ($check_cart_report->total * $new_qty_2);
             $check_cart_report->save();
-        } else {
+        }
+        elseif ($check_cart_article) {
+
+            $new_qty_2 = ($check_cart_article->qty + 1);
+            $check_cart_article->qty = $new_qty_2;
+            $check_cart_article->total = ($check_cart_article->total * $new_qty_2);
+            $check_cart_article->save();
+        }else {
 
             $cart = new MyCart;
             $cart->subindustry_id = $request->subindustry_id;
             $cart->report_id = $request->report_id;
+            $cart->article_id = $request->article_id;
             $cart->price = $request->price;
             $cart->qty = 1;
             $cart->total = ($request->price * 1);
@@ -139,6 +171,7 @@ class CartController extends Controller
                 $order_detail->order_id = $order->id;
                 $order_detail->type = $cart->type;
                 $order_detail->report_id = $cart->report_id;
+                $order_detail->article_id = $cart->article_id;
                 $order_detail->subindustry_id = $cart->subindustry_id;
                 $order_detail->price = $cart->price;
                 $order_detail->qty = $cart->qty;
