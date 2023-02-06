@@ -201,7 +201,7 @@
                         <div class="clear row marginbtm30">
                             <div class="col-xs-7 col-sm-7 col-md-7 pdltrt-xs-none">
                                 <div class="report-detail-heading">
-                                    <h1> {{ $report->title }} </h1>
+                                    <h1> {{ $report->title }}</h1>
                                 </div>
                                 <div class="author-text">
                                     <p><strong>Authors :</strong> {{ $report->author }} <strong>Publish Date
@@ -238,6 +238,7 @@
                                     <div class="product__details__tab__content">
                                         <div class="clear row marginbtm30">
                                             <div class="col-xs-12 col-sm-12 col-md-12 pdltrt-xs-none single-box">
+                                               
                                                 @if ($report->overview)
                                                     {!! $report->overview->overview !!}
                                                 @endif
