@@ -35,7 +35,7 @@
                     <div class="clear row marginbtm30">
                         <div class="col-sm-9 col-md-9 hidden-xs catg-icon-img">
                             <img class="img-responsive catg-icon"
-                                src="{{asset('storage/data/reports/'.$regionTemplate->banner) }}" alt="">
+                                src="{{asset('storage/data/region/'.$regionTemplate->banner) }}" alt="">
                                 <br> <br>
                             {!! $regionTemplate->description !!}
 
