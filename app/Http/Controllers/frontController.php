@@ -63,6 +63,7 @@ class frontController extends Controller
     public function articleDetails($id)
     {
         $article = Article::findOrFail($id);
+        // dd($article->subindustry_id);
         $full = false;
         //  dd($article->subindustry_id);
         if (Auth::user()) {
@@ -84,7 +85,7 @@ class frontController extends Controller
             }
 
             // dd($article->subindustry_id,$reports);
-            if (in_array($article->subindustry_id, $reports) or  in_array($article->id, $reports_2)) {
+            if (in_array($article->subindustry_id, $reports)) {
                 $full = true;
             } else {
                 $full = false;
