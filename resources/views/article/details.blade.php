@@ -270,7 +270,7 @@
                                     src="{{ $article->getFirstMediaUrl('article_main_photo', 'thumb') }}" alt="">
                                 @if ($full == false)
                                     <p class="adv-para">
-                                        {!! substr($article->long_description, 0, 300) !!} <small> <a href="" class="text-primary"> Read More
+                                        {!! substr($article->description, 0, 300) !!} <small> <a href="" class="text-primary"> Read More
                                             </a> </small>
                                     </p>
                                 @endif
