@@ -308,7 +308,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="tags pull-right finan-more-btn">
-                                <a href="">View More</a>
+                                <a href="">View More </a>
                             </div>
                         </div>
                     </div>
