@@ -67,7 +67,7 @@ class reportController extends Controller
     }
 
     public function save(Request $request){
-// dd($request->all());
+
         $request->validate([
             'projectType' => 'required',
             'serviceType' => 'required',
@@ -200,13 +200,16 @@ class reportController extends Controller
     }
     public function update(Request $request)
     {
-        // dd($request->all());
+        //  dd($request->all());
         $request->validate([
             'report_id' => 'required',
             'overview_id' => 'required',
         ]);
         $report = Report::where('id',$request->report_id)->first();
         $overview = Overview::find($request->overview_id)->first();
+
+       
+
         $report->project_id = $request->projectType;
         $report->service_id = $request->serviceType;
         $report->industry_id = $request->industryType;
@@ -221,6 +224,7 @@ class reportController extends Controller
         $report->totalPages = $request->totalPages;
         $report->status = $request->status;
         $report->price = $request->price;
+
         if ($request->hasFile('projectPhoto')) {
             $filenameWithExt = $request->file('projectPhoto')->getClientOriginalName();
             // Get Filename
@@ -253,6 +257,9 @@ class reportController extends Controller
             }
 
         }
+        if($request->content_id){
+
+        
         foreach($request->content_id as $item => $v){
             $data = array(
                 'title' => $request->contentTitle[$item],
@@ -262,6 +269,7 @@ class reportController extends Controller
             $content = Content::where('id',$request->content_id[$item])->first();
             $content->update($data);
         }
+    }
         if ($request->hasFile('contentFile')) {
             $filenameWithExt = $request->file('contentFile')->getClientOriginalName();
             // Get Filename
@@ -314,13 +322,16 @@ class reportController extends Controller
         else {
             $pptFile = $overview->uploadPpt;
         }
-        $overview->overview = $request->overview;
-        $overview->faq = $request->faq;
-        $overview->fileTableContent = $contentFile;
-        $overview->reportOverView = $overviewFile;
-        $overview->uploadDoc = $docFile;
-        $overview->uploadPpt = $pptFile;
-        $overview->save();
+     
+        $report->overview->overview = $request->overview;
+        $report->overview->faq = $request->faq;
+        $report->overview->fileTableContent = $contentFile;
+        $report->overview->reportOverView = $overviewFile;
+        $report->overview->uploadDoc = $docFile;
+        $report->overview->uploadPpt = $pptFile;
+        $report->overview->save();
+        
+        // dd($overview);
         return redirect()->back()->with('success','Record Updated');
     }
     function questionDelete(Request $request)
