@@ -108,7 +108,7 @@
                                         <div class="blog_item">
                                             <div class="blog_image">
                                                 <img class="img-responsive img-fluid"
-                                                src="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb')  }}" alt="images">
+                                                src="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb') ??  }}" alt="images">
                                             </div>
                                             <div class="blog_details">
                                                 <div class="blog_title">
@@ -322,7 +322,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-3">
                             <div class="blog__item">
                                 <div class="blog__item__pic set-bg"
-                                data-setbg="{{asset('storage/app/public/data/reports/'.$market->photo) }}"></div>
+                                data-setbg="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb')  }}"></div>
                                 <div class="blog__item__text">
                                     <span><img src="{{asset('public/frontEnd/img/calendar.png')}}" alt="">   {{ \Carbon\Carbon::parse($market->created_at)->format('D-m-Y') }}  </span>
                                     <h5>  {{   $market->title }}  </h5>
