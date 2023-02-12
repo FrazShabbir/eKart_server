@@ -108,7 +108,7 @@
                                         <div class="blog_item">
                                             <div class="blog_image">
                                                 <img class="img-responsive img-fluid"
-                                                src="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb') ??  }}" alt="images">
+                                                src="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb')  }}" alt="images">
                                             </div>
                                             <div class="blog_details">
                                                 <div class="blog_title">
