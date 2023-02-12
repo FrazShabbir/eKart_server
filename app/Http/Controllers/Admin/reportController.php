@@ -469,23 +469,23 @@ class reportController extends Controller
         $artice->long_description = $request->long_description;
         $artice->author = $request->author;
 
-        if ($request->hasFile('photo')) {
-            $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg|max:1024',
-            ]);
-            $file = $request->file('photo');
-            $extension = $file->getClientOriginalExtension();
-            $filename = rand(11,999999).'-'.time() . '.' . $extension;
-            $file->move('uploads/photo', $filename);
-            $artice->photo = 'uploads/photo/'.$filename;
-        }
-
-        $artice->save();
-
         // if ($request->hasFile('photo')) {
-        //     $artice->addMediaFromRequest('photo')->toMediaCollection('article_main_photo');
-        // } 
+        //     $request->validate([
+        //         'photo' => 'image|mimes:jpeg,png,jpg|max:1024',
+        //     ]);
+        //     $file = $request->file('photo');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = rand(11,999999).'-'.time() . '.' . $extension;
+        //     $file->move('uploads/photo', $filename);
+        //     $artice->photo = 'uploads/photo/'.$filename;
+        // }
+
        
+
+        if ($request->hasFile('photo')) {
+            $artice->addMediaFromRequest('photo')->toMediaCollection('article_main_photo');
+        } 
+        $artice->save();
         return redirect()->route('admin.report.article.index')->with('success','New artice has been added');
 
     }
@@ -547,22 +547,22 @@ class reportController extends Controller
         $artice->author = $request->author;
         $artice->save();
        
-        // if ($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             
-        //     $artice->clearMediaCollection('photo');
-        //     $artice->addMediaFromRequest('photo')->toMediaCollection('photo');
-        // } 
+            $artice->clearMediaCollection('photo');
+            $artice->addMediaFromRequest('photo')->toMediaCollection('photo');
+        } 
 
-         if ($request->hasFile('photo')) {
-            $request->validate([
-                'photo' => 'image|mimes:jpeg,png,jpg|max:1024',
-            ]);
-            $file = $request->file('photo');
-            $extension = $file->getClientOriginalExtension();
-            $filename = rand(11,999999).'-'.time() . '.' . $extension;
-            $file->move('uploads/photo', $filename);
-            $artice->photo = 'uploads/photo/'.$filename;
-        }
+        //  if ($request->hasFile('photo')) {
+        //     $request->validate([
+        //         'photo' => 'image|mimes:jpeg,png,jpg|max:1024',
+        //     ]);
+        //     $file = $request->file('photo');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = rand(11,999999).'-'.time() . '.' . $extension;
+        //     $file->move('uploads/photo', $filename);
+        //     $artice->photo = 'uploads/photo/'.$filename;
+        // }
 
         $artice->save();
         // dd($request->all(),$artice);
