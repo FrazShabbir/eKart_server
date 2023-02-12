@@ -40,7 +40,7 @@ class frontController extends Controller
         $markets = Article::where('category_id', 3)->get();
         $financialmarkets = Article::where('category_id', 4)->get();
         $chemicalsandmaterials = Article::where('category_id', 5)->get();
-       
+
         return view('index', compact('home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials'));
 
     }
@@ -50,6 +50,17 @@ class frontController extends Controller
 
         $article_categories = ArticleCategory::with('articles')->get();
         return view('article.index', compact('article_categories'));
+    }
+
+    public function articleByTypeall($id)
+    {
+        $article_cat = ArticleCategory::where('title', $id)->first();
+        $articles = Article::where('category_id', $article_cat->id)->get();
+
+        //  dd($article_cat);
+        return view('articles_cat')
+        ->with('articles', $articles)
+        ->with('article_cat', $article_cat);
     }
 
     public function articleByType($type, $id)
