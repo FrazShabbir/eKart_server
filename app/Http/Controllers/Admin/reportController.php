@@ -200,6 +200,7 @@ class reportController extends Controller
     }
     public function update(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'report_id' => 'required',
             'overview_id' => 'required',
