@@ -323,7 +323,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-3">
                             <div class="blog__item">
                                 <div class="blog__item__pic set-bg"
-                                data-setbg="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb')  }}"></div>
+                                data-setbg="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb') }}"></div>
                                 <div class="blog__item__text">
                                     <span><img src="{{asset('public/frontEnd/img/calendar.png')}}" alt="">   {{ \Carbon\Carbon::parse($market->created_at)->format('D-m-Y') }}  </span>
                                     <h5>  {{   $market->title }}  </h5>
@@ -362,7 +362,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-3">
                             <div class="blog__item">
                                 <div class="blog__item__pic set-bg"
-                                data-setbg="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb')  }}"></div>
+                                data-setbg="{{$market->getFirstMediaUrl('article_main_photo', 'thumb')  }}"></div>
                                 <div class="blog__item__text">
                                     <span><img src="{{asset('public/frontEnd/img/calendar.png')}}" alt="">
                                         {{ \Carbon\Carbon::parse($market->created_at)->format('D-m-Y') }}

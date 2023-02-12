@@ -549,8 +549,8 @@ class reportController extends Controller
        
         if ($request->hasFile('photo')) {
             
-            $artice->clearMediaCollection('photo');
-            $artice->addMediaFromRequest('photo')->toMediaCollection('photo');
+            $artice->clearMediaCollection('article_main_photo');
+            $artice->addMediaFromRequest('photo')->toMediaCollection('article_main_photo');
         } 
 
         //  if ($request->hasFile('photo')) {
