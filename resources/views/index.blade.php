@@ -314,7 +314,8 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="tags pull-right finan-more-btn">
-                                <a href="{{ route('article.type.all','financialmarkets')}}">View More</a>
+                                <a href="{{ route('article.type',['financialmarkets',4])}}">View More</a>
+                                {{-- <a href="{{ route('article.type', [$article->title,$article->id]) }}">View More</a> --}}
                             </div>
                         </div>
                     </div>
@@ -351,7 +352,9 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="tags pull-right finan-more-btn">
-                                <a href="{{ route('article.type.all','chemicalsandmaterials')}}">View More</a>
+                                {{-- <a href="{{ route('article.type.all','chemicalsandmaterials')}}">View More</a> --}}
+                                <a href="{{ route('article.type',['chemicalsandmaterials',5])}}">View More</a>
+
                             </div>
                         </div>
                     </div>
@@ -359,7 +362,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-3">
                             <div class="blog__item">
                                 <div class="blog__item__pic set-bg"
-                                data-setbg="{{asset('storage/app/public/data/reports/'.$market->photo) }}"></div>
+                                data-setbg="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb')  }}"></div>
                                 <div class="blog__item__text">
                                     <span><img src="{{asset('public/frontEnd/img/calendar.png')}}" alt="">
                                         {{ \Carbon\Carbon::parse($market->created_at)->format('D-m-Y') }}
