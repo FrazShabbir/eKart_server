@@ -21,6 +21,7 @@ use App\Models\Subindustry;
 use App\Models\UserDetail;
 use App\Models\ProjectStatus;
 use App\Models\ReportIssue;
+use App\Models\Requirement;
 use Illuminate\Support\Facades\Auth;
 class userController extends Controller
 {
@@ -86,7 +87,10 @@ class userController extends Controller
     }
     public function profile()
     {
+        
         $user = User::where('id',Auth::user()->id)->with('userDetail')->first();
+
+     
         return view('customer.profile.index',compact('user'));
     }
     public function work()
@@ -106,7 +110,19 @@ class userController extends Controller
         $managers = User::where('role','manager')->get();
         $employees = User::where('role','employee')->get();
         // dd($countries);
+
+        $projects           = Project::select('id','projectType')->get();
+        $services           = Service::select('id','serviceType')->get();
+        $industries         = Industry::select('id','industryType')->get();
+        $subindustries      = Subindustry::select('id','subindustry')->get();
+        $regions            = Region::select('id','region')->get();
+        $countries          = Country::select('id','country')->get();
+        $managers = User::role('Manager')->get();
+        $employees = User::role('Employee')->get();
         return view('customer.workAdd',compact('projects','services','industries','subindustries','regions','countries','managers','employees'));
+
+
+        // return view('customer.workAdd',compact('projects','services','industries','subindustries','regions','countries','managers','employees'));
     }
 
     public function orders()
@@ -117,11 +133,28 @@ class userController extends Controller
     }
     public function editProfile()
     {
+        // dd(Auth::user()->id);
         $auth_id = Auth::user()->id;
         $user = User::with('UserDetail')->where('id',$auth_id)->first();
         $industries = Industry::get();
+        $userDetails = UserDetail::where('user_id',Auth::user()->id)->first();
+        if(!$userDetails){
+            $userDetails = new UserDetail();
+            $userDetails->user_id = Auth::user()->id;
+            $userDetails->save();
+            $user = User::with('UserDetail')->where('id',$auth_id)->first();
+
+        }
+        // dd($user);
+
         return view('customer.profile.edit',compact('user','industries'));
     }
+
+    public function requirementsApplied(){
+        $requirements = Requirement::get();
+        return view('customer.requirementsApplied',compact('requirements'));
+    }
+
     public function notification()
     {
         return view('customer.notification');

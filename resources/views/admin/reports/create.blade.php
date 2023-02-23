@@ -153,6 +153,7 @@
                                     <textarea class="form-control report-txt summernote2"  placeholder="" name="faq"   ></textarea>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-sm-3 form-group">
                                     <label>Table of contents</label>
@@ -186,7 +187,7 @@
                                         <tbody>
                                             <tr>
                                                 <td class="col-sm-4">
-                                                    <input type="text" name="contentTitle[]" class="form-control"  placeholder="Title"  />
+                                                    <textarea type="text" name="contentTitle[]" class="form-control summernote3"  placeholder="Title"  ></textarea>
                                                 </td>
                                                 <td class="col-sm-7">
                                                     <input type="text" name="contentDetail[]" class=" summernote2 form-control" placeholder="Content"   />
@@ -284,13 +285,18 @@
         height: 100
       });
 
+      $('.summernote3').summernote({
+        placeholder: "Title",
+        tabsize:8,
+        height: 100
+      });
         var counter = 0;
 
         $("#addrow").on("click", function() {
             var newRow = $("<tr>");
             var cols = "";
 
-            cols += '<td><input type="text" class="form-control" required placeholder="Title" name="contentTitle[]' + counter + '"/></td>';
+            cols += '<td><input type="text" class="form-control summernote3 " required placeholder="Title" name="contentTitle[]' + counter + '"/></td>';
             cols += '<td><input type="text" class="form-control summernote2"   placeholder="Content" name="contentDetail[]' + counter + '"/></td>';
             cols += '<td><input type="number" class="form-control" required placeholder="Pages #" name="contentPages[]' + counter + '"/></td>';
 
@@ -300,6 +306,11 @@
             counter++;
             $('.summernote2').summernote({
             placeholder: 'Overview',
+            tabsize:8,
+            height: 100
+            });
+            $('.summernote3').summernote({
+            placeholder: 'Title',
             tabsize:8,
             height: 100
             });

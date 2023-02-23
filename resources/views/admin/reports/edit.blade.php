@@ -231,10 +231,10 @@
                                             <tr>
                                                 <input type="hidden" name="content_id[]" class="form-control" value="{{ $content->id }}"  />
 
-                                                <td class="col-sm-2">
-                                                    <input type="text" name="contentTitle[]" class="form-control" value="{{ $content->title }}"  />
+                                                <td class="col-sm-3">
+                                                    <textarea  name="contentTitle[]" class="form-control summernote3" >{{ $content->title }}</textarea>
                                                 </td>
-                                                <td class="col-sm-7">
+                                                <td class="col-sm-6">
                                                     
                                                     <textarea name="contentDetail[]" class="form-control summernote1">{{ $content->content }}</textarea>
                                                 </td>
@@ -410,6 +410,12 @@
       });
 
       $('.summernote2').summernote({
+        placeholder: "Faq's",
+        tabsize:8,
+        height: 200
+      });
+
+      $('.summernote3').summernote({
         placeholder: "Faq's",
         tabsize:8,
         height: 200

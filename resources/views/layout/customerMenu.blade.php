@@ -8,6 +8,7 @@
                         <ul class="art-links1">
 
                             <li><a href="{{ route('customer.dashboard')}}"><i class="fa fa-th-large"> </i> Dashboard</a></li>
+                            <li><a href="{{ route('customer.requirements.applied')}}"><i class="fa fa-th-large"> </i> Applied Requirements</a></li>
                             <li><a href="{{ route('customer.profile')}}"><i class="fa fa-user-circle"> </i>Profile</a></li>
                             <li data-toggle="collapse" data-target="#work" class="collapsed">
                                 <a href="#"><i class="fa fa-edit"></i> Works <span class="arrow"></span></a>

@@ -38,7 +38,7 @@
                             <div class="row">
 
                                 <input type="hidden" name="id" value="{{ $user->id }}">
-                                <input type="hidden" name="UserDetailId" value="{{ $user->UserDetail->id }}">
+                                <input type="hidden" name="UserDetailId" value="{{ $user->UserDetail->id  }}">
                                 <div class="col-lg-9">
                                     <div class="checkout__input">
                                         <p>Name<span>*</span></p>
@@ -47,11 +47,11 @@
                                     </div>
                                     <div class="checkout__input">
                                         <p>Designation<span>*</span></p>
-                                        <input type="text" placeholder="Manager, Student etc." value="{{ $user->UserDetail->designation }}" name="designation">
+                                        <input type="text" placeholder="Manager, Student etc." value="{{ $user->UserDetail->designation ?? '' }}" name="designation">
                                     </div>
                                     <div class="checkout__input">
                                         <p>Company / Institute Name<span>*</span></p>
-                                        <input type="text" placeholder="ByReddy Consulting Pvt Ltd" value="{{ $user->UserDetail->company }}" name="company">
+                                        <input type="text" placeholder="ByReddy Consulting Pvt Ltd" value="{{ $user->UserDetail->company ?? '' }}" name="company">
                                     </div>
                                     <div class="checkout__input mb-2">
                                         <p>Industry Type</p>
@@ -59,7 +59,7 @@
 
                                             @foreach ($industries as $industry )
                                                     <option value="{{  $industry->id }}"
-                                                        @if($industry->id ==  $user->UserDetail->industry_id ) selected @endif>
+                                                        @if($industry->id ==  $user->UserDetail->industry_id ?? '') selected @endif>
                                                         {{  $industry->industryType}}
                                                     </option>
                                             @endforeach

@@ -206,6 +206,7 @@ class userController extends Controller
 
     public function profile()
     {
+        
         return view('admin.user.profile');
     }
     public function customerProfile()
@@ -239,6 +240,7 @@ class userController extends Controller
 
     public function profileUpdate(Request $request)
     {
+       
         $request->validate([
             'name' => 'required',
         ]);

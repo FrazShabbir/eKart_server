@@ -54,7 +54,7 @@ class reportController extends Controller
     public function create()
     {   
         
-        
+      
             $projects           = Project::select('id','projectType')->get();
             $services           = Service::select('id','serviceType')->get();
             $industries         = Industry::select('id','industryType')->get();
@@ -64,7 +64,8 @@ class reportController extends Controller
             $managers = User::role('Manager')->get();
             $employees = User::role('Employee')->get();
             return view('admin.reports.create',compact('projects','services','industries','subindustries','regions','countries','managers','employees'));
-    }
+    
+        }
 
     public function save(Request $request){
 

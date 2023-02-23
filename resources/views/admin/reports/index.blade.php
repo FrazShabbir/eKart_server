@@ -20,8 +20,8 @@
                             <th>Service Type</th>
                             <th>Industry</th>
                             <th>Region</th>
-                            <th>Manager by</th>
-                            <th>Submited by</th>
+                            <th>Submitted Person</th>
+                            <th>Customer, Employee, Manager</th>
                             <th>Approve Status</th>
                             <th>Publish Status</th>
                             <th>Date</th>
@@ -36,8 +36,8 @@
                             <th>Service Type</th>
                             <th>Industry</th>
                             <th>Region</th>
-                            <th>Manager by</th>
-                            <th>Submited by</th>
+                            <th>Submitted Person</th>
+                            <th>Customer, Employee, Manager</th>
                             <th>Approve Status</th>
                             <th>Publish Status</th>
                             <th>Date</th>

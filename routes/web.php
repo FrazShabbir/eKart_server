@@ -72,6 +72,7 @@ Route::post('/user/profile/update', [
 ]);
 Route::group(['as'=> 'customer.','prefix'=>'customer','middleware' => 'auth','namespace'=>'App\Http\Controllers\Customer'], function () {
     Route::get('dashboard',     ['as' => 'dashboard','uses' => 'userController@dashboard']);
+    Route::get('applied-requirements',     ['as' => 'requirements.applied','uses' => 'userController@requirementsApplied']);
     Route::get('profile',       ['as' => 'profile','uses' => 'userController@profile']);
     Route::get('work',          ['as' => 'work','uses' => 'userController@work']);
     Route::get('work/add',      ['as' => 'work.add','uses' => 'userController@workAdd']);

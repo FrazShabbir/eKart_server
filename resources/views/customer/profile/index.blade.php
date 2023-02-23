@@ -87,12 +87,13 @@
                                     <p> {{ Str::ucfirst($user->role)  }} </p>
                                 </div>
                                 <div class="skills-block text-center" >
-
+                                    @if( $user->UserDetail)
                                     <button style="text-align:center;width:100%">
                                         <a href="{{asset('storage/data/'.$user->UserDetail->resume) }}"  download="download">
                                             Download
                                         </a>
                                     </button>
+@endif
 
                                     {{-- <button>
                                         <a href="{{asset('storage/data/'.$user->attachment) }}"  download="download">

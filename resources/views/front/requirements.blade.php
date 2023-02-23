@@ -63,7 +63,7 @@
                                 <td>
                                     {{ $loop->iteration }}
                                 </td>
-                                <td> {{ $requirment->project->projectType }} </td>
+                                <td> {{ $requirment->project->projectType }} {{ $requirment->id }}</td>
                                 <td> {{ $requirment->service->serviceType }} </td>
                                 <td> {{ $requirment->industry->industryType }} </td>
                                 <td> {{ $requirment->subIndustry->subindustry }} </td>
@@ -72,9 +72,22 @@
                                 <td> {{ $requirment->description }} </td>
                                 <td>
                                     @if (Auth::user())
-                                        <button type="button" class="btn btn-sm btn-info applyNow" data-requirment_id="{{ $requirment->id }}">
-                                            Apply Now
-                                        </button>
+                                        @php
+                                            $applied = App\Models\ApplyRequirement::where('user_id', Auth::user()->id)
+                                                ->where('requirement_id', $requirment->id)
+                                                ->first();
+                                            
+                                        @endphp
+
+                                        @if ($applied)
+                                            <button type="button" disabled class="btn btn-sm btn-info"
+                                                title="Already Applied"> Applied </button>
+                                        @else
+                                            <button type="button" class="btn btn-sm btn-info applyNow"
+                                                data-requirment_id="{{ $requirment->id }}">
+                                                Apply Now
+                                            </button>
+                                        @endif
                                     @else
                                         <button type="button" disabled class="btn btn-sm btn-info"
                                             title="Login In to Apply"> Login to Apply </button>
@@ -127,7 +140,7 @@
         });
         $(document).on("click", ".applyNow", function(e) {
             var id = $(this).data('requirment_id');
-             
+
             $.ajax("{{ route('requirements.apply') }}", {
                 type: 'POST', // http method
                 data: {
@@ -135,15 +148,15 @@
                 },
                 success: function(data) {
                     $('.table').load(' .table');
-                    if(data.status == true){
+                    if (data.status == true) {
                         Swal.fire(data.message)
-                        
+
                     }
-                    if(data.status == false){
+                    if (data.status == false) {
                         Swal.fire(data.message)
-                        
+
                     }
-                   
+
                 },
             });
 
