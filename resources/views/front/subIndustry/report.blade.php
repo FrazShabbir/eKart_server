@@ -174,7 +174,7 @@
                                                     </div>
                                                     <div class="author-text">
                                                         <p><strong>Authors:</strong> {{ $report->author }} <strong>Publish
-                                                                Date:</strong> {{ $report->created_at }} </p>
+                                                                Date:</strong> {{ $report->created_at }} <strong>Category:</strong> {{ $report->subIndustry->subindustry }} <strong>Project Type:</strong> {{ $report->project->projectType }}  </p>
                                                     </div>
                                                     <div class="tags">
                                                         <a href="#">Overview</a> <a href="#">Contents</a>

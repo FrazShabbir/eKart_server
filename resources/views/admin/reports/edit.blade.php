@@ -302,17 +302,18 @@
                         </form>
                     </div>
                     <div class="col-sm-12">
-                        <form action="{{ route('admin.report.progress')}}" method="post" enctype="multipart/form-data">
-                            @csrf
+                       
                         <table  class=" table order-list">
                             <thead>
                                 <tr>
-                                        <th colspan="3">  Project Progress </th>
+                                        <th colspan="4">  Project Progress </th>
                                 </tr>
                                 <tr>
                                     <th> Status </th>
                                     <th> Act By </th>
                                     <th> Date</th>
+                                    <th> Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -321,12 +322,27 @@
                                         <td> {{ $progressing->comment }} </td>
                                         <td> {{ $progressing->user->name }}  </td>
                                         <td> {{ $progressing->created_at->diffForHumans() }}  </td>
+                                        <td>
+                                            <form action="{{route('admin.report.status.delete',$progressing->id)}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"   onclick="return confirm('Are you sure you want to delete?')" class="btn btn-md btn-danger deleteRow">Delete</button>
+                                                <a href="button" class="btn btn-md btn-primary deleteRow">Edit</a>
+
+                                            </form>
+                           
+                                        </td>
+
+                                     
+
                                     </tr>
                                 @endforeach
 
 
                             </tbody>
                             <tfoot>
+                                <form action="{{ route('admin.report.progress')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
                                 <tr>
                                     <td colspan="5" style="text-align: left;">
                                         <input type="hidden" name="reportId" value="{{ $report->id }}">
@@ -341,9 +357,10 @@
                                 </tr>
                                 <tr>
                                 </tr>
+                            </form>
                             </tfoot>
                         </table>
-                         </form>
+                         
                     </div>
                 </div>
             </div>

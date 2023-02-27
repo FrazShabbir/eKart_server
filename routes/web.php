@@ -222,6 +222,9 @@ Route::group(['as'=> 'admin.','prefix'=>'admin','middleware' => 'auth', 'namespa
     //Route::get('reports/create', [App\Http\Controllers\Admin\reportController::class, 'create'])->name('admin.report.create');
     Route::get('reports/users', [App\Http\Controllers\Admin\reportController::class, 'myreport'])->name('my_reports');
     Route::get('reports/edit/{id}', [App\Http\Controllers\Admin\reportController::class, 'edit'])->name('report.edit');
+    
+    Route::delete('reports/status/delete/{id}', [App\Http\Controllers\Admin\reportController::class, 'deleteStatus'])->name('report.status.delete');
+
     Route::post('reports/save', [App\Http\Controllers\Admin\reportController::class, 'save'])->name('report.save');
     Route::post('reports/update', [App\Http\Controllers\Admin\reportController::class, 'update'])->name('report.update');
     Route::post('reports/question/delete', [App\Http\Controllers\Admin\reportController::class, 'questionDelete'])->name('question.delete');
