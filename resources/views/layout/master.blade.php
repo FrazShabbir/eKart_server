@@ -377,6 +377,7 @@
                 $(this).removeClass('active')
             }
         });
+        
     </script>
     <script>
         if ($('#testim').length) {
