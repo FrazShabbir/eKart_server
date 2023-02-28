@@ -204,6 +204,7 @@ Route::group(['as'=> 'admin.','prefix'=>'admin','middleware' => 'auth', 'namespa
     Route::get('reports', [App\Http\Controllers\Admin\reportController::class, 'index'])->name('report');
     Route::get('report/create',     ['as' => 'report.create','uses' => 'reportController@create']);
     Route::post('report/progress/status',     ['as' => 'report.progress','uses' => 'reportController@progressStatus']);
+    Route::post('report/progress/status/update',     ['as' => 'report.status.update','uses' => 'reportController@updateStatus']);
     Route::get('report/issues',     ['as' => 'report.issues','uses' => 'reportController@issues']);
     Route::post('report/issues/submit',     ['as' => 'report.issues.submit','uses' => 'reportController@issuesSubmit']);
     Route::post('report/issues/delete',     ['as' => 'report.issues.delete','uses' => 'reportController@issuesDelete']);

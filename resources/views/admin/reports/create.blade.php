@@ -152,6 +152,11 @@
 
                                     <textarea class="form-control report-txt summernote2"  placeholder="" name="faq"   ></textarea>
                                 </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Summary</label>
+
+                                    <textarea class="form-control report-txt summernote33"  placeholder="" name="summary">{{ $report->summary }}</textarea>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -290,6 +295,12 @@
         tabsize:8,
         height: 100
       });
+      $('.summernote33').summernote({
+        placeholder: "Summary of Report",
+        tabsize:8,
+        height: 200
+      });
+      
         var counter = 0;
 
         $("#addrow").on("click", function() {

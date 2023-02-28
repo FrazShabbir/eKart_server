@@ -192,6 +192,11 @@
                             <p class="margintp15"><a class="Ask-que" href="#" title="Ask a Question">Have a
                                     Question?
                                     Ask Us.</a></p>
+<hr>
+                           <div>
+                            <h5>Summary</h5>
+                            {!!$report->summary!!}
+                           </div>
                         </div>
 
                     </div>

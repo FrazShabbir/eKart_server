@@ -159,6 +159,13 @@
 
                                     <textarea class="form-control report-txt summernote2"  placeholder="" name="faq"   >{{ $report->overview->faq }}</textarea>
                                 </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label>Summary</label>
+
+                                    <textarea class="form-control report-txt summernote33"  placeholder="" name="summary">{{ $report->summary }}</textarea>
+                                </div>
+
                             </div>
                             <div class="row  ">
                                 <div class="col-lg-6 form-group">
@@ -327,7 +334,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"   onclick="return confirm('Are you sure you want to delete?')" class="btn btn-md btn-danger deleteRow">Delete</button>
-                                                <a href="button" class="btn btn-md btn-primary deleteRow">Edit</a>
+                                                <button type="button" class="btn btn-md btn-primary editStatus" data-id="{{$progressing->id}}" data-description="{{$progressing->comment}}">Edit</button>
 
                                             </form>
                            
@@ -399,6 +406,33 @@
     </div>
 </div>
 
+
+
+<div class="modal fade" id="updateStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('admin.report.status.update') }}" method="post" >
+            @csrf
+        <div class="modal-body">
+           
+            <input type="hidden" id="status_id" name="status_id">
+            <textarea name="status_description" id="status_description" class="form-control"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update Record</button>
+        </div>
+        </form>
+      </div>
+    </div>
+</div>
+
 @endsection
 @section('custom_js')
 
@@ -437,7 +471,12 @@
         tabsize:8,
         height: 200
       });
-
+      $('.summernote33').summernote({
+        placeholder: "Summary of Report",
+        tabsize:8,
+        height: 200
+      });
+      
         var counter = 0;
 
         $("#addrow").on("click", function() {
@@ -544,6 +583,18 @@
         var id = $(this).data('id');
         $('#delId').val(id);
     });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.editStatus').on('click', function(){
+      var id = $(this).data('id');
+      var desc = $(this).data('description');
+      $('#status_id').val(id);
+      $('#status_description').html(desc);
+      $('#updateStatus').modal('show');
+    });
+  })
 </script>
 
 @endsection

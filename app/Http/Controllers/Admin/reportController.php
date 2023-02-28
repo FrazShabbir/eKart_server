@@ -107,6 +107,8 @@ class reportController extends Controller
         $report->price = $request->price;
         $report->photo = $projectPhoto;
         $report->approve = 0;
+        $report->summary = $request->summary;
+
 
         if ($report->save()) {
             if ($request->hasFile('contentFile')) {
@@ -223,6 +225,7 @@ class reportController extends Controller
         $report->totalPages = $request->totalPages;
         $report->status = $request->status;
         $report->price = $request->price;
+        $report->summary = $request->summary;
 
         if ($request->hasFile('projectPhoto')) {
             $filenameWithExt = $request->file('projectPhoto')->getClientOriginalName();
@@ -647,6 +650,20 @@ class reportController extends Controller
         $report = ProjectStatus::findOrFail($id);
         $report->delete();
         return redirect()->back()->with('success', 'Status has been deleted');
+    }
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'status_id' => 'required',
+            'status_description' => 'required',
+        ]);
+        $report = ProjectStatus::findOrFail($request->status_id);
+        $report->user_id = Auth::user()->id;
+        $report->comment = $request->status_description;
+        $report->save();
+
+
+        return redirect()->back()->with('success', 'Status has been updated');
     }
 
 }
