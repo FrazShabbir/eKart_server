@@ -240,7 +240,9 @@ class frontController extends Controller
         $markets = Article::where('category_id', 3)->get();
         $financialmarkets = Article::where('category_id', 4)->get();
         $chemicalsandmaterials = Article::where('category_id', 5)->get();
+        
         $requiremnts = Requirement::with('applied')->get();
+       
         return view('front.requirements', compact('requiremnts', 'home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials'));
 
     }

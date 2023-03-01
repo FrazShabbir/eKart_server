@@ -1,6 +1,10 @@
 @extends('layout.master')
 @section('title', 'Requirements')
 @section('content')
+    <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
+
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
+
     <section class="hero">
         <div class="banner-overlay">
             <div class="container">
@@ -21,12 +25,25 @@
         <div class="container">
 
             <div class="row">
+
                 <div class="col-lg-12">
                     <div class="section-title">
                         <h2>Requirements Details</h2>
 
                     </div>
-                    <table class="table">
+                    <div class="col-12">
+                        {{-- <div class="row mb-5">
+                        <div class="col-lg-4">
+                            <select name="" id="">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4"></div>
+                    </div> --}}
+                    </div>
+
+                    <table class="table" id="myTable">
                         <thead>
                             <tr>
                                 <th>
@@ -131,6 +148,7 @@
 @endsection
 
 @section('customJs')
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $.ajaxSetup({
@@ -164,4 +182,21 @@
         });
     </script>
 
+    // datatables hide show no of records
+
+
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable(
+                // hide length menu 
+                {
+                    "lengthChange": false,
+                    "info": false
+                }
+
+
+
+            );
+        });
+    </script>
 @endsection
