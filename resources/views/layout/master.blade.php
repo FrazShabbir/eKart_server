@@ -252,18 +252,34 @@
 
                             </ul>
                         </div>
-                        <div class="col-md-6 industries-links">
-                            <h4 class="menu-title"><a href="{{ route('industry.template') }}">Industries</a></h4>
-                            <div class="row">
+
+
+                        <div class="col-md-3 services-links">
+                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> Industries </a> </h4>
+                            <ul class="menu-tab">
                                 @foreach ($industries as $industry)
-                                    <div class="col-lg-6">
-                                        <a href="{{ route('sub.industry.template', $industry->id) }}"
-                                            class="text-white"> {{ $industry->industryType }}</a>
-                                    </div>
+                                    <li><a href="{{ route('sub.industry.template', $industry->id)}}">
+                                            {{ $industry->industryType }} </a></li>
                                 @endforeach
-                            </div>
-                            {{-- <h4 class="mt-4"> <a href="{{ route('requirements') }}" class="btn btn-sm btn-light no-radius"> VIEW REQUIREMENTS </a></h4> --}}
+
+
+                            </ul>
                         </div>
+
+                        <div class="col-md-3 services-links">
+                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> News </a> </h4>
+                            <ul class="menu-tab">
+                               
+                                    <li><a href="{{ route('companynews')}}">
+                                            Company News </a></li>
+                                            <li><a href="{{ route('requirements')}}">
+                                                VIEW REQUIREMENTS </a></li>
+                                 {{-- <h4 class="mt-4"> <a href="{{ route('requirements') }}" class="btn btn-sm btn-light no-radius"> VIEW REQUIREMENTS </a></h4> --}}
+
+
+                            </ul>
+                        </div>
+                       
 
                     </div>
                 </div>

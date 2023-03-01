@@ -17,7 +17,7 @@
                                 <li><a href="{{route('customer.work')}}">All Works</a></li>
                                 <li><a href="{{ route('customer.work.add')}}">Add New Work</a></li>
                             </ul>
-                            <li><a href="#"><i class="fa fa-envelope"> </i> Messages / Inbox</a></li>
+                            <li><a href="{{route('customer.report.issue.create')}}"><i class="fa fa-envelope"> </i> Messages / Inbox</a></li>
                             <li><a href="{{ route('customer.orders') }}"><i class="fa fa-first-order"> </i> My Orders</a>
                             </li>
                             <li data-toggle="collapse" data-target="#service" class="collapsed">
