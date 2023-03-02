@@ -299,9 +299,9 @@
     <script src="{{ asset('frontEnd/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('frontEnd/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('frontEnd/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('frontEnd/js/main.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+    <script src="{{ asset('frontEnd/js/main.js') }}"></script>
 
     <script>
         $('.owl-carousel').owlCarousel({
@@ -537,6 +537,7 @@
     @section('customJs')
     @show
 
+    
 </body>
 
 </html>
