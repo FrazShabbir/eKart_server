@@ -327,7 +327,7 @@
                     
 
                     <li>
-                        <a href="#"><i class="sidebar-item-icon fa fa-envelope"></i>
+                        <a href="{{route('admin.admin.mails')}}"><i class="sidebar-item-icon fa fa-envelope"></i>
                             <span class="nav-label">Message Box </span>
                         </a>
                     </li>
