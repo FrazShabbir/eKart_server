@@ -25,7 +25,7 @@
             <div class="col-lg-10 content-wrap content-reponsive">
                 <div class="content-main pdbtm-none">
                     <div class="col-lg-12 col-md-12 edit-block">
-                        <h6 class="checkout__title">Edite Your Account Details</h6>
+                        <h6 class="checkout__title">Chat With Support</h6>
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div class="text-danger">{{$error}}</div>
@@ -42,7 +42,7 @@
                                                     <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png"
                                                             alt="sunil"> </div>
                                                     <div class="chat_ib">
-                                                        <h5>Support <span class="chat_date">Dec 25</span></h5>
+                                                        <h5>Support</h5>
                                                         
                                                     </div>
                                                 </div>
@@ -54,33 +54,38 @@
                                 </div>
                                 <div class="mesgs">
                                     <div class="msg_history">
+                                        @foreach ($chats as $chat )
+                                        @if ($chat->user_id == auth()->user()->id)
+                                        <div class="outgoing_msg">
+                                            <div class="sent_msg">
+                                                <p>{{$chat->message}}</p>
+                                                <span class="time_date">{{ date('h:m',strtotime($chat->created_at)) }} | {{ date('d-M-Y',strtotime($chat->created_at)) }}</span>
+                                            </div>
+                                        </div> 
+                                        @else
+                                      
                                         <div class="incoming_msg">
                                             <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
                                                     alt="sunil"> </div>
                                             <div class="received_msg">
                                                 <div class="received_withd_msg">
-                                                    <p>Test which is a new approach to have all
-                                                        solutions</p>
-                                                    <span class="time_date"> 11:01 AM | June 9</span>
+                                                    <p>{{$chat->message}}</p>
+                                                    <span class="time_date">{{ date('h:m',strtotime($chat->created_at)) }} | {{ date('d-M-Y',strtotime($chat->created_at)) }}</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="outgoing_msg">
-                                            <div class="sent_msg">
-                                                <p>Test which is a new approach to have all
-                                                    solutions</p>
-                                                <span class="time_date"> 11:01 AM | June 9</span>
-                                            </div>
-                                        </div>
+                                        @endif
+                                        @endforeach
+                               
                                    
                                     </div>
                                     <div class="type_msg">
                                         <div class="input_msg_write">
-                                            <form action="" method="POST">
+                                            <form action="{{route('customer.customer.chat.save')}}" method="POST">
                                                 @csrf
-                                                <input type="hidden" name="user_id" value="{{auth()}}">
+                                                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                                 <input type="text" class="write_msg" placeholder="Type a message" name="message">
-                                                <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane"
+                                                <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane"
                                                         aria-hidden="true"></i></button>
                                             </form>
                                         

@@ -59,7 +59,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
-
+    public function chat()
+    {
+        return $this->hasMany(Chat::class);
+    }
     public function userDetail()
     {
         return $this->hasOne(UserDetail::class);

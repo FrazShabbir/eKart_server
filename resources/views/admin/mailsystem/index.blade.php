@@ -26,21 +26,30 @@
                         </div>
                         <div class="inbox_chat scroll">
 
-                            <a href="{{route('admin.admin.mail.show',auth()->user()->id)}}">
-                                <div class="chat_list active_chat">
-                                    <div class="chat_people">
-                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                                alt="sunil"> </div>
-                                        <div class="chat_ib">
-                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                            <p>Test, which is a new approach to have all solutions
-                                                astrology under one roof.</p>
+                            @foreach ($users as $user)
+                                <a href="{{ route('admin.admin.mail.show', $user->id) }}">
+                                    <div class="chat_list">
+                                        <div class="chat_people">
+                                            <div class="chat_img"> <img
+                                                    src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                                            </div>
+                                            <div class="chat_ib">
+                                                <h5>{{ $user->name }}<span class="chat_date">Dec 25</span></h5>
+                                                @if ($user->chat->count() > 0)
+                                                    <p>{{ $user->chat->last()->message }}</p>
+                                                @else
+                                                    <p>Tap to Chat.</p>
+                                                @endif
+
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                      
-                            
+                                </a>
+                            @endforeach
+
+
+
                         </div>
                     </div>
                     <div class="mesgs">

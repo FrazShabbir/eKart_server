@@ -25,52 +25,66 @@
                             </div>
                         </div>
                         <div class="inbox_chat scroll">
-                            <a href="{{route('admin.admin.mail.show',auth()->user()->id)}}">
-                                <div class="chat_list active_chat">
+                            @foreach ($users as $user)
+                            <a href="{{ route('admin.admin.mail.show', $user->id) }}">
+                                <div class="chat_list {{$sender->id==$user->id?'active_chat':''}}">
                                     <div class="chat_people">
-                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                                alt="sunil"> </div>
+                                        <div class="chat_img"> <img
+                                                src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                                        </div>
                                         <div class="chat_ib">
-                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                            <p>Test, which is a new approach to have all solutions
-                                                astrology under one roof.</p>
+                                            <h5>{{ $user->name }}  <span class="chat_date">  @if ($user->chat->count() > 0){{ date('d-M-Y',strtotime($user->chat->last()->created_at)) }} @endif</span></h5>
+                                            @if ($user->chat->count() > 0)
+                                                <p>{{ $user->chat->last()->message }}</p>
+                                            @else
+                                                <p>Tap to Chat.</p>
+                                            @endif
+
+
                                         </div>
                                     </div>
                                 </div>
                             </a>
+                        @endforeach
                       
                             
                         </div>
                     </div>
                     <div class="mesgs">
                         <div class="msg_history">
-                            <div class="incoming_msg">
-                                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                        alt="sunil"> </div>
-                                <div class="received_msg">
-                                    <div class="received_withd_msg">
-                                        <p>Test which is a new approach to have all
-                                            solutions</p>
-                                        <span class="time_date"> 11:01 AM | June 9</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="outgoing_msg">
-                                <div class="sent_msg">
-                                    <p>Test which is a new approach to have all
-                                        solutions</p>
-                                    <span class="time_date"> 11:01 AM | June 9</span>
-                                </div>
-                            </div>
+                            @foreach ($chats as $chat )
+                                        @if ($chat->user_id == auth()->user()->id)
+                                        <div class="outgoing_msg">
+                                            <div class="sent_msg">
+                                                <p>{{$chat->message}}</p>
+                                                <span class="time_date"> {{ date('h:m',strtotime($chat->created_at)) }} | {{ date('d-M-Y',strtotime($chat->created_at)) }}</span>
+                                            </div>
+                                        </div> 
+                                        @else
+                                      
+                                        <div class="incoming_msg">
+                                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                                                    alt="sunil"> </div>
+                                            <div class="received_msg">
+                                                <div class="received_withd_msg">
+                                                    <p>{{$chat->message}}</p>
+                                                    <span class="time_date">{{ date('h:m',strtotime($chat->created_at)) }} | {{ date('d-M-Y',strtotime($chat->created_at)) }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @endforeach
                        
                         </div>
                         <div class="type_msg">
                             <div class="input_msg_write">
-                                <form action="" method="POST">
+                                <form action="{{route('admin.admin.mail.send')}}" method="POST">
                                     @csrf
-                                    <input type="hidden" name="user_id">
+                                    
+                                    <input type="hidden" name="receiver_id" value="{{$sender->id}}">
+                                    <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                     <input type="text" class="write_msg" placeholder="Type a message" name="message">
-                                    <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane"
+                                    <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane"
                                             aria-hidden="true"></i></button>
                                 </form>
                             

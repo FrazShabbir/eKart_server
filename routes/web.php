@@ -88,7 +88,8 @@ Route::group(['as'=> 'customer.','prefix'=>'customer','middleware' => 'auth','na
     Route::get('customer/report/category/info/{id}',  ['as' => 'report.category.info','uses' => 'userController@reportCategoryDetail']);
 
     Route::get('customer/chat',  ['as' => 'customer.chat','uses' => 'userController@chatInbox']);
-
+    Route::post('customer/chat/save',  ['as' => 'customer.chat.save','uses' => 'userController@messageSave']);
+    
 
 });
 Route::group(['as'=> 'admin.','prefix'=>'admin','middleware' => 'auth', 'namespace'=>'App\Http\Controllers\Admin'], function () {

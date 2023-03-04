@@ -8,6 +8,7 @@ use App\Models\Content;
 use App\Models\Country;
 use App\Models\Industry;
 use App\Models\Order;
+use App\Models\Chat;
 use App\Models\OrderDetail;
 use App\Models\Project;
 use App\Models\Region;
@@ -267,7 +268,29 @@ class userController extends Controller
 
     
     public function chatInbox(){
-        return view('customer.mailsystem.index');
+        $chats = Chat::with('user')->where('receiver_id',Auth::user()->id)->orWhere('user_id',auth()->user()->id)->get();
+        foreach($chats as $chat){
+            if($chat->receiver_id == Auth::user()->id && $chat->is_read == 0){
+                $chat->is_read = 1;
+                $chat->save();
+            }
+        }
+        
+        return view('customer.mailsystem.index')
+        ->with('chats',$chats);
+    }
+    public function messageSave(Request $request){
+       $request->validate([
+            'message' => 'required',
+        ]);
+        $message = Chat::create([
+            'user_id' => Auth::user()->id,
+            'receiver_id' => 1,
+            'is_read' => 0,
+            'message' => $request->message,
+        ]);
+
+        return redirect()->back()->with('success','Message has been sent successfully');
     }
 
 }

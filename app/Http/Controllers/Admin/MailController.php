@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Chat;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class MailController extends Controller
 {
     /**
@@ -15,7 +17,11 @@ class MailController extends Controller
      */
     public function index()
     {
-        return view('admin.mailsystem.index');
+        // $users = Chat::with('user')->get()->groupBy('user_id');
+        $users = User::where('id', '!=', Auth::user()->id)->get();
+        // dd($users);
+        return view('admin.mailsystem.index')
+            ->with('users', $users);
     }
 
     /**
@@ -36,7 +42,17 @@ class MailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'message' => 'required',
+        ]);
+        $message = Chat::create([
+            'user_id' => Auth::user()->id,
+            'receiver_id' => $request->receiver_id,
+            'is_read' => 0,
+            'message' => $request->message,
+        ]);
+
+        return redirect()->back()->with('success', 'Message has been sent successfully');
     }
 
     /**
@@ -47,11 +63,24 @@ class MailController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        $chats = Chat::where('user_id', $id)->get();
+        $sender = User::find($id);
+        $users = User::where('id', '!=', Auth::user()->id)->get();
+        
+        // $chats = Chat::where('receiver_id', $id)->get();
+        $chats = Chat::with('user')->where('receiver_id', $id)->orWhere('user_id', $id)->get();
+
+        foreach ($chats as $chat) {
+            if ($chat->is_read == 0 && $chat->user_id != Auth::user()->id) {
+                $chat->update([
+                    'is_read' => 1,
+                ]);
+            }
+        }
+
         return view('admin.mailsystem.show')
-            ->with('user', $user)
-            ->with('chats', $chats);
+            ->with('sender', $sender)
+            ->with('chats', $chats)
+            ->with('users', $users);
     }
 
     /**
