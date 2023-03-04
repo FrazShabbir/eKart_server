@@ -86,6 +86,10 @@ Route::group(['as'=> 'customer.','prefix'=>'customer','middleware' => 'auth','na
     Route::get('customer/rise/issue/{id}',  ['as' => 'rise.issue','uses' => 'userController@riseIssue']);
     Route::post('customer/rise/issue',  ['as' => 'report.issue.create','uses' => 'userController@storeIssue']);
     Route::get('customer/report/category/info/{id}',  ['as' => 'report.category.info','uses' => 'userController@reportCategoryDetail']);
+
+    Route::get('customer/chat',  ['as' => 'customer.chat','uses' => 'userController@chatInbox']);
+
+
 });
 Route::group(['as'=> 'admin.','prefix'=>'admin','middleware' => 'auth', 'namespace'=>'App\Http\Controllers\Admin'], function () {
     Route::get('dashboard',         ['as' => 'dashboard','uses' => 'userController@adminDashboard']);
@@ -242,6 +246,9 @@ Route::group(['as'=> 'admin.','prefix'=>'admin','middleware' => 'auth', 'namespa
     Route::get('contact/setting',['as' => 'contact.setting','uses' => 'optionController@index']);
     Route::post('contact/setting/update',['as' => 'contact.setting.update','uses' => 'optionController@update']);
   
+    Route::get('mails',              ['as' => 'admin.mails','uses' => 'MailController@index']);
+    Route::get('mails/{id}',              ['as' => 'admin.mail.show','uses' => 'MailController@show']);
+    Route::post('mails/sendmessage',              ['as' => 'admin.mail.send','uses' => 'MailController@store']);
 
 
     //// Added

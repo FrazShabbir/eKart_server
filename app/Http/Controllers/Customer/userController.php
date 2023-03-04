@@ -266,6 +266,8 @@ class userController extends Controller
     }
 
     
-
+    public function chatInbox(){
+        return view('customer.mailsystem.index');
+    }
 
 }
