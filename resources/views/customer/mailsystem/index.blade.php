@@ -36,7 +36,7 @@
                                 <div class="inbox_people">
                                  
                                     <div class="inbox_chat scroll">
-                                        <a href="{{route('admin.admin.mail.show',auth()->user()->id)}}">
+                                        <a href="#">
                                             <div class="chat_list active_chat">
                                                 <div class="chat_people">
                                                     <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png"
