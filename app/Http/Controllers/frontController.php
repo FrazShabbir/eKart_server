@@ -41,6 +41,7 @@ class frontController extends Controller
         $financialmarkets = Article::where('category_id', 4)->get();
         $chemicalsandmaterials = Article::where('category_id', 5)->get();
 
+      
         return view('index', compact('home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials'));
 
     }

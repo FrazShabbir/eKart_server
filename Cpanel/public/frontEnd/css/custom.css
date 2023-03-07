@@ -1936,6 +1936,7 @@ h4.menu-title1 {
     line-height: 20px;
 }
 .search-close-switch {
+    z-index: 99999;
     top: 10px;
 }
 .menu-2 {

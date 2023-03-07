@@ -333,7 +333,7 @@
     <!-- Search Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
+            <div class="search-close-switch" style="z-index: 999999">+</div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 navbar-menu">
@@ -369,6 +369,20 @@
                             </div>
 
                         </div>
+                        <div class="col-md-3 services-links">
+                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> Categories </a> </h4>
+                            <ul class="menu-tab">
+                                @php
+                                    $articlecategories = App\Models\ArticleCategory::all();
+                                @endphp
+                                @foreach ($articlecategories as $cat)
+                                    <li><a href="">{{ $cat->title }} </a></li>
+                                @endforeach
+
+
+                            </ul>
+                        </div>
+
                         <div class="col-md-3 services-links">
                             <h4 class="menu-title"><a href="{{ route('services.index') }}"> Services </a> </h4>
                             <ul class="menu-tab">

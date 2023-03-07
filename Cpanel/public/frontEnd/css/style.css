@@ -258,6 +258,7 @@ ol {
 }
 
 .search-close-switch {
+	z-index: 99999;
 	position: absolute;
 	width: 50px;
 	height: 50px;
