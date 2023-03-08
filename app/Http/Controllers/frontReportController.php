@@ -44,7 +44,7 @@ class frontReportController extends Controller
 
         $subindustry = Subindustry::with('industry')->where('id', $id)->first();
         $reports = Report::where('subindustry_id', $id)->where('approve', 2)->get();
-        //      dd($reports);
+       
 
         // return view('front.template.template', compact('industry', 'industryTemplate', 'subindustry', 'clients', 'testimonials'));
         return view('front.subIndustry.report', compact('reports','industry', 'industryTemplate', 'subindustry', 'clients', 'testimonials'));

@@ -10,6 +10,7 @@ use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\ArticleTemplate;
 use App\Models\Contact;
+use App\Models\Country;
 use App\Models\Disclaimer;
 use App\Models\Event;
 use App\Models\HomeText;
@@ -22,8 +23,11 @@ use App\Models\OrderDetail;
 use App\Models\OurClient;
 use App\Models\Press;
 use App\Models\Privacy;
+use App\Models\Region;
 use App\Models\Report;
 use App\Models\Requirement;
+use App\Models\Service;
+use App\Models\Subindustry;
 use App\Models\Terms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +45,6 @@ class frontController extends Controller
         $financialmarkets = Article::where('category_id', 4)->get();
         $chemicalsandmaterials = Article::where('category_id', 5)->get();
 
-      
         return view('index', compact('home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials'));
 
     }
@@ -60,8 +63,8 @@ class frontController extends Controller
 
         //  dd($article_cat);
         return view('articles_cat')
-        ->with('articles', $articles)
-        ->with('article_cat', $article_cat);
+            ->with('articles', $articles)
+            ->with('article_cat', $article_cat);
     }
 
     public function articleByType($type, $id)
@@ -241,10 +244,34 @@ class frontController extends Controller
         $markets = Article::where('category_id', 3)->get();
         $financialmarkets = Article::where('category_id', 4)->get();
         $chemicalsandmaterials = Article::where('category_id', 5)->get();
-        
-        $requiremnts = Requirement::with('applied')->get();
+
        
-        return view('front.requirements', compact('requiremnts', 'home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials'));
+
+        $services = Service::get();
+        $industries = Industry::get();
+        $subindustries = Subindustry::get();
+        $regions = Region::get();
+        $countries = Country::get();
+
+        $requiremnts = Requirement::with('applied')
+        ->when(!empty(request()->input('service_id')), function ($q) {
+            return $q->where('service_id', request()->input('service_id'));
+        })
+        ->when(!empty(request()->input('industry_id')), function ($q) {
+            return $q->where('industry_id', request()->input('industry_id'));
+        })
+        ->when(!empty(request()->input('subindustry_id')), function ($q) {
+            return $q->where('subindustry_id', request()->input('subindustry_id'));
+        })
+        ->when(!empty(request()->input('region_id')), function ($q) {
+            return $q->where('region_id', request()->input('region_id'));
+        })
+        ->when(!empty(request()->input('country_id')), function ($q) {
+            return $q->where('country_id', request()->input('country_id'));
+        })
+        ->get();
+
+        return view('front.requirements', compact('requiremnts', 'home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials','services','industries','subindustries','regions','countries'));
 
     }
     public function requirements_apply(Request $request)

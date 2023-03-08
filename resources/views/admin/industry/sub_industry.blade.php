@@ -45,7 +45,10 @@
                                                         data-industary="{{ $subindustry->industry_id }}"
                                                         data-subindustary="{{ $subindustry->subindustry }}"
                                                         data-cat_price="{{ $subindustry->category_price }}"
-                                                        data-desc="{{ $subindustry->description }}">
+                                                        data-desc="{{ $subindustry->description }}"
+                                                        data-stores="{{ $subindustry->data_store }}"
+                                                        data-stats="{{ $subindustry->data_stats }}">
+
                                                         <i class="fa fa-pencil font-14"></i>
                                                     </button>
 
@@ -102,8 +105,8 @@
                                     <label class="col-sm-2 col-form-label">Sub Industry <small class="text-danger"> *
                                         </small></label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" placeholder="Sub Industry Title" name="subindustry"
-                                            required>
+                                        <input class="form-control" type="text" placeholder="Sub Industry Title"
+                                            name="subindustry" required>
                                         @error('subindustry')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -116,7 +119,7 @@
                                     <label class="col-sm-2 col-form-label">Image icon <small class="text-danger"> *
                                         </small></label>
                                     <div class="col-sm-10">
-                                        <input id="file-upload" type="file" name="imageIcon" required/>
+                                        <input id="file-upload" type="file" name="imageIcon" required />
                                         @error('imageIcon')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -126,7 +129,7 @@
                                     <label class="col-sm-2 col-form-label">Description <small class="text-danger"> *
                                         </small></label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control"  placeholder="Description" name="description" required></textarea>
+                                        <textarea class="form-control" placeholder="Description" name="description" required></textarea>
                                         @error('dec')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -134,10 +137,33 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Data Store <small class="text-danger"> *
+                                        </small></label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control ckeditor" placeholder="Description" name="data_store" required></textarea>
+                                        @error('dec')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Data Statistics <small class="text-danger"> *
+                                        </small></label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control ckeditor" placeholder="Description" name="data_stats" required></textarea>
+                                        @error('dec')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Banner Image <small class="text-danger"> *
                                         </small></label>
                                     <div class="col-sm-10">
-                                        <input id="file-upload" type="file" name="banner" required/>
+                                        <input id="file-upload" type="file" name="banner" required />
                                         @error('banner')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -147,7 +173,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Category Pirce </label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="number"  name="category_price" value="0" min="0">
+                                        <input class="form-control" type="number" name="category_price" value="0"
+                                            min="0">
                                         @error('category_price')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -243,6 +270,20 @@
                         </div>
                         <div class="form-group">
                             <label for="">
+                                Data Store
+                            </label>
+                            <textarea type="text" id="data_store" name="data_store" class="form-control new_ckeditor"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="">
+                                Data Statistics
+                            </label>
+                            <textarea type="text" id="data_stats" name="data_stats" class="form-control new_ckeditor"></textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="">
                                 Icon
                             </label>
                             <input type="file" name="imageIcon" class="form-control">
@@ -277,6 +318,7 @@
 
 
 @section('custom_js')
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 
     <script>
         $(document).on("click", ".editProjectType", function() {
@@ -285,6 +327,8 @@
             var subindustary = $(this).data('subindustary');
             var desc = $(this).data('desc');
             var catPrice = $(this).data('cat_price');
+            var data_store = $(this).data('stores');
+            var data_stats = $(this).data('stats');
 
 
 
@@ -293,6 +337,11 @@
             $('#subindustary').val(subindustary);
             $('#catPrice').val(catPrice);
             $('#desc').val(desc);
+// alert(data_store)
+            $('#data_store').val(data_store);
+            $('#data_stats').val(data_stats);
+            CKEDITOR.replace('data_stats');
+            CKEDITOR.replace('data_store');
         });
 
         $(document).on("click", ".deleteProjectType", function() {
@@ -301,4 +350,11 @@
         });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.ckeditor').ckeditor();
+        });
+    </script>
+    
+ 
 @endsection

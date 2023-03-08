@@ -155,7 +155,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>Summary</label>
 
-                                    <textarea class="form-control report-txt summernote33"  placeholder="" name="summary">{{ $report->summary }}</textarea>
+                                    <textarea class="form-control report-txt summernote33"  placeholder="" name="summary"></textarea>
                                 </div>
                             </div>
 
@@ -298,7 +298,7 @@
       $('.summernote33').summernote({
         placeholder: "Summary of Report",
         tabsize:8,
-        height: 200
+        height: 200,
       });
       
         var counter = 0;

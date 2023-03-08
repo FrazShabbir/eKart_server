@@ -178,6 +178,10 @@ class industryController extends Controller
         $Subindustry->description  = $request->description;
         $Subindustry->banner  = $fileNameToStore1;
         $Subindustry->category_price  = $request->category_price;
+
+        $Subindustry->data_store  = $request->data_store;
+        $Subindustry->data_stats  = $request->data_stats;
+        
         if($Subindustry->save()){
             return redirect()->back()->with('success', 'Sub Industry Type Created');
         }else{
@@ -214,6 +218,8 @@ class industryController extends Controller
         $Subindustry->description  = $request->desc;
         $Subindustry->banner  = $fileNameToStore1;
         $Subindustry->category_price  = $request->category_price;
+        $Subindustry->data_store  = $request->data_store;
+        $Subindustry->data_stats  = $request->data_stats;
         if($Subindustry->save()){
             return redirect()->back()->with('success', 'Sub Industry Type Updated');
         }else{

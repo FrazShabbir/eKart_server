@@ -364,6 +364,32 @@
                                     </div>
                                     
                                 </div>
+                                <div class="tab-pane" id="tabs-10" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="text-primary my-3">
+                                                Data Store
+                                            </h5>
+                                        </div>
+                                        <div class="col-12">
+                                            {!!$subindustry->data_store!!}
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="tab-pane" id="tabs-8" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="text-primary my-3">
+                                                Data Statistics
+                                            </h5>
+                                        </div>
+                                        <div class="col-12">
+                                            {!!$subindustry->data_stats!!}
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
