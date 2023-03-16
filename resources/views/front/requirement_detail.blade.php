@@ -2,24 +2,11 @@
 <html lang="zxx">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="ByReddy Consulting">
-    <meta name="keywords" content="ByReddy Consulting">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" type="image/x-icon" href="">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <title>
-        @yield('title') | ByReddy Consulting
-    </title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ $option->getFirstMediaUrl('fave_icon', 'thumb') }}">
-    <!-- Google Font -->
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
         rel="stylesheet">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('frontEnd/css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontEnd/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontEnd/css/elegant-icons.css') }}" type="text/css">
@@ -30,22 +17,15 @@
     <link rel="stylesheet" href="{{ asset('frontEnd/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontEnd/css/custom.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontEnd/css/mobile-responsive.css') }}" type="text/css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/app/public/data/' . $option->faveIcon) }}">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
-    @section('customStyle')
-    @show
-
- 
 </head>
 
 <body>
     <div class="float-container">
-        <a href="{{ route('requirements')}}">Requirements</a>
-       
-        </div>
+        <a href="{{ route('requirements') }}">Requirements</a>
 
+    </div>
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
@@ -64,13 +44,9 @@
             </div>
         </div>
         <div class="offcanvas__nav__option">
-            <a href="#">
-                <img src="{{ asset('frontEnd/img/add.png') }}" class="img-responsive mobile-cart-icon" alt="">
-            </a>
-            <a href="register.php">
-                <img src="{{ asset('frontEnd/img/user-1.png') }}" class="img-responsive mobile-cart-icon1"
-                    alt="">
-            </a>
+            <a href="#"><img src="img/add.png" class="img-responsive mobile-cart-icon" alt=""></a>
+            <a href="register.php"><img src="img/user-1.png" class="img-responsive mobile-cart-icon1"
+                    alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
@@ -81,19 +57,17 @@
 
     <!-- Header Section Begin -->
     <header class="header">
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="{{ route('homePage') }}">
-                            @if ($option->getFirstMediaUrl('company_logo', 'thumb') != '')
-                                <img src="{{ $option->getFirstMediaUrl('company_logo', 'thumb') }}" alt=""
-                                    style="max-height: 100px">
-                            @else
-                                <img src="https://rebank.cc/wp-content/uploads/2019/04/dummylogo-300x107@2x.jpg"
-                                    alt="">
-                            @endif
-                        </a>
+                        @if ($option->getFirstMediaUrl('company_logo', 'thumb') != '')
+                            <img src="{{ $option->getFirstMediaUrl('company_logo', 'thumb') }}" alt="">
+                        @else
+                            <img src="https://rebank.cc/wp-content/uploads/2019/04/dummylogo-300x107@2x.jpg"
+                                alt="">
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-7">
@@ -121,7 +95,7 @@
                             <a href="{{ route('customer.dashboard') }}">
 
                                 <img src="{{ asset('frontEnd/img/dashbaord.png') }}"class="img-responsive account-iocn1"
-                                    alt="" title="View Dashboard">
+                                    alt="">
                             </a>
                         @else
                             <a href="{{ route('login') }}">
@@ -130,8 +104,11 @@
                             </a>
                         @endif
 
-                        <a href="#" class="search-switch"><img
-                                src="{{ asset('frontEnd/img/bar-icon-1.png') }}" alt=""></a>
+
+
+
+                        <a href="#" class="search-switch"><img src="{{ asset('frontEnd/img/bar-icon-1.png') }}"
+                                alt=""></a>
                     </div>
                 </div>
             </div>
@@ -139,8 +116,164 @@
         </div>
     </header>
 
-    @section('content')
-    @show
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <br>
+                    <div class="breadcrumb__text">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    {{-- @php
+    dd($report);
+@endphp --}}
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 rt-wrap1">
+                    <div class="hidden-xs catg-icon-img">
+                        <img class="img-responsive single-img"
+                            src="{{ asset($requirement->photo) }}"
+                            alt="{{ $requirement->project->projectType }}">
+
+                        <div class="hidden-xs hidden-sm rpt-pg-cta">
+
+
+                            <ul style="list-style: none;text-align:left">
+                                <li>
+                                    <b> Project:</b> {{ $requirement->project->projectType }}
+                                </li>
+                                <li>
+                                    <b>Service:</b> {{ $requirement->service->serviceType }}
+                                </li>
+                                <li>
+                                    <b>Industry:</b> {{ $requirement->industry->industryType }}
+                                </li>
+                                <li>
+                                    <b>Sub Industry: </b>{{ $requirement->subIndustry->subindustry }}
+                                </li>
+                                <li>
+                                    <b>Region:</b> {{ $requirement->region->region }}
+                                </li>
+                                <li>
+                                    <b>Country:</b> {{ $requirement->country->country }}
+                                </li>
+
+                            </ul>
+
+                            <div>
+                                @if (Auth::user())
+                                    @php
+                                        $applied = App\Models\ApplyRequirement::where('user_id', Auth::user()->id)
+                                            ->where('requirement_id', $requirement->id)
+                                            ->first();
+                                        
+                                    @endphp
+
+                                    @if ($applied)
+                                        <div class="mt-4">
+
+                                            <button type="button" disabled class="btn btn-block btn-info"
+                                                title="Already Applied"> Applied </button>
+                                        </div>
+                                    @else
+                                        <div class="mt-4">
+                                            <button type="button" class="btn btn-block btn-info applyNow"
+                                                data-requirment_id="{{ $requirement->id }}">
+                                                Apply Now
+                                            </button>
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="mt-4">
+                                        <button type="button" disabled class="btn btn-block btn-info"
+                                            title="Login In to Apply"> Login to Apply </button>
+                                    </div>
+                                @endif
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-10 content-wrap content-reponsive">
+                    <div class="content-main pdbtm-none">
+                        <div class="clear row marginbtm30">
+                            <div class="col-xs-7 col-sm-7 col-md-7 pdltrt-xs-none">
+                                <div class="report-detail-heading">
+                                    <h1> {{ $requirement->title ?? $requirement->project->projectType }}</h1>
+                                </div>
+                                <div class="author-text">
+                                    {{-- <p><strong>Authors :</strong> {{ $requirement->author }} <strong>Publish Date
+                                            :</strong> {{ $report->created_at }}, <strong>Type :</strong>
+                                        {{ $report->project->projectType }} </p> --}}
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 pdltrt-xs-none">
+                                <div class="tags">
+                                    <span class="share-links"> <a href="#"> Share</a> / <a
+                                            href="#">Follow</a> / <a href="#">Recommends</a> / <a
+                                            href="#">Suggest</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__details__tab">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-5" role="tab">
+                                        Report Overview
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                    <div class="product__details__tab__content">
+                                        <div class="clear row marginbtm30">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 pdltrt-xs-none single-box">
+
+                                                @if ($requirement->description)
+                                                    {!! $requirement->description !!}
+                                                @endif
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br>
+
+
+                    </div>
+                </div>
+            </div><br><br>
+
+            <!-- Table Of Content Block Start Here -->
+
+            <!-- Table Of Content Block End Here -->
+        </div>
+    </section>
+    <!-- Shop Section End -->
 
 
 
@@ -211,7 +344,7 @@
     <!-- Search Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch" style="z-index: 999999">+</div>
+            <div class="search-close-switch">+</div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 navbar-menu">
@@ -219,7 +352,7 @@
                             <h4 class="menu-title">About Us</h4>
                             <ul class="menu-tab">
                                 <li><a href="{{ route('aboutUs') }}">About Us</a></li>
-                                <li><a href="{{ route('ourclients') }}">Our Clients</a></li>
+                                <li><a href="{{ route('ourclients') }}">Our Clients New</a></li>
                                 <li><a href="{{ route('pressReleases') }}">Press Releases</a></li>
                                 <li><a href="{{ route('companynews') }}">Company News</a></li>
                                 <li><a href="{{ route('events') }}">Events</a></li>
@@ -248,58 +381,32 @@
 
                         </div>
                         <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> Categories </a> </h4>
-                            <ul class="menu-tab">
-                                @php
-                                    $articlecategories = App\Models\ArticleCategory::all();
-                                @endphp
-                                @foreach ($articlecategories as $cat)
-                                    <li><a href="">{{ $cat->title }} </a></li>
-                                @endforeach
-
-
-                            </ul>
-                        </div>
-
-                        <div class="col-md-3 services-links">
                             <h4 class="menu-title"><a href="{{ route('services.index') }}"> Services </a> </h4>
                             <ul class="menu-tab">
                                 @foreach ($services as $service)
-                                    <li><a href="{{ route('front-reports', $service->id) }}">
+                                    <li><a href="{{ route('service.sub.template', $service->id) }}">
                                             {{ $service->serviceType }} </a></li>
                                 @endforeach
 
 
                             </ul>
                         </div>
-
-
-                        <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> Industries </a> </h4>
+                        <div class="col-md-3 industries-links">
+                            <h4 class="menu-title"><a href="{{ route('industry.template') }}">Industries</a></h4>
                             <ul class="menu-tab">
                                 @foreach ($industries as $industry)
-                                    <li><a href="{{ route('sub.industry.template', $industry->id)}}">
-                                            {{ $industry->industryType }} </a></li>
+                                    <li>
+                                        {{-- <a href="{{ route('front-report',$industry->id)}}"> {{ $industry->industryType }}</a> --}}
+
+                                        <a href="{{ route('sub.industry.template', $industry->id) }}">
+                                            {{ $industry->industryType }}</a>
+                                    </li>
                                 @endforeach
 
 
-                            </ul>
-                        </div>
-
-                        <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> News </a> </h4>
-                            <ul class="menu-tab">
-                               
-                                    <li><a href="{{ route('companynews')}}">
-                                            Company News </a></li>
-                                            {{-- <li><a href="{{ route('requirements')}}">
-                                                VIEW REQUIREMENTS </a></li> --}}
-                                 {{-- <h4 class="mt-4"> <a href="{{ route('requirements') }}" class="btn btn-sm btn-light no-radius"> VIEW REQUIREMENTS </a></h4> --}}
-
 
                             </ul>
                         </div>
-                       
 
                     </div>
                 </div>
@@ -307,11 +414,8 @@
         </div>
     </div>
     <!-- Search End -->
-
-    <!-- Js Plugins -->
-
+    <script src="{{ asset('frontEnd/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('frontEnd/js/bootstrap.min.js') }}"></script>
-
     <script src="{{ asset('frontEnd/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('frontEnd/js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('frontEnd/js/jquery.magnific-popup.min.js') }}"></script>
@@ -319,43 +423,12 @@
     <script src="{{ asset('frontEnd/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('frontEnd/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('frontEnd/js/owl.carousel.min.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <script src="{{ asset('frontEnd/js/main.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            dots: true,
-            nav: true,
-            autoplay: true,
-            smartSpeed: 3000,
-            autoplayTimeout: 7000,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 2
-                },
-                1000: {
-                    items: 6
-                }
-            }
-        })
-    </script>
+    <!-- Js Plugins -->
 
-    <script>
-        function toggleIcon(e) {
-            $(e.target)
-                .prev('.panel-heading')
-                .find(".more-less")
-                .toggleClass('glyphicon-plus glyphicon-minus');
-        }
-        $('.panel-group').on('hidden.bs.collapse', toggleIcon);
-        $('.panel-group').on('shown.bs.collapse', toggleIcon);
-    </script>
+
     <!-- <script>
         $(document).ready(function() {
             $('ul li a').click(function() {
@@ -364,47 +437,7 @@
             });
         });
     </script> -->
-    <script>
-        (function($) {
-            $(function() {
 
-
-                function fnToggleTabs(argItem) {
-                    var ariaState = argItem.attr('aria-expanded');
-
-                    if (ariaState === 'true') {
-                        ariaState = 'false';
-                    } else {
-                        ariaState = 'true';
-                    }
-
-                    argItem.attr('aria-expanded', ariaState);
-                }
-
-                $('.js-tabs_item').on('click', function(e) {
-                    e.preventDefault();
-
-                    agItem = $(this).children('a');
-
-                    fnToggleTabs(agItem);
-
-                    if (agItem.attr('aria-expanded')) {
-                        var agID = agItem.attr('href');
-
-                        console.log(agID);
-
-                        $('.js-tabs_item').removeClass('js-ag-tabs_item__active');
-                        $(this).addClass('js-ag-tabs_item__active');
-
-                        $('.js-tab_pane').removeClass('js-ag-tab_pane__active');
-                        $(agID).addClass('js-ag-tab_pane__active');
-                    }
-
-                });
-
-            });
-        })(jQuery);
-    </script>
     <script>
         $('.onoffbtn').on('click', function() {
             if ($(this).children().is(':checked')) {
@@ -413,151 +446,40 @@
                 $(this).removeClass('active')
             }
         });
-        
     </script>
-    <script>
-        if ($('#testim').length) {
-            // vars
-            'use strict'
-            var testim = document.getElementById("testim"),
-                testimDots = Array.prototype.slice.call(document.getElementById("testim-dots").children),
-                testimContent = Array.prototype.slice.call(document.getElementById("testim-content").children),
-                testimLeftArrow = document.getElementById("left-arrow"),
-                testimRightArrow = document.getElementById("right-arrow"),
-                testimSpeed = 4500,
-                currentSlide = 0,
-                currentActive = 0,
-                testimTimer,
-                touchStartPos,
-                touchEndPos,
-                touchPosDiff,
-                ignoreTouch = 30;;
-
-            window.onload = function() {
-
-                // Testim Script
-                function playSlide(slide) {
-                    for (var k = 0; k < testimDots.length; k++) {
-                        testimContent[k].classList.remove("active");
-                        testimContent[k].classList.remove("inactive");
-                        testimDots[k].classList.remove("active");
-                    }
-
-                    if (slide < 0) {
-                        slide = currentSlide = testimContent.length - 1;
-                    }
-
-                    if (slide > testimContent.length - 1) {
-                        slide = currentSlide = 0;
-                    }
-
-                    if (currentActive != currentSlide) {
-                        testimContent[currentActive].classList.add("inactive");
-                    }
-                    testimContent[slide].classList.add("active");
-                    testimDots[slide].classList.add("active");
-
-                    currentActive = currentSlide;
-
-                    clearTimeout(testimTimer);
-                    testimTimer = setTimeout(function() {
-                        playSlide(currentSlide += 1);
-                    }, testimSpeed)
-                }
-
-                testimLeftArrow.addEventListener("click", function() {
-                    playSlide(currentSlide -= 1);
-                })
-
-                testimRightArrow.addEventListener("click", function() {
-                    playSlide(currentSlide += 1);
-                })
-
-                for (var l = 0; l < testimDots.length; l++) {
-                    testimDots[l].addEventListener("click", function() {
-                        playSlide(currentSlide = testimDots.indexOf(this));
-                    })
-                }
-
-                playSlide(currentSlide);
-
-                // keyboard shortcuts
-                document.addEventListener("keyup", function(e) {
-                    switch (e.keyCode) {
-                        case 37:
-                            testimLeftArrow.click();
-                            break;
-
-                        case 39:
-                            testimRightArrow.click();
-                            break;
-
-                        case 39:
-                            testimRightArrow.click();
-                            break;
-
-                        default:
-                            break;
-                    }
-                })
-
-                testim.addEventListener("touchstart", function(e) {
-                    touchStartPos = e.changedTouches[0].clientX;
-                })
-
-                testim.addEventListener("touchend", function(e) {
-                    touchEndPos = e.changedTouches[0].clientX;
-
-                    touchPosDiff = touchStartPos - touchEndPos;
-
-                    console.log(touchPosDiff);
-                    console.log(touchStartPos);
-                    console.log(touchEndPos);
-
-
-                    if (touchPosDiff > 0 + ignoreTouch) {
-                        testimLeftArrow.click();
-                    } else if (touchPosDiff < 0 - ignoreTouch) {
-                        testimRightArrow.click();
-                    } else {
-                        return;
-                    }
-
-                })
-            }
+ 
+ <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    </script>
+    });
+    $(document).on("click", ".applyNow", function(e) {
+        var id = $(this).data('requirment_id');
 
+        $.ajax("{{ route('requirements.apply') }}", {
+            type: 'POST', // http method
+            data: {
+                id: id
+            },
+            success: function(data) {
+                $('.table').load(' .table');
+                if (data.status == true) {
+                    Swal.fire(data.message)
+                    window.location.reload();
 
-    <script>
-        @if (Session::has('success'))
+                }
+                if (data.status == false) {
+                    Swal.fire(data.message)
 
-            swal({
+                }
 
-                text: "{{ Session::get('success') }}",
-                icon: "success",
-            });
-        @endif
-
-
-        @if (Session::has('error'))
-
-            swal({
-
-                text: "{{ Session::get('error') }}",
-                icon: "error",
-            });
-        @endif
-
-        $(document).ready(function() {
-            $('.js-example-basic-single').select2();
+            },
         });
-    </script>
 
-    @section('customJs')
-    @show
 
-    
+    });
+</script>
 </body>
 
 </html>

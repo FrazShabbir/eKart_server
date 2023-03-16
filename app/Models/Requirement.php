@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Requirement extends Model
 {
     use HasFactory;
+    protected $guarded = [];
     public function project(){
         return $this->belongsTo(Project::class);
     }
