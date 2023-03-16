@@ -5,6 +5,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
         rel="stylesheet">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <link rel="stylesheet" href="{{ asset('frontEnd/css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontEnd/css/font-awesome.min.css') }}" type="text/css">
@@ -21,13 +22,18 @@
     <script src="{{ asset('frontEnd/js/jquery-3.3.1.min.js') }}"></script>
 
     <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
+    <style>
+        .anc_hov:hover{
+            color: #2e41ed;
+        }
+    </style>
 </head>
 
 <body>
     <div class="float-container">
-        <a href="{{ route('requirements')}}">Requirements</a>
-       
-        </div>
+        <a href="{{ route('requirements') }}">Requirements</a>
+
+    </div>
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
@@ -135,29 +141,19 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-    {{-- @php
-    dd($report);
-@endphp --}}
     <!-- Shop Section Begin -->
     <section class="shop spad">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-2 rt-wrap1">
                     <div class="hidden-xs catg-icon-img">
 
                         <div class="hidden-xs hidden-sm rpt-pg-cta text-left">
-
-                         
-
-
-
-
-
                         </div>
 
                     </div>
                 </div>
-                <div class="col-lg-10 content-wrap content-reponsive">
+                <div class="col-lg-12 ">
                     <div class="content-main pdbtm-none">
                         <div class="clear row marginbtm30">
                             <div class="col-xs-7 col-sm-7 col-md-7 pdltrt-xs-none">
@@ -189,7 +185,7 @@
                                     <label for="exampleInputEmail1">Industry Type</label>
                                     <select name="" id="industry_id" class="form-control">
                                         @foreach ($industries as $ind)
-                                            <option value="{{$ind->id}}">{{ $ind->industryType }}</option>
+                                            <option value="{{ $ind->id }}">{{ $ind->industryType }}</option>
                                         @endforeach
 
                                     </select>
@@ -201,7 +197,7 @@
                                     <label for="exampleInputEmail1">Subindustry Type</label>
                                     <select name="" id="subindustry_id" class="form-control">
                                         @foreach ($subindustries as $sub)
-                                            <option value="{{$sub->id}}">{{ $sub->subindustry }}</option>
+                                            <option value="{{ $sub->id }}">{{ $sub->subindustry }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -212,7 +208,7 @@
                                     <label for="exampleInputEmail1">Region</label>
                                     <select name="" id="region_id" class="form-control">
                                         @foreach ($regions as $reg)
-                                            <option value="{{$reg->id}}">{{ $reg->region }}</option>
+                                            <option value="{{ $reg->id }}">{{ $reg->region }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -223,7 +219,7 @@
                                     <label for="exampleInputEmail1">Country</label>
                                     <select name="" id="country_id" class="form-control">
                                         @foreach ($countries as $country)
-                                            <option value="{{$country->id}}">{{ $country->country }}</option>
+                                            <option value="{{ $country->id }}">{{ $country->country }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -232,7 +228,7 @@
                                 <div class="form-group mt-2">
                                     <button class="btn btn-primary mt-4" onclick="filter()">Search</button>
                                     <button type="button" onclick="clearFilters()"
-                                    class="btn btn-outline-secondary btn-sm mt-4">Clear Filters</button>
+                                        class="btn btn-outline-secondary btn-sm mt-4">Clear Filters</button>
                                 </div>
                             </div>
                         </div>
@@ -244,6 +240,9 @@
                                         <tr>
                                             <th>
                                                 S #
+                                            </th>
+                                            <th>
+                                               Title
                                             </th>
                                             <th>
                                                 Project Type
@@ -263,9 +262,7 @@
                                             <th>
                                                 Country
                                             </th>
-                                            <th>
-                                                View Requirements
-                                            </th>
+                                       
                                             <th>
                                                 Action
                                             </th>
@@ -276,14 +273,15 @@
                                             <td>
                                                 {{ $loop->iteration }}
                                             </td>
-                                            <td> {{ $requirment->project->projectType }} {{ $requirment->id }}</td>
+                                          
+                                            <td> <a href="{{ route('requirement.show', $requirment->id) }}" class="anc_hov">{{ $requirment->title ??$requirment->project->projectType   }}</a> </td>
+                                            <td> {{ $requirment->project->projectType  }} </td>
                                             <td> {{ $requirment->service->serviceType }} </td>
                                             <td> {{ $requirment->industry->industryType }} </td>
                                             <td> {{ $requirment->subIndustry->subindustry }} </td>
                                             <td> {{ $requirment->region->region }} </td>
                                             <td> {{ $requirment->country->country }} </td>
-                                            <td> {{ $requirment->description }} </td>
-                                            <td>
+                                            <td nowrap="nowrap">
                                                 @if (Auth::user())
                                                     @php
                                                         $applied = App\Models\ApplyRequirement::where('user_id', Auth::user()->id)
@@ -293,15 +291,25 @@
                                                     @endphp
 
                                                     @if ($applied)
-                                                        <button type="button" disabled class="btn btn-sm btn-info"
-                                                            title="Already Applied"> Applied </button>
+                                                        <div>
+                                                            <a href="{{ route('requirement.show', $requirment->id) }}"
+                                                                class="btn btn-primary btn-sm ">View</a>
+
+                                                            <button type="button" disabled
+                                                                class="btn btn-sm btn-info" title="Already Applied">
+                                                                Applied </button>
+                                                        </div>
                                                     @else
+                                                        <a href="{{ route('requirement.show', $requirment->id) }}"
+                                                            class="btn btn-primary btn-sm ">View</a>
                                                         <button type="button" class="btn btn-sm btn-info applyNow"
                                                             data-requirment_id="{{ $requirment->id }}">
                                                             Apply Now
                                                         </button>
                                                     @endif
                                                 @else
+                                                    <a href="{{ route('requirement.show', $requirment->id) }}"
+                                                        class="btn btn-primary btn-sm ">View</a>
                                                     <button type="button" disabled class="btn btn-sm btn-info"
                                                         title="Login In to Apply"> Login to Apply </button>
                                                 @endif
@@ -575,6 +583,8 @@
     <script src="{{ asset('frontEnd/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('frontEnd/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontEnd/js/main.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Js Plugins -->
 
     <script>
@@ -654,152 +664,79 @@
             }
         });
     </script>
+
+
+
     <script>
-        // vars
-        'use strict'
-        var testim = document.getElementById("testim"),
-            testimDots = Array.prototype.slice.call(document.getElementById("testim-dots").children),
-            testimContent = Array.prototype.slice.call(document.getElementById("testim-content").children),
-            testimLeftArrow = document.getElementById("left-arrow"),
-            testimRightArrow = document.getElementById("right-arrow"),
-            testimSpeed = 4500,
-            currentSlide = 0,
-            currentActive = 0,
-            testimTimer,
-            touchStartPos,
-            touchEndPos,
-            touchPosDiff,
-            ignoreTouch = 30;;
+        function filter() {
+            const service_id = $("#service_id").val() ? $("#service_id").val() : "";
+            const industry_id = $("#industry_id").val() ? $("#industry_id").val() : "";
+            const subindustry_id = $("#subindustry_id").val() ? $("#subindustry_id").val() : "";
+            const region_id = $("#region_id").val() ? $("#region_id").val() : "";
+            const country_id = $("#country_id").val() ? $("#country_id").val() : "";
 
-        window.onload = function() {
-            // Testim Script
-            function playSlide(slide) {
-                for (var k = 0; k < testimDots.length; k++) {
-                    testimContent[k].classList.remove("active");
-                    testimContent[k].classList.remove("inactive");
-                    testimDots[k].classList.remove("active");
-                }
 
-                if (slide < 0) {
-                    slide = currentSlide = testimContent.length - 1;
-                }
+            const url = "{{ route('requirements') }}" + "?service_id=" + service_id + "&industry_id=" + industry_id +
+                "&subindustry_id=" + subindustry_id + "&region_id=" + region_id + "&country_id=" + country_id
 
-                if (slide > testimContent.length - 1) {
-                    slide = currentSlide = 0;
-                }
-
-                if (currentActive != currentSlide) {
-                    testimContent[currentActive].classList.add("inactive");
-                }
-                testimContent[slide].classList.add("active");
-                testimDots[slide].classList.add("active");
-
-                currentActive = currentSlide;
-
-                clearTimeout(testimTimer);
-                testimTimer = setTimeout(function() {
-                    playSlide(currentSlide += 1);
-                }, testimSpeed)
-            }
-
-            testimLeftArrow.addEventListener("click", function() {
-                playSlide(currentSlide -= 1);
-            })
-
-            testimRightArrow.addEventListener("click", function() {
-                playSlide(currentSlide += 1);
-            })
-
-            for (var l = 0; l < testimDots.length; l++) {
-                testimDots[l].addEventListener("click", function() {
-                    playSlide(currentSlide = testimDots.indexOf(this));
-                })
-            }
-            playSlide(currentSlide);
-            // keyboard shortcuts
-            document.addEventListener("keyup", function(e) {
-                switch (e.keyCode) {
-                    case 37:
-                        testimLeftArrow.click();
-                        break;
-
-                    case 39:
-                        testimRightArrow.click();
-                        break;
-
-                    case 39:
-                        testimRightArrow.click();
-                        break;
-
-                    default:
-                        break;
-                }
-            })
-            testim.addEventListener("touchstart", function(e) {
-                touchStartPos = e.changedTouches[0].clientX;
-            })
-            testim.addEventListener("touchend", function(e) {
-                touchEndPos = e.changedTouches[0].clientX;
-                touchPosDiff = touchStartPos - touchEndPos;
-                console.log(touchPosDiff);
-                console.log(touchStartPos);
-                console.log(touchEndPos);
-                if (touchPosDiff > 0 + ignoreTouch) {
-                    testimLeftArrow.click();
-                } else if (touchPosDiff < 0 - ignoreTouch) {
-                    testimRightArrow.click();
-                } else {
-                    return;
-                }
-
-            })
+            //    alert(date_from);
+            // console.log(completed_at);
+            window.location.replace(url);
         }
-
-
-        
     </script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable(
+                // hide length menu 
+                {
+                    "lengthChange": false,
+                    "info": false
+                }
 
 
-<script>
-    function filter() {
-        const service_id = $("#service_id").val() ? $("#service_id").val() : "";
-        const industry_id = $("#industry_id").val() ? $("#industry_id").val() : "";
-        const subindustry_id = $("#subindustry_id").val() ? $("#subindustry_id").val() : "";
-        const region_id = $("#region_id").val() ? $("#region_id").val() : "";
-        const country_id = $("#country_id").val() ? $("#country_id").val() : "";
 
+            );
+        });
+    </script>
+    <script>
+        // alert('Final')
+        function clearFilters() {
+            const newurl = window.location.href.split("?");
+            window.location.replace(newurl[0]);
 
-        const url = "{{ route('requirements') }}" + "?service_id=" + service_id + "&industry_id=" + industry_id 
-        +"&subindustry_id=" + subindustry_id+"&region_id=" + region_id+"&country_id=" + country_id
-
-        //    alert(date_from);
-        // console.log(completed_at);
-        window.location.replace(url);
-    }
-</script>
-<script>
-    $(document).ready(function() {
-        $('#myTable').DataTable(
-            // hide length menu 
-            {
-                "lengthChange": false,
-                "info": false
+        }
+    </script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+        $(document).on("click", ".applyNow", function(e) {
+            var id = $(this).data('requirment_id');
+
+            $.ajax("{{ route('requirements.apply') }}", {
+                type: 'POST', // http method
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $('.table').load(' .table');
+                    if (data.status == true) {
+                        Swal.fire(data.message)
+
+                    }
+                    if (data.status == false) {
+                        Swal.fire(data.message)
+
+                    }
+
+                },
+            });
 
 
-
-        );
-    });
-</script>
-<script>
-    // alert('Final')
-    function clearFilters() {
-        const newurl = window.location.href.split("?");
-        window.location.replace(newurl[0]);
-
-    }
-</script>
-
+        });
+    </script>
 </body>
 
 </html>

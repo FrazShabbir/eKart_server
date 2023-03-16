@@ -8,6 +8,7 @@ Route::get('/',[frontController::class,'index'])->name('homePage');
 Route::group(['namespace' => 'App\Http\Controllers'], function(){
         Route::post('customerLogin', [App\Http\Controllers\Admin\userController::class, 'customerLogin'])->name('customerLogin');
         Route::get('requirements',['as' => 'requirements', 'uses' => 'frontController@requirements']);
+        Route::get('requirement/{id}',['as' => 'requirement.show', 'uses' => 'frontController@requirementShow']);
         Route::post('requirements/apply',['as' => 'requirements.apply', 'uses' => 'frontController@requirements_apply']);
         Route::get('articles',['as' => 'articles', 'uses' => 'frontController@articles']);
         Route::get('articles/{type}/',['as' => 'article.type.all', 'uses' => 'frontController@articleByTypeall']);
@@ -100,7 +101,7 @@ Route::group(['as'=> 'admin.','prefix'=>'admin','middleware' => 'auth', 'namespa
     Route::get('requirements/create',         ['as' => 'requirements.create','uses' => 'RequirmentController@create']);
     Route::post('requirements/save',         ['as' => 'requirements.save','uses' => 'RequirmentController@save']);
     Route::get('requirements/edit/{id}',         ['as' => 'requirements.edit','uses' => 'RequirmentController@edit']);
-    Route::get('requirements/update',         ['as' => 'requirements.update','uses' => 'RequirmentController@update']);
+    Route::put('requirements/update',         ['as' => 'requirements.update','uses' => 'RequirmentController@update']);
     Route::get('requirements/delete',         ['as' => 'requirements.delete','uses' => 'RequirmentController@delete']);
     Route::get('role',              ['as' => 'roles','uses' => 'roleController@index']);
     Route::post('role/create',       ['as' => 'role.create','uses' => 'roleController@create']);

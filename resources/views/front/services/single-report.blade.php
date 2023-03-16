@@ -21,7 +21,10 @@
 </head>
 
 <body>
+    <div class="float-container">
+        <a href="{{ route('requirements') }}">Requirements</a>
 
+    </div>
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">

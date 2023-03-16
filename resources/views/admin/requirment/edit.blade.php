@@ -21,8 +21,9 @@
             </div>
             <div class="ibox-body">
               <div class="table-responsive">
-                <form action="{{ route('admin.requirements.save')  }}"  method="post">
+                <form action="{{ route('admin.requirements.update')  }}"  method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <input type="hidden" name="id" value="{{ $requirment->id }}"/>
                     <div class="col-sm-3 form-group">
@@ -81,11 +82,24 @@
     
                         </select>
                     </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Short Title <span class="text-danger"> * </span></label>
+                        <input name="title"  class="form-control" required value="{{ $requirment->title }}">
+                    </div>
+
                     <div class="col-sm-12 form-group">
                         <label>Description <span class="text-danger"> * </span></label>
                         <textarea name="description"  class="form-control summernote1" cols="30" rows="10" required>{{ $requirment->description }}</textarea>
                     </div>
 
+                    <div class="col-sm-6 form-group">
+                        <label>Photo</label>
+                        <input class="form-control" type="file" name="photo">
+
+                    </div>
+                    <div class="col-sm-6 form-group">
+                      <img src="{{asset($requirment->photo)}}" alt="" >
+                    </div>
                 </div>
                 <button  type="submit" vclass="btn btn-sm btn-primary ">
                     Save Detail

@@ -245,8 +245,6 @@ class frontController extends Controller
         $financialmarkets = Article::where('category_id', 4)->get();
         $chemicalsandmaterials = Article::where('category_id', 5)->get();
 
-       
-
         $services = Service::get();
         $industries = Industry::get();
         $subindustries = Subindustry::get();
@@ -254,24 +252,32 @@ class frontController extends Controller
         $countries = Country::get();
 
         $requiremnts = Requirement::with('applied')
-        ->when(!empty(request()->input('service_id')), function ($q) {
-            return $q->where('service_id', request()->input('service_id'));
-        })
-        ->when(!empty(request()->input('industry_id')), function ($q) {
-            return $q->where('industry_id', request()->input('industry_id'));
-        })
-        ->when(!empty(request()->input('subindustry_id')), function ($q) {
-            return $q->where('subindustry_id', request()->input('subindustry_id'));
-        })
-        ->when(!empty(request()->input('region_id')), function ($q) {
-            return $q->where('region_id', request()->input('region_id'));
-        })
-        ->when(!empty(request()->input('country_id')), function ($q) {
-            return $q->where('country_id', request()->input('country_id'));
-        })
-        ->get();
+            ->when(!empty(request()->input('service_id')), function ($q) {
+                return $q->where('service_id', request()->input('service_id'));
+            })
+            ->when(!empty(request()->input('industry_id')), function ($q) {
+                return $q->where('industry_id', request()->input('industry_id'));
+            })
+            ->when(!empty(request()->input('subindustry_id')), function ($q) {
+                return $q->where('subindustry_id', request()->input('subindustry_id'));
+            })
+            ->when(!empty(request()->input('region_id')), function ($q) {
+                return $q->where('region_id', request()->input('region_id'));
+            })
+            ->when(!empty(request()->input('country_id')), function ($q) {
+                return $q->where('country_id', request()->input('country_id'));
+            })
+            ->get();
 
-        return view('front.requirements', compact('requiremnts', 'home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials','services','industries','subindustries','regions','countries'));
+        return view('front.requirements', compact('requiremnts', 'home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials', 'services', 'industries', 'subindustries', 'regions', 'countries'));
+
+    }
+
+    public function requirementShow($id)
+    {
+        $requirement = Requirement::find($id);
+        return view('front.requirement_detail')
+            ->with('requirement', $requirement);
 
     }
     public function requirements_apply(Request $request)
