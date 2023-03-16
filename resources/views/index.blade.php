@@ -3,6 +3,8 @@
 
 @section('content')
 
+
+
     <section class="hero">
         <div class="banner-overlay">
             <div class="container">

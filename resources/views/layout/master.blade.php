@@ -160,11 +160,44 @@
 
 
     </style>
+    
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+  .left,
+.right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 2.5em;
+  margin: auto;
+  background: red;
+  z-index: 999;
+}
+
+ 
+.right {
+   right: 0;
+   -webkit-transform-origin: 100% 50%;
+      -moz-transform-origin: 100% 50%;
+       -ms-transform-origin: 100% 50%;
+        -o-transform-origin: 100% 50%;
+           transform-origin: 100% 50%;
+   -webkit-transform: rotate(90deg) translate(50%, 50%);
+      -moz-transform: rotate(90deg) translate(50%, 50%);
+       -ms-transform: rotate(90deg) translate(50%, 50%);
+        -o-transform: rotate(90deg) translate(50%, 50%);
+           transform: rotate(90deg) translate(50%, 50%);
+}
+ 
+  </style>
+  
+  
 </head>
 
 <body>
-    <div class="float-container">
-        <a href="{{ route('requirements')}}">Requirements</a>
+    
+    <div class="float-container1">
+        <a href="{{ route('requirements')}}"><button type="button" class="btn btn-danger right" ><b>View Requirements</b></button></a>
        
         </div>
 
@@ -370,7 +403,7 @@
 
                         </div>
                         <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> Categories </a> </h4>
+                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> New Articles </a> </h4>
                             <ul class="menu-tab">
                                 @php
                                     $articlecategories = App\Models\ArticleCategory::all();
@@ -408,19 +441,7 @@
                             </ul>
                         </div>
 
-                        <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> News </a> </h4>
-                            <ul class="menu-tab">
-                               
-                                    <li><a href="{{ route('companynews')}}">
-                                            Company News </a></li>
-                                            {{-- <li><a href="{{ route('requirements')}}">
-                                                VIEW REQUIREMENTS </a></li> --}}
-                                 {{-- <h4 class="mt-4"> <a href="{{ route('requirements') }}" class="btn btn-sm btn-light no-radius"> VIEW REQUIREMENTS </a></h4> --}}
-
-
-                            </ul>
-                        </div>
+                        
                        
 
                     </div>
