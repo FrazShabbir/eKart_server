@@ -254,7 +254,7 @@
                                     $articlecategories = App\Models\ArticleCategory::all();
                                 @endphp
                                 @foreach ($articlecategories as $cat)
-                                    <li><a href="">{{ $cat->title }} </a></li>
+                                    <li><a href="{{route('article.type',$cat->slug)}}">{{ $cat->title }} </a></li>
                                 @endforeach
 
 

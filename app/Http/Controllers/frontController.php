@@ -48,8 +48,10 @@ class frontController extends Controller
         $news = Article::where('category_id', $newscat->id)->get();
         $insights = Article::where('category_id', $insightcat->id)->get();
         $markets = Article::where('category_id', $marketcat->id)->get();
-        $financialmarkets = Article::where('category_id', $financecat->i)->get();
-        $chemicalsandmaterials = Article::where('category_id', $chemicalcat->i)->get();
+        $financialmarkets = Article::where('category_id', $financecat->id)->get();
+        $chemicalsandmaterials = Article::where('category_id', $chemicalcat->id)->get();
+
+        // dd($financialmarkets);
         return view('index')
             ->with('home', $home)
             ->with('lastReport', $lastReport)
@@ -92,11 +94,11 @@ class frontController extends Controller
             ->with('article_cat', $article_cat);
     }
 
-    public function articleByType($type, $id)
+    public function articleByType($type)
     {
 
-        $article_cat = ArticleCategory::find($id);
-        $articles = Article::where('category_id', $id)->get();
+        $article_cat = ArticleCategory::where('slug',$type)->first();
+        $articles = Article::where('category_id', $article_cat->id)->get();
         $article_template = ArticleTemplate::first();
         return view('article.type', compact('articles', 'article_template', 'type', 'article_cat'));
     }

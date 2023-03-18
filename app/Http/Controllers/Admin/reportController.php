@@ -109,7 +109,6 @@ class reportController extends Controller
         $report->approve = 0;
         $report->summary = $request->summary;
 
-
         if ($report->save()) {
             if ($request->hasFile('contentFile')) {
                 $filenameWithExt = $request->file('contentFile')->getClientOriginalName();
@@ -577,8 +576,16 @@ class reportController extends Controller
             'photo' => 'required',
             'description' => 'required',
         ]);
+        $slug = str_replace(' ', '-', $request->title);
+
+        if (ArticleCategory::where('slug', $slug)->first()) {
+            $slug = $slug . '-' . rand(11, 999);
+        }
+
         $category = new ArticleCategory;
+
         $category->title = $request->title;
+        $category->slug = $slug;
         $category->description = $request->description;
         $category->status = 'active';
         $category->save();
@@ -661,7 +668,6 @@ class reportController extends Controller
         $report->user_id = Auth::user()->id;
         $report->comment = $request->status_description;
         $report->save();
-
 
         return redirect()->back()->with('success', 'Status has been updated');
     }

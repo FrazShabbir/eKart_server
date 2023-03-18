@@ -19,7 +19,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function(){
         Route::get('articles/{type}/',['as' => 'article.type.all', 'uses' => 'frontController@articleByTypeall']);
 
         //single article
-        Route::get('articles/{type}/{id}',['as' => 'article.type', 'uses' => 'frontController@articleByType']);
+        Route::get('articles/{type}/',['as' => 'article.type', 'uses' => 'frontController@articleByType']);
         Route::get('article/detail/{id}',['as' => 'article.detail', 'uses' => 'frontController@articleDetails']);
         
         

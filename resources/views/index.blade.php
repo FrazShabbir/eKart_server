@@ -316,7 +316,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="tags pull-right finan-more-btn">
-                                <a href="{{ route('article.type',['financialmarkets',4])}}">View More</a>
+                                <a href="{{ route('article.type',$financecat->slug)}}">View More</a>
                                 {{-- <a href="{{ route('article.type', [$article->title,$article->id]) }}">View More</a> --}}
                             </div>
                         </div>
@@ -355,7 +355,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="tags pull-right finan-more-btn">
                                 {{-- <a href="{{ route('article.type.all','chemicalsandmaterials')}}">View More</a> --}}
-                                <a href="{{ route('article.type',['chemicalsandmaterials',5])}}">View More</a>
+                                <a href="{{ route('article.type',$chemicalcat->slug)}}">View More</a>
 
                             </div>
                         </div>

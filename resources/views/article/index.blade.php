@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="tags pull-right finan-more-btn">
-                                <a href="{{ route('article.type', [$article->title,$article->id]) }}">View More</a>
+                                <a href="{{ route('article.type', $article->slug) }}">View More</a>
                             </div>
                         </div>
                     </div>
