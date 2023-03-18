@@ -75,10 +75,10 @@ class frontController extends Controller
 
         $article_categories = ArticleCategory::with('articles')->get();
 
-        foreach ($article_categories as $category) {
-            $category->slug = str_replace(' ', '-', $category->title);
-            $category->save();
-        }
+        // foreach ($article_categories as $category) {
+        //     $category->slug = str_replace(' ', '-', $category->title);
+        //     $category->save();
+        // }
 
         return view('article.index', compact('article_categories'));
     }
