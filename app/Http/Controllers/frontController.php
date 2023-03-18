@@ -39,13 +39,32 @@ class frontController extends Controller
 
         $home = HomeText::first();
         $lastReport = Report::orderBy('id', 'desc')->first();
-        $news = Article::where('category_id', 1)->get();
-        $insights = Article::where('category_id', 2)->get();
-        $markets = Article::where('category_id', 3)->get();
-        $financialmarkets = Article::where('category_id', 4)->get();
-        $chemicalsandmaterials = Article::where('category_id', 5)->get();
+        $newscat = ArticleCategory::where('slug', 'News')->first();
+        $insightcat = ArticleCategory::where('slug', 'Insights')->first();
+        $marketcat = ArticleCategory::where('slug', 'markets')->first();
+        $financecat = ArticleCategory::where('slug', 'financialmarkets')->first();
+        $chemicalcat = ArticleCategory::where('slug', 'chemicals-and-materials')->first();
 
-        return view('index', compact('home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials'));
+        $news = Article::where('category_id', $newscat->id)->get();
+        $insights = Article::where('category_id', $insightcat->id)->get();
+        $markets = Article::where('category_id', $marketcat->id)->get();
+        $financialmarkets = Article::where('category_id', $financecat->i)->get();
+        $chemicalsandmaterials = Article::where('category_id', $chemicalcat->i)->get();
+        return view('index')
+            ->with('home', $home)
+            ->with('lastReport', $lastReport)
+            ->with('news', $news)
+            ->with('insights', $insights)
+            ->with('markets', $markets)
+            ->with('financialmarkets', $financialmarkets)
+            ->with('chemicalsandmaterials', $chemicalsandmaterials)
+            ->with('newscat', $newscat)
+            ->with('insightcat', $insightcat)
+            ->with('marketcat', $marketcat)
+            ->with('financecat', $financecat)
+            ->with('chemicalcat', $chemicalcat);
+
+        // return view('index', compact('home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials'));
 
     }
 
@@ -53,6 +72,12 @@ class frontController extends Controller
     {
 
         $article_categories = ArticleCategory::with('articles')->get();
+
+        foreach ($article_categories as $category) {
+            $category->slug = str_replace(' ', '-', $category->title);
+            $category->save();
+        }
+
         return view('article.index', compact('article_categories'));
     }
 

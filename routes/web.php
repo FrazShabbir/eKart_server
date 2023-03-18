@@ -10,11 +10,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function(){
         Route::get('requirements',['as' => 'requirements', 'uses' => 'frontController@requirements']);
         Route::get('requirement/{id}',['as' => 'requirement.show', 'uses' => 'frontController@requirementShow']);
         Route::post('requirements/apply',['as' => 'requirements.apply', 'uses' => 'frontController@requirements_apply']);
+
+
+        //all articles
         Route::get('articles',['as' => 'articles', 'uses' => 'frontController@articles']);
+
+        //all articles of a single type
         Route::get('articles/{type}/',['as' => 'article.type.all', 'uses' => 'frontController@articleByTypeall']);
 
+        //single article
         Route::get('articles/{type}/{id}',['as' => 'article.type', 'uses' => 'frontController@articleByType']);
         Route::get('article/detail/{id}',['as' => 'article.detail', 'uses' => 'frontController@articleDetails']);
+        
+        
         Route::get('about-us',['as' => 'aboutUs', 'uses' => 'frontController@aboutUs']);
         Route::get('press-releases',['as' => 'pressReleases', 'uses' => 'frontController@pressReleases']);
         Route::post('about-us',['as' => 'about.connect', 'uses' => 'frontController@aboutConnect']);
