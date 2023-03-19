@@ -25,6 +25,8 @@ use App\Models\Press;
 use App\Models\Privacy;
 use App\Models\Region;
 use App\Models\Report;
+use App\Models\Client;
+use App\Models\Testimonial;
 use App\Models\Requirement;
 use App\Models\Service;
 use App\Models\Subindustry;
@@ -73,6 +75,8 @@ class frontController extends Controller
     public function articles()
     {
 
+        $clients = Client::get();
+        $testimonials = Testimonial::get();
         $article_categories = ArticleCategory::with('articles')->get();
 
         // foreach ($article_categories as $category) {
@@ -80,7 +84,12 @@ class frontController extends Controller
         //     $category->save();
         // }
 
-        return view('article.index', compact('article_categories'));
+        // return view('article.index', compact('article_categories'));
+        return view('front.template.articles_template')
+            ->with('article_categories', $article_categories)
+            ->with('clients', $clients)
+            ->with('testimonials', $testimonials);
+
     }
 
     public function articleByTypeall($id)
