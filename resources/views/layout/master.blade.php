@@ -248,7 +248,7 @@
 
                         </div>
                         <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> Categories </a> </h4>
+                            <h4 class="menu-title"><a href="{{ route('articles') }}"> Categories </a> </h4>
                             <ul class="menu-tab">
                                 @php
                                     $articlecategories = App\Models\ArticleCategory::all();
@@ -275,7 +275,7 @@
 
 
                         <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> Industries </a> </h4>
+                            <h4 class="menu-title"><a href="{{ route('industry.template') }}"> Industries </a> </h4>
                             <ul class="menu-tab">
                                 @foreach ($industries as $industry)
                                     <li><a href="{{ route('sub.industry.template', $industry->id)}}">
@@ -287,7 +287,7 @@
                         </div>
 
                         <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('services.index') }}"> News </a> </h4>
+                            <h4 class="menu-title"><a href="{{ route('companynews') }}"> News </a> </h4>
                             <ul class="menu-tab">
                                
                                     <li><a href="{{ route('companynews')}}">

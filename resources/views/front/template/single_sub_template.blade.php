@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Region Template')
+@section('title', 'Sub Industry Template')
 @section('customStyle')
     <style>
         .logo-title a:hover {
@@ -17,7 +17,7 @@
                     <div class="breadcrumb__text">
                         <div class="breadcrumb__links">
                             <a href="{{ route('homePage') }}">Home</a> /
-                            <span>Regions</span>
+                            <span> {{ $subindustry->subindustry }} </span>
                         </div>
                     </div>
                 </div>
@@ -31,13 +31,20 @@
             <div class="row">
                 <div class="col-lg-12 content-wrap content-reponsive">
                     <div class="content-main pdbtm-none">
-                        <h2 class="artl-heading indu-heading">Regions</h2>
+                        <h2 class="artl-heading indu-heading"> {{ $subindustry->subindustry }}</h2>
                         <div class="clear row marginbtm30">
                             <div class="col-sm-9 col-md-9 hidden-xs catg-icon-img">
-                                <img class="img-responsive catg-icon"
-                                    src="{{ asset('storage/data/reports/' . $regionTemplate->banner) }}" alt="">
-                                <br> <br>
-                                {!! $regionTemplate->description !!}
+                                @if ($subindustry->banner)
+                                    <img class="img-responsive catg-icon img-thumbnail"
+                                        src="{{ asset('storage/data/industry/' . $subindustry->banner) }}" alt="dasd">
+                                @else
+                                    <img class="img-responsive catg-icon img-thumbnail"
+                                        src="{{'https://ui-avatars.com/api/?name=' . $subindustry->subindustry }}"
+                                        alt="Dumy">
+                                @endif
+                                <br>
+                                <hr>
+                                {!! $subindustry->description !!}
 
                             </div>
                             <div class="col-xs-3 col-sm4 col-md-3 pdltrt-xs-none">
@@ -60,47 +67,40 @@
                             </div>
                         </div>
                         <hr class="indus-divider">
-
-                        <div class="indu-client-block">
-                            <h2 class="artl-heading">Our Regions</h2>
-                            <div class="">
-                                <div class="row">
-                                    @foreach ($regions as $region)
-                                        <div class="col-xs-3 col-sm-4 col-md-3 indu-clogos">
-                                            <img src="{{ asset('storage/data/region/' . $region->imageIcon) }}"
-                                                class="img-responsive dummy-logo" alt="">
-                                            <p class="logo-title">
-                                                <a href="{{ route('country.template', $region->id) }}">
-                                                    {{ $region->region }}
-                                                </a>
-                                            </p>
-                                        </div>
-                                    @endforeach
-                                </div>
-
+                        {{-- 
+                    <div class="indu-client-block">
+                        <h2 class="artl-heading">Sub Industries</h2>
+                        <div class="industry-client-logos">
+                            @foreach ($subindustry as $industry)
+                            <div class="col-xs-3 col-sm4 col-md-3 indu-clogos">
+                                <img src="{{asset('storage/data/'.$industry->imageIcon) }}"
+                                class="img-responsive dummy-logo" alt="" >
+                                <p class="logo-title"> <a href="{{ route('sub.industry.template.report',$industry->id)}}">  {{ $industry->subindustry}} </a> </p>
                             </div>
-
+                            @endforeach
 
                         </div>
-                        <hr class="indus-divider">
-                        <div class="our-exp-block">
+
+
+                    </div> --}}
+                        {{-- <hr class="indus-divider"> --}}
+                        {{-- <div class="our-exp-block">
                             <h2 class="artl-heading">Our Expertise</h2>
                             <div class="industry-client-logos">
                                 <div class="col-xs-8 col-sm4 col-md-8 our-exp">
 
-                                    {!! $regionTemplate->content !!}
+                                    {!! $subindustry->content !!}
                                 </div>
                                 <div class="col-xs-4 col-sm4 col-md-4 our-exp">
-                                    <img src="{{ asset('storage/data/reports/' . $regionTemplate->expert) }}"
+                                    <img src="{{ asset('storage/data/reports/' . $subindustry->expert) }}"
                                         class="img-reponsive mining-img">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <hr class="indus-divider">
 
                         <div class="our-solution-block">
                             <h2 class="artl-heading">Our Solutions</h2>
-                            {!! $regionTemplate->solution !!}
                             <div class="industry-client-logos">
                                 <div class="col-xs-3 col-sm4 col-md-3 our-solu">
                                     <div class="ibox bg-success1 color-white widget-stat">
@@ -111,7 +111,7 @@
                                                     href="#">Reports /
                                                     Product / Intelligence</a></div><i
                                                 class="fa fa ti-bar-chart widget-stat-icon"></i>
-                                            <div><a class="pur-view-text" href="my-orders.php"><span
+                                            <div><a class="pur-view-text" href="{{route('sub.industry.template.report.detail',$subindustry->id)}}"><span
                                                         class="dash-read-btn">Visit</span></a></div>
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@
                                                     @if ($no == 1)
                                                         <div class="active">
                                                             <div class="img">
-                                                                <img src="{{ asset('storage/app/public/data/testimonial/' . $testimonial->icon) }}"
+                                                                <img src="{{ asset('storage/data/testimonial/' . $testimonial->icon) }}"
                                                                     alt="">
                                                             </div>
                                                             <div class="h4"> {{ $testimonial->title }} </div>
@@ -234,7 +234,7 @@
                                                     @else
                                                         <div class="">
                                                             <div class="img">
-                                                                <img src="{{ asset('storage/app/public/data/testimonial/' . $testimonial->icon) }}"
+                                                                <img src="{{ asset('storage/data/testimonial/' . $testimonial->icon) }}"
                                                                     alt="">
                                                             </div>
                                                             <div class="h4">{{ $testimonial->title }}</div>
@@ -249,6 +249,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 

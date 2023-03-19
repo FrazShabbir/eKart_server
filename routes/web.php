@@ -42,6 +42,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function(){
         Route::get('industry/report/{id}', [App\Http\Controllers\frontReportController::class, 'reportByIndustry'])->name('industry.template.report'); // Industry Report
         Route::get('sub-industry/{id}', [App\Http\Controllers\frontReportController::class, 'subIndustryTemplate'])->name('sub.industry.template');
         Route::get('sub-industry/template/{id}', [App\Http\Controllers\frontReportController::class, 'reportBySubIndustry'])->name('sub.industry.template.report');
+        Route::get('sub-industry/template/{id}/details', [App\Http\Controllers\frontReportController::class, 'reportBySubIndustryDetail'])->name('sub.industry.template.report.detail');
         Route::get('sub-industry/report/{id}', [App\Http\Controllers\frontReportController::class, 'singleReport'])->name('report-details');
         Route::get('services', [App\Http\Controllers\ServicesController::class, 'index'])->name('services.index');
         Route::get('service/reports/{id}', [App\Http\Controllers\ServicesController::class, 'report'])->name('front-reports');
