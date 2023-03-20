@@ -248,7 +248,7 @@
 
                         </div>
                         <div class="col-md-3 services-links">
-                            <h4 class="menu-title"><a href="{{ route('articles') }}"> Categories </a> </h4>
+                            <h4 class="menu-title"><a href="{{ route('articles') }}"> News & Articles </a> </h4>
                             <ul class="menu-tab">
                                 @php
                                     $articlecategories = App\Models\ArticleCategory::all();
@@ -286,19 +286,19 @@
                             </ul>
                         </div>
 
-                        <div class="col-md-3 services-links">
+                        {{-- <div class="col-md-3 services-links">
                             <h4 class="menu-title"><a href="{{ route('companynews') }}"> News </a> </h4>
                             <ul class="menu-tab">
                                
                                     <li><a href="{{ route('companynews')}}">
                                             Company News </a></li>
-                                            {{-- <li><a href="{{ route('requirements')}}">
-                                                VIEW REQUIREMENTS </a></li> --}}
-                                 {{-- <h4 class="mt-4"> <a href="{{ route('requirements') }}" class="btn btn-sm btn-light no-radius"> VIEW REQUIREMENTS </a></h4> --}}
+                                            <li><a href="{{ route('requirements')}}">
+                                                VIEW REQUIREMENTS </a></li>
+                                 <h4 class="mt-4"> <a href="{{ route('requirements') }}" class="btn btn-sm btn-light no-radius"> VIEW REQUIREMENTS </a></h4>
 
 
                             </ul>
-                        </div>
+                        </div> --}}
                        
 
                     </div>
