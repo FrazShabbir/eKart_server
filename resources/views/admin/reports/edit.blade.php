@@ -129,16 +129,16 @@
                                     <label>Select Type</label>
                                     <select class="form-control" name="type">
                                         <option value="" disabled selected> Select  Type</option>
-                                        <option value="Projects">Projects</option>
-                                        <option value="Research">Research</option>
-                                        <option value="Insights">Insights</option>
-                                        <option value="Team">Team</option>
-                                        <option value="Company">Company</option>
-                                        <option value="Finance">Finance</option>
-                                        <option value="Stats">Stats</option>
-                                        <option value="Media">Media</option>
-                                        <option value="Data">Data</option>
-                                        <option value="Others">Others</option>
+                                        <option value="Projects" {{$report->type=='Projects'?'selected':''}}>Projects</option>
+                                        <option value="Research" {{$report->type=='Research'?'selected':''}}>Research</option>
+                                        <option value="Insights" {{$report->type=='Insights'?'selected':''}}>Insights</option>
+                                        <option value="Team" {{$report->type=='Team'?'selected':''}}>Team</option>
+                                        <option value="Company" {{$report->type=='Company'?'selected':''}}>Company</option>
+                                        <option value="Finance" {{$report->type=='Finance'?'selected':''}}>Finance</option>
+                                        <option value="Stats" {{$report->type=='Stats'?'selected':''}}>Stats</option>
+                                        <option value="Media" {{$report->type=='Media'?'selected':''}}>Media</option>
+                                        <option value="Data" {{$report->type=='Data'?'selected':''}}>Data</option>
+                                        <option value="Others" {{$report->type=='Others'?'selected':''}}>Others</option>
                                     </select>
                                 </div>
 
