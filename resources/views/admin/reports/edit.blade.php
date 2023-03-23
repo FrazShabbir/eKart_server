@@ -124,6 +124,24 @@
                                         @endforeach
                                     </select>
                                 </div>
+
+                                <div class="col-sm-3 form-group">
+                                    <label>Select Type</label>
+                                    <select class="form-control" name="type">
+                                        <option value="" disabled selected> Select  Type</option>
+                                        <option value="Projects">Projects</option>
+                                        <option value="Research">Research</option>
+                                        <option value="Insights">Insights</option>
+                                        <option value="Team">Team</option>
+                                        <option value="Company">Company</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Stats">Stats</option>
+                                        <option value="Media">Media</option>
+                                        <option value="Data">Data</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+
                                 @endhasrole
                             </div>
                             <div class="row">

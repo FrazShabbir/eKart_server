@@ -28,13 +28,12 @@
             <div class="row">
                 <div class="col-lg-12 content-wrap content-reponsive">
                     <div class="content-main pdbtm-none">
-                        <h2 class="artl-heading">  {{ $service->industryType }} </h2>
+                        <h2 class="artl-heading"> {{ $service->industryType }} </h2>
                         <div class="clear row marginbtm30">
                             <div class="col-sm-9 col-md-9 hidden-xs catg-icon-img">
                                 <img class="img-responsive catg-icon img-thumbnail"
-                                src="{{asset('storage/data/services/'.$service->banner) }}"
-                                alt="">
-                                <h4 class="indus-title">  {{ $service->subindustry }}  </h4>
+                                    src="{{ asset('storage/data/services/' . $service->banner) }}" alt="">
+                                <h4 class="indus-title"> {{ $service->subindustry }} </h4>
                                 <p class="discr-text"> {{ $service->description }} </p>
                                 <p class="margintp15"><a class="read-info" href="#">Read for More Information</a>
                                 </p>
@@ -61,93 +60,96 @@
                             </div>
                         </div>
                         <div class="product__details__tab">
-                            <ul class="nav nav-tabs" role="tablist">
+                            <ul class="nav nav-tabs" role="tablist" id="myBtnContainer">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">All</a>
+                                    <button class="nav-link clickbtnclass active checkfilter" data-filter="All">All</button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button class="nav-link clickbtnclass" data-filter="Research">Research</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Research</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Projects">Projects</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Projects</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Insights">Insights</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">Insights</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Team">Team</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">Team</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Company">Companies</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Companies</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Finance">Financial
+                                        Markets</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">Financial
-                                        Markets</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Stats">Data &
+                                        Statistics</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-8" role="tab">Data &
-                                        Statistics</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Media">Media</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-9" role="tab">Media</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Data">Data Store</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-10" role="tab">Data Store</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-11" role="tab">Others</a>
+                                    <button class="nav-link clickbtnclass" data-filter="Others">Others</button>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                    @if($reports->count() > 0)
-                                    @foreach ($reports as $report)
-                                        <div class="product__details__tab__content">
-                                            <div class="product__details__tab__content__item">
-                                                <div class="col-md-12 as-min">
-                                                    <div class="col-sm-9 col-md-9 as-mi storeLog">
-                                                        {{--  --}}
-                                                        <h5> <a href="{{ route('service.report.view',$report->id) }}"  data-report_id={{ $report->id}} >   {{ $report->title }} </a></h5>
+                                    @if ($reports->count() > 0)
+                                        @foreach ($reports as $report)
+                                            <div class="product__details__tab__content filterDiv {{ $report->type }}">
+                                                <div class="product__details__tab__content__item">
+                                                    <div class="col-md-12 as-min">
+                                                        <div class="col-sm-9 col-md-9 as-mi storeLog">
+                                                            {{--  --}}
+                                                            <h5> <a href="{{ route('service.report.view', $report->id) }}"
+                                                                    data-report_id={{ $report->id }}>
+                                                                    {{ $report->title }}
+                                                                </a></h5>
                                                             <p class="card-text">
-                                                            @if($report->overview)
-                                                                @php
-                                                                        $data = substr($report->overview->overview,0, 1520);
-                                                                @endphp
+                                                                @if ($report->overview)
+                                                                    @php
+                                                                        $data = substr($report->overview->overview, 0, 1520);
+                                                                    @endphp
 
-                                                                {{ strip_tags($data) }}...
-
-                                                            @endif
+                                                                    {{ strip_tags($data) }}...
+                                                                @endif
                                                             </p>
-                                                    </div>
+                                                        </div>
 
-                                                    <div class="col-sm-3 col-md-3 hidden-xs as-mi1">
-                                                        <img src="{{asset('storage/data/reports/'.$report->photo)}}"
-                                                            class="img-reponsive mining-img">
+                                                        <div class="col-sm-3 col-md-3 hidden-xs as-mi1">
+                                                            <img src="{{ asset('storage/data/reports/' . $report->photo) }}"
+                                                                class="img-reponsive mining-img">
+                                                        </div>
                                                     </div>
+                                                    <div class="author-text">
+                                                        <p><strong>Authors:</strong> {{ $report->author }} <strong>Publish
+                                                                Date:</strong> {{ $report->created_at }} </p>
+                                                    </div>
+                                                    <div class="tags">
+                                                        <a href="#">Overview</a> <a href="#">Contents</a>
+                                                        <a href="#">Project Code</a> <a href="#">Downloads</a>
+                                                        <span class="share-links"> <a href="#"> Share</a> / <a
+                                                                href="#">Follow</a> / <a href="#">Recommends</a>
+                                                            / <a href="#">Suggest</a></span>
+                                                    </div>
+                                                    <p class="report-block"></p>
                                                 </div>
-                                                <div class="author-text">
-                                                    <p><strong>Authors:</strong> {{ $report->author }}  <strong>Publish
-                                                            Date:</strong>  {{ $report->created_at }} </p>
-                                                </div>
-                                                <div class="tags">
-                                                    <a href="#">Overview</a> <a href="#">Contents</a>
-                                                    <a href="#">Project Code</a> <a href="#">Downloads</a>
-                                                    <span class="share-links"> <a href="#"> Share</a> / <a
-                                                            href="#">Follow</a> / <a href="#">Recommends</a> / <a
-                                                            href="#">Suggest</a></span>
-                                                </div>
-                                                <p class="report-block"></p>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
                                     @else
-                                    <div class="author-text text-center" >
-                                        <br>
+                                        <div class="author-text text-center">
+                                            <br>
                                             <p class="text-danger">
-                                                    <strong> No reports against "{{ $service->serviceType }}"  </strong>
+                                                <strong> No reports against "{{ $service->serviceType }}" </strong>
 
                                             </p>
-                                    </div>
+                                        </div>
                                     @endif
 
                                 </div>
@@ -165,26 +167,51 @@
 
 @section('customJs')
     <script>
-
-        $(document).ready(function(){
+        $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-                $(".storeLog a").click(function() {
+            $(".storeLog a").click(function() {
                 var report_id = $(this).data('report_id');
-               @if (Auth::check())
+                @if (Auth::check())
                     $.ajax({
-                        type:'POST',
-                        url:"{{ route('store.log') }}",
-                        data:{report_id:report_id,},
-                        success:function(data){
-                        console.log(data);
+                        type: 'POST',
+                        url: "{{ route('store.log') }}",
+                        data: {
+                            report_id: report_id,
+                        },
+                        success: function(data) {
+                            console.log(data);
                         }
                     });
                 @endif
             });
         });
+    </script>
+    <script>
+        filterSelection("All")
+
+        $('.clickbtnclass').click(function() {
+            var filter = $(this).data('filter');
+            
+            $('.clickbtnclass').removeClass('active');
+            $(this).addClass('active');
+            filterSelection(filter)
+
+        })
+
+        function filterSelection(c) {
+            $(this).addClass('active');
+
+
+
+            $('.filterDiv').addClass('d-none');
+            if (c == 'All') {
+                $('.filterDiv').removeClass('d-none');
+            }
+            $('.' + c).removeClass('d-none');
+        }
     </script>
 @endsection

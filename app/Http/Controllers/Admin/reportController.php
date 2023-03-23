@@ -50,6 +50,7 @@ class reportController extends Controller
         $report = Report::where('id', $id)->first();
         $contents = Content::where('report_id', $id)->get();
         $progress = ProjectStatus::where('report_id', $id)->with('user')->get();
+        // dd($progress);
         return view('admin.reports.edit', compact('progress', 'projects', 'services', 'industries', 'subindustries', 'regions', 'countries', 'managers', 'employees', 'report', 'contents'));
     }
     public function create()
@@ -94,6 +95,7 @@ class reportController extends Controller
         $report->project_id = $request->projectType;
         $report->service_id = $request->serviceType;
         $report->industry_id = $request->industryType;
+        $report->type = $request->type;
         $report->subindustry_id = $request->subindustry;
         $report->region_id = $request->region;
         $report->country_id = $request->country;
@@ -212,6 +214,7 @@ class reportController extends Controller
 
         $report->project_id = $request->projectType;
         $report->service_id = $request->serviceType;
+        $report->type = $request->type;
         $report->industry_id = $request->industryType;
         $report->subindustry_id = $request->subindustry;
         $report->region_id = $request->region;

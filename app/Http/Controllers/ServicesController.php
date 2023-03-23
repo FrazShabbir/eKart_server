@@ -26,6 +26,7 @@ class ServicesController extends Controller
 
         $service = Service::findOrfail($id);
         $reports = Report::where('service_id',$id)->where('approve',2)->get();
+        // dd($reports,$service);
         return view('front.services.report',compact('reports','service'));
     }
 
