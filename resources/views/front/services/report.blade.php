@@ -142,6 +142,14 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        <div class="product__details__tab__content NoImage d-none">
+                                            <div class="product__details__tab__content__item">
+                                                <div class="col-md-12 as-min">
+                                                    <img src="{{asset('no-record-found.png')}}" alt="">
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     @else
                                         <div class="author-text text-center">
                                             <br>
@@ -195,7 +203,7 @@
 
         $('.clickbtnclass').click(function() {
             var filter = $(this).data('filter');
-            
+
             $('.clickbtnclass').removeClass('active');
             $(this).addClass('active');
             filterSelection(filter)
@@ -204,13 +212,19 @@
 
         function filterSelection(c) {
             $(this).addClass('active');
-
-
+            $('.NoImage').addClass('d-none');
 
             $('.filterDiv').addClass('d-none');
+        
+
             if (c == 'All') {
                 $('.filterDiv').removeClass('d-none');
             }
+            var numItems = $('.' + c).length;
+
+if (numItems == 0) {
+    $('.NoImage').removeClass('d-none');
+}
             $('.' + c).removeClass('d-none');
         }
     </script>
