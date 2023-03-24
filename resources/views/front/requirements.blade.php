@@ -30,10 +30,12 @@
 </head>
 
 <body>
-    <div class="float-container">
+    {{-- <div class="float-container">
         <a href="{{ route('requirements') }}">Requirements</a>
 
-    </div>
+    </div> --}}
+    <a href="{{ route('requirements')}}" class="btn btn-danger right_btn" ><b>View Requirements</b></a>
+
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
