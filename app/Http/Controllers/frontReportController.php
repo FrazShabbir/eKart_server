@@ -83,6 +83,7 @@ class frontReportController extends Controller
     }
     
 
+    
     public function serviceReport($id)
     {$reports = Report::where('service_id', $id)->where('approve', 2)->get();
         return view('front.reports', compact('reports'));
