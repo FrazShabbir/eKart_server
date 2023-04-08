@@ -35,7 +35,6 @@ class frontReportController extends Controller
         return view('front.industry.report', compact('reports', 'industry'));
     }
 
-
     public function subIndustryTemplate($id)
     {
         $industryTemplate = IndustryTemplate::first();
@@ -56,18 +55,17 @@ class frontReportController extends Controller
 
         $subindustry = Subindustry::with('industry')->where('id', $id)->first();
         $reports = Report::where('subindustry_id', $id)->where('approve', 2)->get();
-    //    dd('Hello');
+        //    dd('Hello');
 
         return view('front.template.single_sub_template')
-        ->with('industry', $industry)
-        ->with('industryTemplate', $industryTemplate)
-        ->with('subindustry', $subindustry)
-        ->with('clients', $clients)
-        ->with('testimonials', $testimonials)
-        ->with('reports', $reports);
+            ->with('industry', $industry)
+            ->with('industryTemplate', $industryTemplate)
+            ->with('subindustry', $subindustry)
+            ->with('clients', $clients)
+            ->with('testimonials', $testimonials)
+            ->with('reports', $reports);
 
-        
-         return view('front.subIndustry.report', compact('reports','industry', 'industryTemplate', 'subindustry', 'clients', 'testimonials'));
+        return view('front.subIndustry.report', compact('reports', 'industry', 'industryTemplate', 'subindustry', 'clients', 'testimonials'));
     }
     public function reportBySubIndustryDetail($id)
     {
@@ -78,12 +76,10 @@ class frontReportController extends Controller
         $testimonials = IndustryTestimonial::get();
 
         $subindustry = Subindustry::with('industry')->where('id', $id)->first();
-        $reports = Report::where('subindustry_id', $id)->where('approve', 2)->get();        
-         return view('front.subIndustry.report', compact('reports','industry', 'industryTemplate', 'subindustry', 'clients', 'testimonials'));
+        $reports = Report::where('subindustry_id', $id)->where('approve', 2)->get();
+        return view('front.subIndustry.report', compact('reports', 'industry', 'industryTemplate', 'subindustry', 'clients', 'testimonials'));
     }
-    
 
-    
     public function serviceReport($id)
     {$reports = Report::where('service_id', $id)->where('approve', 2)->get();
         return view('front.reports', compact('reports'));
@@ -108,7 +104,6 @@ class frontReportController extends Controller
         return view('front.singleReport', compact('report', 'contents'));
     }
 
-    
     public function serviceTemplate()
     {
         $serviceTemplate = ServiceTemplate::first();
@@ -138,8 +133,6 @@ class frontReportController extends Controller
         $testimonials = IndustryTestimonial::get();
         return view('front.industry.template', compact('industryTemplate', 'industries', 'clients', 'testimonials'));
     }
-
-   
 
     public function regionTemplate()
     {
