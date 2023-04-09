@@ -100,7 +100,7 @@ class frontReportController extends Controller
     {
         $report = Report::with('industry', 'subIndustry')->where('id', $id)->firstOrFail();
         $contents = Content::where('report_id', $id)->get();
-        //      dd($report,$contents);
+        //         dd($report,$contents);
         return view('front.singleReport', compact('report', 'contents'));
     }
 
