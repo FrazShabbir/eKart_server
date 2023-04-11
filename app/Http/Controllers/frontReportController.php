@@ -104,6 +104,7 @@ class frontReportController extends Controller
         return view('front.singleReport', compact('report', 'contents'));
     }
 
+    
     public function serviceTemplate()
     {
         $serviceTemplate = ServiceTemplate::first();
