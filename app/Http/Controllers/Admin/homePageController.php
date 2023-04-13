@@ -7,7 +7,7 @@ class homePageController extends Controller
 {
     public function index()
     {
-      
+     
         $HomeText = HomeText::first();
         return view('admin.homePageText',compact('HomeText'));
     }

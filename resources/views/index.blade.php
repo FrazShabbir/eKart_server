@@ -39,30 +39,32 @@
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="news" role="tabpanel" aria-labelledby="news-tab">
+                            <div class="tab-pane fade show active" id="news" role="tabpanel"
+                                aria-labelledby="news-tab">
                                 <div class="blog_content">
                                     <div class="owl-carousel owl-theme">
-                                        @foreach ($news as $new )
-                                        <div class="blog_item">
-                                            <div class="blog_image">
-                                                <img class="img-responsive img-fluid"
-                            
-                                                src="{{ $new->getFirstMediaUrl('article_main_photo', 'thumb')  }}" alt="images">
-                                            </div>
-                                            <div class="blog_details">
-                                                <div class="blog_title">
-                                                    <h5><a href="#"> {{ $new->title }}</a></h5>
+                                        @foreach ($news as $new)
+                                            <div class="blog_item">
+                                                <div class="blog_image">
+                                                    <img class="img-responsive img-fluid"
+                                                        src="{{ $new->getFirstMediaUrl('article_main_photo', 'thumb') }}"
+                                                        alt="images">
                                                 </div>
-                                                <p class="news-text">
-                                                    <a href="{{ route('article.detail',$new->id) }}" style="color:#000">
+                                                <div class="blog_details">
+                                                    <div class="blog_title">
+                                                        <h5><a href="#"> {{ $new->title }}</a></h5>
+                                                    </div>
+                                                    <p class="news-text">
+                                                        <a href="{{ route('article.detail', $new->id) }}"
+                                                            style="color:#000">
 
-                                                        {!! Str::limit($new->description,40) !!}
+                                                            {!! Str::limit($new->description, 40) !!}
 
 
-                                                    </a>
-                                                </p>
+                                                        </a>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
                                         @endforeach
 
                                     </div>
@@ -77,24 +79,23 @@
                                 <div class="blog_content">
                                     <div class="owl-carousel owl-theme">
                                         @foreach ($insights as $insight)
-
-                                        <div class="blog_item">
-                                            <div class="blog_image">
-                                                <img class="img-responsive img-fluid"
-                                                src="{{ $insight->getFirstMediaUrl('article_main_photo', 'thumb')  }}" alt="images">
-                                            </div>
-                                            <div class="blog_details">
-                                                <div class="blog_title">
-                                                    <h5><a href="#"> {{ $insight->title }}</a></h5>
+                                            <div class="blog_item">
+                                                <div class="blog_image">
+                                                    <img class="img-responsive img-fluid"
+                                                        src="{{ $insight->getFirstMediaUrl('article_main_photo', 'thumb') }}"
+                                                        alt="images">
                                                 </div>
-                                                <p class="news-text">
-                                                    <a href="{{ route('article.detail',$insight->id) }}">
-                                                        {!! Str::limit($insight->description, 40) !!}
-                                                    </a>
-                                                </p>
+                                                <div class="blog_details">
+                                                    <div class="blog_title">
+                                                        <h5><a href="#"> {{ $insight->title }}</a></h5>
+                                                    </div>
+                                                    <p class="news-text">
+                                                        <a href="{{ route('article.detail', $insight->id) }}">
+                                                            {!! Str::limit($insight->description, 40) !!}
+                                                        </a>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-
                                         @endforeach
                                     </div>
                                 </div>
@@ -106,23 +107,25 @@
                             <div class="tab-pane fade" id="markets" role="tabpanel" aria-labelledby="markets-tab">
                                 <div class="blog_content">
                                     <div class="owl-carousel owl-theme">
-                                        @foreach ($markets as $market )
-                                        <div class="blog_item">
-                                            <div class="blog_image">
-                                                <img class="img-responsive img-fluid"
-                                                src="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb')  }}" alt="images">
-                                            </div>
-                                            <div class="blog_details">
-                                                <div class="blog_title">
-                                                    <h5><a href="#"> {{ $market->title }}</a></h5>
+                                        @foreach ($markets as $market)
+                                            <div class="blog_item">
+                                                <div class="blog_image">
+                                                    <img class="img-responsive img-fluid"
+                                                        src="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb') }}"
+                                                        alt="images">
                                                 </div>
-                                                <p class="news-text">
-                                                    <a href="{{ route('article.detail',$market->id) }}" style="color:#000">
-                                                        {!! Str::limit($market->description, 40) !!}
-                                                    </a>
-                                                </p>
+                                                <div class="blog_details">
+                                                    <div class="blog_title">
+                                                        <h5><a href="#"> {{ $market->title }}</a></h5>
+                                                    </div>
+                                                    <p class="news-text">
+                                                        <a href="{{ route('article.detail', $market->id) }}"
+                                                            style="color:#000">
+                                                            {!! Str::limit($market->description, 40) !!}
+                                                        </a>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -155,17 +158,19 @@
             <div class="row">
                 <div class="col-md-12 serv-part">
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                        <img src="{{asset('storage/data/'.$home->head1img)}}" class="img-responsive service-img" alt="">
+                        <img src="{{ asset('storage/data/' . $home->head1img) }}" class="img-responsive service-img"
+                            alt="">
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-9 serv-part-1">
                         <div class="card-body">
-                            <a href="#" class="h2 text-decoration-none text-dark service-heading"> The Services We Offers </a>
+                            <a href="#" class="h2 text-decoration-none text-dark service-heading"> The Services We
+                                Offers </a>
                             <p class="card-text">
                                 {{ $home->serviceContent }}
                             </p>
                             <div class="tags">
                                 <span class="share-links read-btn">
-                                     <a href="{{ route('services.index') }}"> Read More</a>
+                                    <a href="{{ route('services.index') }}"> Read More</a>
                                 </span>
                             </div>
                         </div>
@@ -184,21 +189,23 @@
                                 {{ $home->industiryContent }}
                             </p>
                             <div class="tags">
-                                <span class="share-links read-btn1"> 
+                                <span class="share-links read-btn1">
                                     <a href="{{ route('industry.template') }}"> Read More</a>
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                        <img src="{{asset('storage/data/'.$home->head2img)}}" class="img-responsive service-img1" alt="">
+                        <img src="{{ asset('storage/data/' . $home->head2img) }}" class="img-responsive service-img1"
+                            alt="">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 serv-part">
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                        <img src="{{asset('storage/data/'.$home->head3img)}}" class="img-responsive service-img" alt="">
+                        <img src="{{ asset('storage/data/' . $home->head3img) }}" class="img-responsive service-img"
+                            alt="">
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-9 serv-part-1">
                         <div class="card-body">
@@ -228,173 +235,244 @@
                                 {{ $home->analysisContent }}
                             </p>
                             <div class="tags">
-                                <span class="share-links read-btn1">  
+                                <span class="share-links read-btn1">
                                     <a href="{{ route('industry.template') }}"> Read More</a>
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                        <img src="{{asset('storage/data/'.$home->head4img)}}" class="img-responsive service-img1" alt="">
+                        <img src="{{ asset('storage/data/' . $home->head4img) }}" class="img-responsive service-img1"
+                            alt="">
                     </div>
                 </div>
             </div>
         </div>
+
+
     </section>
     <!-- Banner Section End -->
-    <!-- Start Featured Product -->
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title"> 
-                        <h2> {{ $home->head3 }} </h2>
-                        <p>
-                            {{ $home->subhead3 }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @if($lastReport != '')  
-                <div class="col-12 col-md-12 mb-12">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="col-md-12 as-min">
-                                <div class="col-sm-9 col-md-9 as-mi">
 
-                                    <a href="{{ route('report-details',$lastReport->id ) }}" class="h2 text-decoration-none text-dark asteroid-mining">
-                                        {{ $lastReport->title }}
-                                    </a>
-                                    <p class="card-text">
-                                        @if($lastReport->overview)
-                                            {!! Str::limit($lastReport->overview->overview, 600) !!}
-                                        @endif
-                                    </p>
-                                </div>
-                                <div class="col-sm-3 col-md-3 hidden-xs as-mi1">
-                                    <img src="{{asset('storage/data/reports/'.$lastReport->photo)}}"
-                                    class="img-reponsive mining-img">
-                                </div>
-                            </div>
-                            <div class="author-text">
-                                <p><strong>Authors:</strong> {{ $lastReport->author }} <strong>Publish Date:</strong>   {{ $lastReport->created_at }} </p>
-                            </div>
-                            <div class="tags">
-                                <a href="#">Overview</a> <a href="#">Contents</a>
-                                <a href="#">Project Code</a> <a href="#">Downloads</a>
-                                <span class="share-links"> <a href="#"> Share</a> / <a href="#">Follow</a> / <a href="#">Recommends</a> / <a href="#">Suggest</a></span>
-                            </div>
-                        </div>
-                    </div>
+    <section class="banner spad">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-4">
+                <div class="section-title">
+                    <h2> Why us? </h2>
+                 
                 </div>
-                @endif
             </div>
         </div>
-    </section>
-    <!-- End Featured Product -->
-    <!-- Latest Blog Section Begin -->
-    <section class="latest spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2> {{ $home->head4 }} </h2>
-                        <p>
-                            {{ $home->subhead4 }}
-                        </p>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card" >
+                    <img class="img-thumbnail"  src="https://www.reanin.com/assets/images/image1.png" alt="Card image"
+                        class="img-responsive">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Always Client First</h4>
+                        <hr>
+                        <p class="card-text">We are strong believers in client first approach.</p>
                     </div>
                 </div>
             </div>
-            @if($financialmarkets->count() > 0)
+            <div class="col-md-3">
+                <div class="card" >
+                    <img class="img-thumbnail"  src="https://www.reanin.com/assets/images/image2.png" alt="Card image"
+                        class="img-responsive">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">We Know the Difference
+                        </h4>
+                        <hr>
+                        <p class="card-text">We know the difference between “good research” & “great research”</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" >
+                    <img class="img-thumbnail"  src="https://www.reanin.com/assets/images/image3.png" alt="Card image"
+                        class="img-responsive">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Free Customization</h4>
+                        <hr>
+                        <p class="card-text">We provide up to 100% free customization for all our deliverables</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" >
+                    <img class="img-thumbnail"  src="https://www.reanin.com/assets/images/image4.png" alt="Card image"
+                        class="img-responsive">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Up to 1 Year Free Support</h4>
+                        <hr>
+                        <p class="card-text">We provide after sales analyst support for a period of up to 1 full year for free</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+        <!-- Start Featured Product -->
+        <section class="bg-light">
+            <div class="container py-5">
                 <div class="row">
-                    <div class="col-md-12 cate-title-blk">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="cat-blk-title">
-                                <h2>Financial Markets</h2>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="tags pull-right finan-more-btn">
-                                <a href="{{ route('article.type',$financecat->slug)}}">View More</a>
-                                {{-- <a href="{{ route('article.type', [$article->title,$article->id]) }}">View More</a> --}}
-                            </div>
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2> {{ $home->head3 }} </h2>
+                            <p>
+                                {{ $home->subhead3 }}
+                            </p>
                         </div>
                     </div>
-                    @foreach ($financialmarkets as $market )
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg"
-                                data-setbg="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb') }}"></div>
-                                <div class="blog__item__text">
-                                    <span><img src="{{asset('public/frontEnd/img/calendar.png')}}" alt="">   {{ \Carbon\Carbon::parse($market->created_at)->format('D-m-Y') }}  </span>
-                                    <h5>  {{   $market->title }}  </h5>
-                                    <a href="{{ route('article.detail',$market->id) }}">Read More</a>
+                </div>
+                <div class="row">
+                    @if ($lastReport != '')
+                        <div class="col-12 col-md-12 mb-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="col-md-12 as-min">
+                                        <div class="col-sm-9 col-md-9 as-mi">
+
+                                            <a href="{{ route('report-details', $lastReport->id) }}"
+                                                class="h2 text-decoration-none text-dark asteroid-mining">
+                                                {{ $lastReport->title }}
+                                            </a>
+                                            <p class="card-text">
+                                                @if ($lastReport->overview)
+                                                    {!! Str::limit($lastReport->overview->overview, 600) !!}
+                                                @endif
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3 col-md-3 hidden-xs as-mi1">
+                                            <img src="{{ asset('storage/data/reports/' . $lastReport->photo) }}"
+                                                class="img-reponsive mining-img">
+                                        </div>
+                                    </div>
+                                    <div class="author-text">
+                                        <p><strong>Authors:</strong> {{ $lastReport->author }} <strong>Publish
+                                                Date:</strong>
+                                            {{ $lastReport->created_at }} </p>
+                                    </div>
+                                    <div class="tags">
+                                        <a href="#">Overview</a> <a href="#">Contents</a>
+                                        <a href="#">Project Code</a> <a href="#">Downloads</a>
+                                        <span class="share-links"> <a href="#"> Share</a> / <a
+                                                href="#">Follow</a> / <a href="#">Recommends</a> / <a
+                                                href="#">Suggest</a></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            @else
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                    <div class="cat-blk-title">
-                        <h5> Coming Soon </h5>
-                    </div>
+                    @endif
                 </div>
             </div>
-            @endif
-            @if($chemicalsandmaterials->count() > 0)
+        </section>
+        <!-- End Featured Product -->
+        <!-- Latest Blog Section Begin -->
+        <section class="latest spad">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-12 cate-title-blk">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="cat-blk-title">
-                                <h2>Chemicals and Materials</h2>
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2> {{ $home->head4 }} </h2>
+                            <p>
+                                {{ $home->subhead4 }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @if ($financialmarkets->count() > 0)
+                    <div class="row">
+                        <div class="col-md-12 cate-title-blk">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="cat-blk-title">
+                                    <h2>Financial Markets</h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="tags pull-right finan-more-btn">
+                                    <a href="{{ route('article.type', $financecat->slug) }}">View More</a>
+                                    {{-- <a href="{{ route('article.type', [$article->title,$article->id]) }}">View More</a> --}}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="tags pull-right finan-more-btn">
-                                {{-- <a href="{{ route('article.type.all','chemicalsandmaterials')}}">View More</a> --}}
-                                <a href="{{ route('article.type',$chemicalcat->slug)}}">View More</a>
-
+                        @foreach ($financialmarkets as $market)
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="blog__item">
+                                    <div class="blog__item__pic set-bg"
+                                        data-setbg="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb') }}"></div>
+                                    <div class="blog__item__text">
+                                        <span><img src="{{ asset('public/frontEnd/img/calendar.png') }}" alt="">
+                                            {{ \Carbon\Carbon::parse($market->created_at)->format('D-m-Y') }} </span>
+                                        <h5> {{ $market->title }} </h5>
+                                        <a href="{{ route('article.detail', $market->id) }}">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                            <div class="cat-blk-title">
+                                <h5> Coming Soon </h5>
                             </div>
                         </div>
                     </div>
-                    @foreach ($chemicalsandmaterials as $market )
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="blog__item">
-                                <div class="blog__item__pic set-bg"
-                                data-setbg="{{$market->getFirstMediaUrl('article_main_photo', 'thumb')  }}"></div>
-                                <div class="blog__item__text">
-                                    <span><img src="{{asset('public/frontEnd/img/calendar.png')}}" alt="">
-                                        {{ \Carbon\Carbon::parse($market->created_at)->format('D-m-Y') }}
+                @endif
+                @if ($chemicalsandmaterials->count() > 0)
+                    <div class="row">
+                        <div class="col-md-12 cate-title-blk">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="cat-blk-title">
+                                    <h2>Chemicals and Materials</h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="tags pull-right finan-more-btn">
+                                    {{-- <a href="{{ route('article.type.all','chemicalsandmaterials')}}">View More</a> --}}
+                                    <a href="{{ route('article.type', $chemicalcat->slug) }}">View More</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        @foreach ($chemicalsandmaterials as $market)
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="blog__item">
+                                    <div class="blog__item__pic set-bg"
+                                        data-setbg="{{ $market->getFirstMediaUrl('article_main_photo', 'thumb') }}"></div>
+                                    <div class="blog__item__text">
+                                        <span><img src="{{ asset('public/frontEnd/img/calendar.png') }}" alt="">
+                                            {{ \Carbon\Carbon::parse($market->created_at)->format('D-m-Y') }}
 
                                         </span>
-                                    <h5>  {{   $market->title }}  </h5>
-                                    <a href="{{ route('article.detail',$market->id) }}">Read More</a>
+                                        <h5> {{ $market->title }} </h5>
+                                        <a href="{{ route('article.detail', $market->id) }}">Read More</a>
+                                    </div>
                                 </div>
                             </div>
+                        @endforeach
+                    </div>
+                @else
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                            <div class="cat-blk-title">
+                                <h5> Coming Soon </h5>
+                            </div>
                         </div>
-                    @endforeach
-                </div>
-            @else
-            <br>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                    <div class="cat-blk-title">
-                        <h5> Coming Soon </h5>
+                    </div>
+                    <br>
+                @endif
+
+                <div class="col-md-12 more-article-blk">
+                    <div class="article-more-btn">
+                        <a href="{{ route('articles') }}"> View All Articles </a>
+
                     </div>
                 </div>
             </div>
-            <br>
-            @endif
-
-            <div class="col-md-12 more-article-blk">
-                <div class="article-more-btn">
-                    <a href="{{ route('articles') }}"> View All Articles </a>
-
-                </div>
-            </div>
-        </div>
-    </section>
-@endsection
+        </section>
+    @endsection

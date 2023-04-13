@@ -239,7 +239,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2> {{ $home->head3 }} </h2>
+                        <h2> {{ $home->head3 }}</h2>
                         <p>
                             {{ $home->subhead3 }}
                         </p>
