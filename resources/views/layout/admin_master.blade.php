@@ -450,7 +450,7 @@
                             <span class="nav-label">Why Us </span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="#">Why Us?</a>
+                                <a href="{{route('admin.cms.why')}}">Why Us?</a>
                             </li>
                         </ul>
                     </li>
