@@ -133,53 +133,23 @@
                     </div>
                     <div class="ibox-body">
                         <ul class="media-list media-list-divider m-0">
+                            @foreach ($mails as $user)
                             <li class="media">
+                               
                                 <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u1.jpg')}}" width="40" />
+                                    <img class="img-circle" src="{{asset('https://ptetutorials.com/images/user-profile.png')}}" width="40" />
                                 </a>
+                                <a href="{{ route('admin.admin.mail.show', $user->id) }}" style="color:black">
                                 <div class="media-body">
-                                    <div class="media-heading">Ramesh Kumar <small class="float-right text-muted">22/08/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
+                                    <h6>{{ $user->name }}<span class="chat_date">Dec 25</span></h6>
+                                    @if ($user->chat->count() > 0)
+                                        <p>{{ $user->chat->last()->message }}</p>
+                                    @else
+                                        <p>Tap to Chat.</p>
+                                    @endif</div>
+                                    </a>
                             </li>
-                            <li class="media">
-                                <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u2.jpg')}}" width="40" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="media-heading">Swapna <small class="float-right text-muted">15/09/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u3.jpg')}}" width="40" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="media-heading">Kiran <small class="float-right text-muted">15/09/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u6.jpg')}}" width="40" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="media-heading">Rajesh <small class="float-right text-muted">14/09/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
-
-                            </li>
-                            <li class="media">
-                                <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u6.jpg')}}" width="40" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="media-heading">Naveen Readdy <small class="float-right text-muted">16/09/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
-
-                            </li>
+                         @endforeach
                         </ul>
                     </div>
                 </div>

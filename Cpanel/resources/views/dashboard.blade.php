@@ -184,44 +184,7 @@
                                     <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
                                 </div>
                             </li>
-                            <li class="media">
-                                <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u2.jpg')}}" width="40" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="media-heading">Swapna <small class="float-right text-muted">15/09/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u3.jpg')}}" width="40" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="media-heading">Kiran <small class="float-right text-muted">15/09/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u6.jpg')}}" width="40" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="media-heading">Rajesh <small class="float-right text-muted">14/09/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
-
-                            </li>
-                            <li class="media">
-                                <a class="media-img" href="javascript:;">
-                                    <img class="img-circle" src="{{asset('public/backEnd/assets/img/users/u6.jpg')}}" width="40" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="media-heading">Naveen Readdy <small class="float-right text-muted">16/09/2021</small></div>
-                                    <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-                                </div>
-
-                            </li>
+                          
                         </ul>
                     </div>
                 </div>

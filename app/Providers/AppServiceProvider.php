@@ -13,7 +13,8 @@ use App\Models\Option;
 use App\Models\Project;
 use App\Models\ReportIssue;
 use App\Models\Whyus;
-
+use App\Models\User;
+use Auth;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -41,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
         $option = Option::first();
         $reportIssue = ReportIssue::count();
         $logo = HomeText::select('logo','footerContent')->first();
-        View::share(compact('services', 'industries' ,'regions','logo','projectTypes','reportIssue','option','whys'));
+        $mails = User::get();
+
+        View::share(compact('services', 'industries' ,'regions','logo','projectTypes','reportIssue','option','whys','mails'));
     }
 }
