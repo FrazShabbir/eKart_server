@@ -44,6 +44,6 @@ class AppServiceProvider extends ServiceProvider
         $logo = HomeText::select('logo','footerContent')->first();
         $mails = User::get();
 
-        View::share(compact('services', 'industries' ,'regions','logo','projectTypes','reportIssue','option','whys','mails'));
+        View::share(compact('services', 'industries' ,'regions','logo','projectTypes','reportIssue','option','mails'));
     }
 }
