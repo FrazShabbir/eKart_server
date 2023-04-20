@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\frontController;
+use App\Http\Controllers\Admin\WhyusController;
 Route::get('/',[frontController::class,'index'])->name('homePage');
 
 
@@ -261,6 +262,11 @@ Route::group(['as'=> 'admin.','prefix'=>'admin','middleware' => 'auth', 'namespa
     Route::get('mails/{id}',              ['as' => 'admin.mail.show','uses' => 'MailController@show']);
     Route::post('mails/sendmessage',              ['as' => 'admin.mail.send','uses' => 'MailController@store']);
 
+
+
+    Route::get('cms/why',[WhyusController::class,'index'])->name('cms.why');
+    Route::post('cms/why/create',[WhyusController::class,'store'])->name('cms.why.store');
+    Route::delete('cms/why/delete/{id}',[WhyusController::class,'destroy'])->name('cms.why.delete');
 
     //// Added
 

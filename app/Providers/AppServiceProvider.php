@@ -12,6 +12,7 @@ use App\Models\HomeText;
 use App\Models\Option;
 use App\Models\Project;
 use App\Models\ReportIssue;
+use App\Models\Whyus;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $whys = Whyus::get();
         $services = Service::get();
         $projectTypes = Project::where('status',1)->get();
         $industries = Industry::get();
@@ -39,6 +41,6 @@ class AppServiceProvider extends ServiceProvider
         $option = Option::first();
         $reportIssue = ReportIssue::count();
         $logo = HomeText::select('logo','footerContent')->first();
-        View::share(compact('services', 'industries' ,'regions','logo','projectTypes','reportIssue','option'));
+        View::share(compact('services', 'industries' ,'regions','logo','projectTypes','reportIssue','option','whys'));
     }
 }

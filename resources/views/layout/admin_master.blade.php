@@ -446,6 +446,15 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-envelope"></i>
+                            <span class="nav-label">Why Us </span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="#">Why Us?</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a class="navi-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">

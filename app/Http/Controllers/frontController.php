@@ -30,6 +30,7 @@ use App\Models\Testimonial;
 use App\Models\Requirement;
 use App\Models\Service;
 use App\Models\Subindustry;
+use App\Models\Whyus;
 use App\Models\Terms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +53,7 @@ class frontController extends Controller
         $markets = Article::where('category_id', $marketcat->id)->get();
         $financialmarkets = Article::where('category_id', $financecat->id)->get();
         $chemicalsandmaterials = Article::where('category_id', $chemicalcat->id)->get();
-
+$whys = Whyus::get();
         // dd($financialmarkets);
         return view('index')
             ->with('home', $home)
@@ -66,7 +67,8 @@ class frontController extends Controller
             ->with('insightcat', $insightcat)
             ->with('marketcat', $marketcat)
             ->with('financecat', $financecat)
-            ->with('chemicalcat', $chemicalcat);
+            ->with('chemicalcat', $chemicalcat)
+            ->with('whys', $whys);
 
         // return view('index', compact('home', 'lastReport', 'news', 'insights', 'markets', 'financialmarkets', 'chemicalsandmaterials'));
 

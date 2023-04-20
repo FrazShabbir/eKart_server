@@ -266,18 +266,20 @@
             </div>
         </div>
         <div class="row">
+            @foreach($whys as $why)
             <div class="col-md-3">
                 <div class="card" >
-                    <img class="img-thumbnail"  src="https://www.reanin.com/assets/images/image1.png" alt="Card image"
+                    <img class="img-thumbnail"  src="{{asset($why->icon)}}" alt="Card image"
                         class="img-responsive">
                     <div class="card-body text-center">
-                        <h4 class="card-title">Always Client First</h4>
+                        <h4 class="card-title">{{$why->title}}</h4>
                         <hr>
-                        <p class="card-text">We are strong believers in client first approach.</p>
+                        <p class="card-text">{{$why->description}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            @endforeach
+            {{-- <div class="col-md-3">
                 <div class="card" >
                     <img class="img-thumbnail"  src="https://www.reanin.com/assets/images/image2.png" alt="Card image"
                         class="img-responsive">
@@ -288,8 +290,8 @@
                         <p class="card-text">We know the difference between “good research” & “great research”</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
+            </div> --}}
+            {{-- <div class="col-md-3">
                 <div class="card" >
                     <img class="img-thumbnail"  src="https://www.reanin.com/assets/images/image3.png" alt="Card image"
                         class="img-responsive">
@@ -310,7 +312,7 @@
                         <p class="card-text">We provide after sales analyst support for a period of up to 1 full year for free</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
