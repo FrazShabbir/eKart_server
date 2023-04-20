@@ -12,7 +12,7 @@ use App\Models\HomeText;
 use App\Models\Option;
 use App\Models\Project;
 use App\Models\ReportIssue;
-use App\Models\Whyus;
+// use App\Models\Whyus;
 use App\Models\User;
 use Auth;
 class AppServiceProvider extends ServiceProvider
@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $whys = Whyus::get();
+        // $whys = Whyus::get();
         $services = Service::get();
         $projectTypes = Project::where('status',1)->get();
         $industries = Industry::get();
