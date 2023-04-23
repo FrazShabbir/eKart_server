@@ -48,7 +48,7 @@
 
                                         <td> {{ $why->title }} </td>
                                         <td> {{ $why->description }} </td>
-                                        <td><img src="{{ asset($why->icon) }}" alt="" style="max-width: 50px" alt="{{ $why->title }}"></td>
+                                        <td><img src="{{ $why->icon }}" alt="" style="max-width: 50px" alt="{{ $why->title }}"></td>
                                         <td>
                                            <form action="{{route('admin.cms.why.delete',$why->id)}}" method="POST">
                                             @csrf
