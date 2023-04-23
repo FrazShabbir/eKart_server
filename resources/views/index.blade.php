@@ -269,7 +269,7 @@
             @foreach($whys as $why)
             <div class="col-md-3">
                 <div class="card" >
-                    <img class="img-thumbnail"  src="{{asset($why->icon)}}" alt="Card image"
+                    <img class="img-thumbnail"  src="{{$why->icon}}" alt="Card image"
                         class="img-responsive">
                     <div class="card-body text-center">
                         <h4 class="card-title">{{$why->title}}</h4>
