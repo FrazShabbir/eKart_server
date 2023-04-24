@@ -42,6 +42,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                
                                 @foreach ($whys as $why)
                                     <tr>
                                         <td> {{ $loop->iteration }} </td>
